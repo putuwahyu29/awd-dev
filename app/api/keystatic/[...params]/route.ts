@@ -31,9 +31,26 @@ async function handleRequest(
   }
 
   const response = await handler(currentReq);
-
-  // Intercept response headers to ensure Location redirect never contains localhost on production
   const location = response.headers.get('Location');
+
+  // 1. Tambahkan scope 'repo' agar OAuth App diizinkan membaca Private Repository
+  if (location && location.includes('github.com/login/oauth/authorize')) {
+    try {
+      const authorizeUrl = new URL(location);
+      authorizeUrl.searchParams.set('scope', 'repo');
+      const newHeaders = new Headers(response.headers);
+      newHeaders.set('Location', authorizeUrl.toString());
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: newHeaders,
+      });
+    } catch {
+      // Ignore
+    }
+  }
+
+  // 2. Intercept response headers to ensure Location redirect never contains localhost on production
   if (
     !host.includes('localhost') &&
     !host.includes('127.0.0.1') &&
