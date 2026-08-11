@@ -12,7 +12,7 @@ const techStackOptions = masterTechStack.map((item) => ({
 }));
 
 export default config({
-  storage: process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO
+  storage: process.env.NODE_ENV === 'production'
     ? {
         kind: 'github',
         repo: (process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO as `${string}/${string}`) || 'putuwahyu29/awd-dev',
