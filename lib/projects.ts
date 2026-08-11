@@ -43,21 +43,26 @@ export async function getProjects(): Promise<ProjectData[]> {
           .process(content);
         const contentHtml = processedContent.toString();
 
-        const rawCategories = Array.isArray(data.categories)
-          ? data.categories
-          : Array.isArray(data.category)
-          ? data.category
-          : typeof data.category === 'string'
-          ? [data.category]
-          : [];
+        const rawCategories = [
+          ...(Array.isArray(data.categories) ? data.categories : []),
+          ...(Array.isArray(data.custom_categories) ? data.custom_categories : []),
+          ...(Array.isArray(data.category) ? data.category : []),
+          ...(typeof data.category === 'string' ? [data.category] : []),
+        ];
 
-        const categories = rawCategories.map((c) => String(c).trim()).filter(Boolean);
+        const categories = Array.from(new Set(rawCategories.map((c) => String(c).trim()).filter(Boolean)));
         const category = categories[0] || '';
+
+        const rawTechStack = [
+          ...(Array.isArray(data.tech_stack) ? data.tech_stack : []),
+          ...(Array.isArray(data.custom_tech_stack) ? data.custom_tech_stack : []),
+        ];
+        const tech_stack = Array.from(new Set(rawTechStack.map((t) => String(t).trim()).filter(Boolean)));
 
         // Auto-discover all images in public/images/projects/<slug>/
         const projectImagesDir = path.join(process.cwd(), 'public/images/projects', slug);
-        let images: string[] = [];
-        if (fs.existsSync(projectImagesDir)) {
+        let images: string[] = Array.isArray(data.images) ? data.images.filter(Boolean) : [];
+        if (images.length === 0 && fs.existsSync(projectImagesDir)) {
           const files = fs.readdirSync(projectImagesDir);
           images = files
             .filter((f) => /\.(png|jpe?g|webp|gif|svg)$/i.test(f))
@@ -78,7 +83,7 @@ export async function getProjects(): Promise<ProjectData[]> {
           slug,
           title: data.title || '',
           description: data.description || '',
-          tech_stack: Array.isArray(data.tech_stack) ? data.tech_stack : [],
+          tech_stack,
           category,
           categories,
           image_preview: data.image_preview || images[0] || '',

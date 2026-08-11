@@ -3,11 +3,21 @@
 import { useState } from 'react';
 import { Mail, Copy, Check, Send } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { ContactData } from '@/lib/contact';
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  data?: ContactData;
+}
+
+export default function ContactSection({ data }: ContactSectionProps) {
   const [copied, setCopied] = useState(false);
-  const email = 'aguswahyu@office.awd.my.id';
-  const { t } = useLanguage();
+  const email = data?.email || 'iputuaguswahyu@gmail.com';
+  const { t, lang } = useLanguage();
+
+  const availability = lang === 'en' && data?.availabilityEn ? data.availabilityEn : data?.availabilityId || t(
+    'Saya selalu terbuka untuk diskusi proyek rekayasa web, konsultasi infrastruktur server Proxmox VE & Docker, atau kolaborasi riset & teknologi.',
+    'I am always open to web engineering project discussions, Proxmox VE & Docker server infrastructure consultations, or research & tech collaborations.'
+  );
 
   const copyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -30,10 +40,7 @@ export default function ContactSection() {
           </h3>
 
           <p className="text-sub text-xs sm:text-sm leading-relaxed">
-            {t(
-              'Saya selalu terbuka untuk diskusi proyek rekayasa web, konsultasi infrastruktur server Proxmox VE & Docker, atau kolaborasi riset & teknologi.',
-              'I am always open to web engineering project discussions, Proxmox VE & Docker server infrastructure consultations, or research & tech collaborations.'
-            )}
+            {availability}
           </p>
         </div>
 
@@ -50,7 +57,7 @@ export default function ContactSection() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-sm mx-auto">
             <a
-              href={`mailto:${email}?subject=Kolaborasi%20Proyek%20-%20awd.my.id`}
+              href={`mailto:${email}?subject=Kolaborasi%20Proyek%20-%20awd.dev`}
               className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-mono text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-sm"
             >
               <Send className="w-3.5 h-3.5" />

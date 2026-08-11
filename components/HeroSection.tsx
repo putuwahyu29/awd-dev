@@ -1,12 +1,23 @@
 'use client';
 
-import { FileText, ArrowRight, MapPin, ShieldCheck } from 'lucide-react';
+import { FileText, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { HeroData } from '@/lib/hero';
 
-export default function HeroSection() {
-  const { t } = useLanguage();
+interface HeroSectionProps {
+  data?: HeroData;
+}
 
-  const techStack = [
+export default function HeroSection({ data }: HeroSectionProps) {
+  const { t, lang } = useLanguage();
+
+  const name = data?.name || 'I Putu Agus Wahyu Dupayana';
+  const role = lang === 'en' && data?.roleEn ? data.roleEn : data?.role || 'Software Engineer & Content Creator';
+  const bio = lang === 'en' && data?.bioEn ? data.bioEn : data?.bioId || 'Pengembang perangkat lunak...';
+  const profileImage = data?.profileImage || '/foto-profil.jpg';
+  const cvUrl = data?.cvUrl || '/cv.pdf';
+
+  const techStack = data?.coreTechStack || [
     'LLMs & AI Integration',
     'Next.js',
     'TypeScript',
@@ -19,11 +30,16 @@ export default function HeroSection() {
     'Tailwind CSS',
   ];
 
-  const highlights = [
-    { number: '21+', label: t('Proyek', 'Projects') },
-    { number: t('4+ Tahun', '4+ Years'), label: t('Pengalaman Kerja', 'Years Experience') },
-    { number: '500+', label: t('Kontribusi GitHub', 'GitHub Contributions') },
-  ];
+  const highlights = data?.highlights
+    ? data.highlights.map((h) => ({
+        number: h.number,
+        label: lang === 'en' && h.labelEn ? h.labelEn : h.labelId,
+      }))
+    : [
+        { number: '21+', label: t('Proyek', 'Projects') },
+        { number: t('4+ Tahun', '4+ Years'), label: t('Pengalaman Kerja', 'Years Experience') },
+        { number: '500+', label: t('Kontribusi GitHub', 'GitHub Contributions') },
+      ];
 
   return (
     <section
@@ -40,27 +56,23 @@ export default function HeroSection() {
             {/* Main Title */}
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-main tracking-tight leading-[1.1]">
-                I Putu Agus Wahyu Dupayana
+                {name}
               </h1>
               <p className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
-                {t('Software Engineer & Content Creator', 'Software Engineer & Content Creator')}
+                {role}
               </p>
             </div>
 
-
             {/* Bio Paragraph */}
             <p className="text-base sm:text-lg text-sub leading-relaxed font-normal pt-1 max-w-2xl">
-              {t(
-                'Pengembang perangkat lunak yang berfokus pada pembangunan sistem web berkinerja tinggi, arsitektur Next.js & Laravel, integrasi LLMs & AI Systems, pengelolaan infrastruktur server Proxmox VE & Docker, serta otomatisasi cloud di Google Cloud Platform (GCP).',
-                'Software engineer focused on building high-performance web systems, Next.js & Laravel architecture, LLMs & AI Systems integration, Proxmox VE & Docker server virtualization infrastructure, and Google Cloud Platform (GCP) cloud automation.'
-              )}
+              {bio}
             </p>
 
             {/* Action CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <a
-                href="/cv.pdf"
-                download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
+                href={cvUrl}
+                download={`CV_${name.replace(/\s+/g, '_')}.pdf`}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md shadow-blue-500/20"
               >
                 <FileText className="w-4 h-4" />
@@ -94,8 +106,8 @@ export default function HeroSection() {
               <div className="w-60 h-60 sm:w-72 sm:h-72 rounded-full p-1.5 bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-500 border border-main shadow-2xl overflow-hidden ring-8 ring-blue-500/10 transition-transform duration-300 group-hover:scale-102">
                 <div className="w-full h-full rounded-full overflow-hidden bg-card flex items-center justify-center">
                   <img
-                    src="/foto-profil.jpg"
-                    alt="I Putu Agus Wahyu Dupayana"
+                    src={profileImage}
+                    alt={name}
                     className="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
@@ -104,7 +116,7 @@ export default function HeroSection() {
               {/* Float Experience Badge */}
               <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-card border-2 border-main shadow-xl flex items-center gap-2 text-xs font-mono font-bold text-main whitespace-nowrap">
                 <ShieldCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span>Software Engineer & Content Creator</span>
+                <span>{role}</span>
               </div>
             </div>
           </div>

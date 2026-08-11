@@ -22,8 +22,14 @@ export async function getSocialChannels(): Promise<SocialChannel[]> {
     }
 
     const fileContents = fs.readFileSync(socialsJsonPath, 'utf8');
-    const channels: SocialChannel[] = JSON.parse(fileContents);
-    return channels;
+    const parsed = JSON.parse(fileContents);
+    if (Array.isArray(parsed)) {
+      return parsed;
+    }
+    if (parsed && Array.isArray(parsed.channels)) {
+      return parsed.channels;
+    }
+    return [];
   } catch (error) {
     console.error('Error reading content/socials.json:', error);
     return [];

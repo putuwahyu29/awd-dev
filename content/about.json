@@ -1,0 +1,28 @@
+{
+  "titleId": "Tentang Saya",
+  "titleEn": "About Me",
+  "subtitleId": "Rekayasa Sistem, Arsitektur Web, & Inovasi Teknologi",
+  "subtitleEn": "System Engineering, Web Architecture, & Tech Innovation",
+  "bioId": "Saya adalah seorang Software Engineer berdedikasi dengan fokus pada pengembangan sistem perangkat lunak yang andal, scalable, dan modern. Berbekal latar belakang kuat dalam pengembangan full-stack (Next.js, TypeScript, Laravel), virtualisasi server (Proxmox VE & Docker), serta integrasi AI/LLM, saya berkomitmen untuk menciptakan solusi digital berdampak tinggi.",
+  "bioEn": "I am a dedicated Software Engineer focused on developing reliable, scalable, and modern software systems. Equipped with a strong background in full-stack development (Next.js, TypeScript, Laravel), server virtualization (Proxmox VE & Docker), and AI/LLM integration, I am committed to delivering high-impact digital solutions.",
+  "pillars": [
+    {
+      "titleId": "Pengembangan Full-Stack Modern",
+      "titleEn": "Modern Full-Stack Development",
+      "descId": "Membangun antarmuka web interaktif berkinerja tinggi menggunakan Next.js App Router, React 19, TypeScript, dan Laravel API backend.",
+      "descEn": "Building high-performance interactive web interfaces using Next.js App Router, React 19, TypeScript, and Laravel API backends."
+    },
+    {
+      "titleId": "Infrastruktur & Virtualisasi",
+      "titleEn": "Infrastructure & Virtualization",
+      "descId": "Mengelola server homelab enterprise berbasis Proxmox VE, kontainerisasi Docker Swarm, serta deployment otomatis di Google Cloud Platform (GCP).",
+      "descEn": "Managing enterprise homelab servers based on Proxmox VE, Docker Swarm containerization, and automated deployments on Google Cloud Platform (GCP)."
+    },
+    {
+      "titleId": "Integrasi AI & Automasi",
+      "titleEn": "AI Integration & Automation",
+      "descId": "Mengembangkan solusi kecerdasan buatan, sistem RAG (Retrieval-Augmented Generation), dan bot otomatisasi workflows.",
+      "descEn": "Developing artificial intelligence solutions, RAG (Retrieval-Augmented Generation) systems, and workflow automation bots."
+    }
+  ]
+}

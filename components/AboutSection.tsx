@@ -2,54 +2,70 @@
 
 import { Code2, Server, Cloud, Bot } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { AboutData } from '@/lib/about';
 
-export default function AboutSection() {
-  const { t } = useLanguage();
+interface AboutSectionProps {
+  data?: AboutData;
+}
 
-  const pillars = [
-    {
-      icon: Code2,
-      title: t('Full-Stack Web Development', 'Full-Stack Web Development'),
-      description: t(
-        'Pengembangan aplikasi web berskala enterprise menggunakan Next.js (TypeScript) & Laravel. Berfokus pada arsitektur modular, clean code, dan integrasi API yang terstruktur.',
-        'Enterprise-scale web application development using Next.js (TypeScript) & Laravel. Focused on modular architecture, clean code, and structured API integrations.'
-      ),
-    },
-    {
-      icon: Bot,
-      title: t('LLMs & AI Engineering', 'LLMs & AI Engineering'),
-      description: t(
-        'Integrasi Large Language Models (LLMs), pembangunan AI Agentic Workflows, sistem RAG (Retrieval-Augmented Generation), serta otomatisasi kecerdasan buatan.',
-        'Integration of Large Language Models (LLMs), AI Agentic Workflows, RAG systems (Retrieval-Augmented Generation), and artificial intelligence automation.'
-      ),
-    },
-    {
-      icon: Server,
-      title: t('Virtualisasi & Server Homelab', 'Virtualization & Homelab Server'),
-      description: t(
-        'Pengelolaan klaster virtualisasi Proxmox VE, kontainerisasi Docker Swarm, Nginx reverse proxy, pemantauan Prometheus/Grafana, dan otomatisasi backup.',
-        'Proxmox VE virtualization cluster management, Docker Swarm containerization, Nginx reverse proxy, Prometheus/Grafana monitoring, and automated backups.'
-      ),
-    },
-    {
-      icon: Cloud,
-      title: t('Cloud & Database Security', 'Cloud & Database Security'),
-      description: t(
-        'Penggelaran aplikasi di Google Cloud Platform (GCP), optimasi query database PostgreSQL & MySQL, dan arsitektur otentikasi berbasis peran (RBAC).',
-        'Application deployment on Google Cloud Platform (GCP), PostgreSQL & MySQL database query optimization, and role-based authentication architecture (RBAC).'
-      ),
-    },
-  ];
+const icons = [Code2, Bot, Server, Cloud];
+
+export default function AboutSection({ data }: AboutSectionProps) {
+  const { t, lang } = useLanguage();
+
+  const title = lang === 'en' && data?.titleEn ? data.titleEn : data?.titleId || t('Tentang & Keahlian', 'About & Expertise');
+  const subtitle = lang === 'en' && data?.subtitleEn ? data.subtitleEn : data?.subtitleId || t('Fokus Rekayasa Perangkat Lunak, AI & Infrastruktur', 'Software Engineering, AI & Infrastructure Focus');
+
+  const pillars = data?.pillars && data.pillars.length > 0
+    ? data.pillars.map((p, idx) => ({
+        icon: icons[idx % icons.length],
+        title: lang === 'en' && p.titleEn ? p.titleEn : p.titleId,
+        description: lang === 'en' && p.descEn ? p.descEn : p.descId,
+      }))
+    : [
+        {
+          icon: Code2,
+          title: t('Full-Stack Web Development', 'Full-Stack Web Development'),
+          description: t(
+            'Pengembangan aplikasi web berskala enterprise menggunakan Next.js (TypeScript) & Laravel. Berfokus pada arsitektur modular, clean code, dan integrasi API yang terstruktur.',
+            'Enterprise-scale web application development using Next.js (TypeScript) & Laravel. Focused on modular architecture, clean code, and structured API integrations.'
+          ),
+        },
+        {
+          icon: Bot,
+          title: t('LLMs & AI Engineering', 'LLMs & AI Engineering'),
+          description: t(
+            'Integrasi Large Language Models (LLMs), pembangunan AI Agentic Workflows, sistem RAG (Retrieval-Augmented Generation), serta otomatisasi kecerdasan buatan.',
+            'Integration of Large Language Models (LLMs), AI Agentic Workflows, RAG systems (Retrieval-Augmented Generation), and artificial intelligence automation.'
+          ),
+        },
+        {
+          icon: Server,
+          title: t('Virtualisasi & Server Homelab', 'Virtualization & Homelab Server'),
+          description: t(
+            'Pengelolaan klaster virtualisasi Proxmox VE, kontainerisasi Docker Swarm, Nginx reverse proxy, pemantauan Prometheus/Grafana, dan otomatisasi backup.',
+            'Proxmox VE virtualization cluster management, Docker Swarm containerization, Nginx reverse proxy, Prometheus/Grafana monitoring, and automated backups.'
+          ),
+        },
+        {
+          icon: Cloud,
+          title: t('Cloud & Database Security', 'Cloud & Database Security'),
+          description: t(
+            'Penggelaran aplikasi di Google Cloud Platform (GCP), optimasi query database PostgreSQL & MySQL, dan arsitektur otentikasi berbasis peran (RBAC).',
+            'Application deployment on Google Cloud Platform (GCP), PostgreSQL & MySQL database query optimization, and role-based authentication architecture (RBAC).'
+          ),
+        },
+      ];
 
   return (
     <section id="about" className="py-16 border-b border-main">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h2 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1 font-bold">
-            {t('Tentang & Keahlian', 'About & Expertise')}
+            {title}
           </h2>
           <h3 className="text-2xl sm:text-3xl font-bold text-main">
-            {t('Fokus Rekayasa Perangkat Lunak, AI & Infrastruktur', 'Software Engineering, AI & Infrastructure Focus')}
+            {subtitle}
           </h3>
         </div>
 

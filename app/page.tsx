@@ -2,6 +2,9 @@ import { getProjects } from '@/lib/projects';
 import { getPublications } from '@/lib/publications';
 import { getCertifications } from '@/lib/certifications';
 import { getSocialChannels } from '@/lib/socials';
+import { getHeroData } from '@/lib/hero';
+import { getAboutData } from '@/lib/about';
+import { getContactData } from '@/lib/contact';
 import { getLatestBlogPosts } from '@/lib/rss';
 import { getGitHubRepos } from '@/lib/github';
 
@@ -25,6 +28,10 @@ export default async function HomePage() {
   const officialCerts = await getCertifications();
   const socialChannels = await getSocialChannels();
 
+  const heroData = await getHeroData();
+  const aboutData = await getAboutData();
+  const contactData = await getContactData();
+
   const blogPosts = await getLatestBlogPosts(3);
   const githubRepos = await getGitHubRepos(3);
 
@@ -33,8 +40,8 @@ export default async function HomePage() {
       <Navbar />
 
       <main className="flex-1">
-        <HeroSection />
-        <AboutSection />
+        <HeroSection data={heroData} />
+        <AboutSection data={aboutData} />
 
         <ProjectsSection initialProjects={projects} isHomePage={true} limit={6} />
 
@@ -44,7 +51,7 @@ export default async function HomePage() {
         <ContentCreatorHub channels={socialChannels} />
         <BlogFeed posts={blogPosts} />
 
-        <ContactSection />
+        <ContactSection data={contactData} />
       </main>
 
       <Footer />
