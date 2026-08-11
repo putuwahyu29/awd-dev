@@ -19,7 +19,19 @@ export async function getLatestBlogPosts(limit = 6): Promise<BlogPost[]> {
   const feedUrl = process.env.RSS_FEED_URL || 'https://blog.awd.my.id/rss.xml';
 
   try {
-    const feed = await parser.parseURL(feedUrl);
+    const res = await fetch(feedUrl, {
+      headers: {
+        'User-Agent': 'AWD-Portfolio-Web',
+      },
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) {
+      return [];
+    }
+
+    const xmlText = await res.text();
+    const feed = await parser.parseString(xmlText);
     if (!feed.items || feed.items.length === 0) {
       return [];
     }

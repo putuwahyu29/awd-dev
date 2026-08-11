@@ -194,12 +194,26 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
         { id: 'tiktok', title: 'TikTok', subtitle: '@aguswahyudupayana', url: 'https://tiktok.com/@aguswahyudupayana', icon: TikTokIcon, colorStyle: getSocialBrandStyle('tiktok') },
         { id: 'instagram', title: 'Instagram', subtitle: '@aguswahyudupayana', url: 'https://instagram.com/aguswahyudupayana', icon: InstagramIcon, colorStyle: getSocialBrandStyle('instagram') },
         { id: 'threads', title: 'Threads', subtitle: '@aguswahyudupayana', url: 'https://threads.net/@aguswahyudupayana', icon: ThreadsIcon, colorStyle: getSocialBrandStyle('threads') },
-        { id: 'kaggle', title: 'Kaggle', subtitle: '@aguswahyudupayana', url: 'https://kaggle.com/aguswahyudupayana', icon: KaggleIcon, colorStyle: getSocialBrandStyle('kaggle') },
         { id: 'youtube', title: 'YouTube', subtitle: '@aguswahyudupayana', url: 'https://youtube.com/@aguswahyudupayana', icon: YoutubeIcon, colorStyle: getSocialBrandStyle('youtube') },
         { id: 'facebook', title: 'Facebook', subtitle: 'aguswahyudupayana', url: 'https://facebook.com/aguswahyudupayana', icon: FacebookIcon, colorStyle: getSocialBrandStyle('facebook') },
       ];
 
+  // Top circular icons exclude Kaggle (since Kaggle is rendered as full button card in research stack below)
+  const topSocialLinks = socialLinks.filter((s) => s.id !== 'kaggle');
+
+  const kaggleSocial = socials?.find((s) => s.id === 'kaggle');
+  const kaggleUrl = kaggleSocial?.url || 'https://kaggle.com/aguswahyudupayana';
+  const kaggleHandle = kaggleSocial?.handle || '@aguswahyudupayana';
+
   const researchLinks: BioLinkItem[] = [
+    {
+      id: 'kaggle',
+      title: kaggleSocial?.name ? `Kaggle (${kaggleSocial.name})` : 'Kaggle Data & Machine Learning',
+      subtitle: `${kaggleHandle} • Datasets, Notebooks, & Model ML`,
+      url: kaggleUrl,
+      icon: KaggleIcon,
+      iconBadgeStyle: 'bg-sky-500/15 text-sky-500 border-sky-500/30',
+    },
     {
       id: 'scholar',
       title: 'Google Scholar Profile',
@@ -277,9 +291,9 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
             </p>
           </div>
 
-          {/* Authentic Colorful Brand Icons Row (TikTok first, then Instagram) */}
+          {/* Authentic Colorful Brand Icons Row (TikTok, Instagram, Threads, YouTube, Facebook) */}
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            {socialLinks.map((link) => {
+            {topSocialLinks.map((link) => {
               const Icon = link.icon;
               return (
                 <a
@@ -341,7 +355,7 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
             })}
           </div>
 
-          {/* Research & Blog Buttons */}
+          {/* Research & Data Buttons (including Kaggle Card) */}
           <div className="space-y-2.5">
             {researchLinks.map((link) => {
               const Icon = link.icon;

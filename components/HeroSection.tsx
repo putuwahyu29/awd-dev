@@ -7,6 +7,7 @@ export default function HeroSection() {
   const { t } = useLanguage();
 
   const techStack = [
+    'LLMs & AI Integration',
     'Next.js',
     'TypeScript',
     'Laravel',
@@ -19,9 +20,9 @@ export default function HeroSection() {
   ];
 
   const highlights = [
-    { number: '16+', label: t('Proyek', 'Projects') },
-    { number: t('4 Tahun', '4+ Years'), label: t('Pengalaman Kerja', 'Years Experience') },
-    { number: '100%', label: t('Kualitas & Performa Sistem', 'System Performance & Quality') },
+    { number: '21+', label: t('Proyek', 'Projects') },
+    { number: t('4+ Tahun', '4+ Years'), label: t('Pengalaman Kerja', 'Years Experience') },
+    { number: '500+', label: t('Kontribusi GitHub', 'GitHub Contributions') },
   ];
 
   return (
@@ -50,8 +51,8 @@ export default function HeroSection() {
             {/* Bio Paragraph */}
             <p className="text-base sm:text-lg text-sub leading-relaxed font-normal pt-1 max-w-2xl">
               {t(
-                'Pengembang perangkat lunak yang berfokus pada pembangunan sistem web berkinerja tinggi, arsitektur Laravel & Next.js, pengelolaan infrastruktur server virtualisasi Proxmox VE & Docker, serta otomatisasi cloud di Google Cloud Platform (GCP).',
-                'Software engineer focused on building high-performance web systems, Laravel & Next.js architecture, Proxmox VE & Docker server virtualization infrastructure, and Google Cloud Platform (GCP) cloud automation.'
+                'Pengembang perangkat lunak yang berfokus pada pembangunan sistem web berkinerja tinggi, arsitektur Next.js & Laravel, integrasi LLMs & AI Systems, pengelolaan infrastruktur server Proxmox VE & Docker, serta otomatisasi cloud di Google Cloud Platform (GCP).',
+                'Software engineer focused on building high-performance web systems, Next.js & Laravel architecture, LLMs & AI Systems integration, Proxmox VE & Docker server virtualization infrastructure, and Google Cloud Platform (GCP) cloud automation.'
               )}
             </p>
 

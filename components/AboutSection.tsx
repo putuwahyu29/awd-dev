@@ -1,6 +1,6 @@
 'use client';
 
-import { Code2, Server, Cloud } from 'lucide-react';
+import { Code2, Server, Cloud, Bot } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function AboutSection() {
@@ -13,6 +13,14 @@ export default function AboutSection() {
       description: t(
         'Pengembangan aplikasi web berskala enterprise menggunakan Next.js (TypeScript) & Laravel. Berfokus pada arsitektur modular, clean code, dan integrasi API yang terstruktur.',
         'Enterprise-scale web application development using Next.js (TypeScript) & Laravel. Focused on modular architecture, clean code, and structured API integrations.'
+      ),
+    },
+    {
+      icon: Bot,
+      title: t('LLMs & AI Engineering', 'LLMs & AI Engineering'),
+      description: t(
+        'Integrasi Large Language Models (LLMs), pembangunan AI Agentic Workflows, sistem RAG (Retrieval-Augmented Generation), serta otomatisasi kecerdasan buatan.',
+        'Integration of Large Language Models (LLMs), AI Agentic Workflows, RAG systems (Retrieval-Augmented Generation), and artificial intelligence automation.'
       ),
     },
     {
@@ -41,27 +49,29 @@ export default function AboutSection() {
             {t('Tentang & Keahlian', 'About & Expertise')}
           </h2>
           <h3 className="text-2xl sm:text-3xl font-bold text-main">
-            {t('Fokus Rekayasa Perangkat Lunak & Infrastruktur', 'Software Engineering & Infrastructure Focus')}
+            {t('Fokus Rekayasa Perangkat Lunak, AI & Infrastruktur', 'Software Engineering, AI & Infrastructure Focus')}
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {pillars.map((pillar, idx) => {
             const IconComponent = pillar.icon;
             return (
               <div
                 key={idx}
-                className="p-6 rounded-lg bg-card border border-main hover:border-sub transition-colors shadow-xs"
+                className="p-6 rounded-lg bg-card border border-main hover:border-sub transition-colors shadow-xs flex flex-col justify-between"
               >
-                <div className="w-10 h-10 rounded-md bg-main border border-main flex items-center justify-center text-main mb-4">
-                  <IconComponent className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <div>
+                  <div className="w-10 h-10 rounded-md bg-main border border-main flex items-center justify-center text-main mb-4">
+                    <IconComponent className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h4 className="text-lg font-bold text-main mb-2">
+                    {pillar.title}
+                  </h4>
+                  <p className="text-sub text-sm leading-relaxed">
+                    {pillar.description}
+                  </p>
                 </div>
-                <h4 className="text-lg font-bold text-main mb-2">
-                  {pillar.title}
-                </h4>
-                <p className="text-sub text-sm leading-relaxed">
-                  {pillar.description}
-                </p>
               </div>
             );
           })}
