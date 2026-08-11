@@ -1,15 +1,5 @@
 [
   {
-    "id": "instagram",
-    "name": "Instagram",
-    "handle": "@aguswahyudupayana",
-    "role": "Konten Edukasi Web Dev & Linux",
-    "roleEn": "Web Dev & Linux Educational Content",
-    "url": "https://instagram.com/aguswahyudupayana",
-    "iconKey": "instagram",
-    "accentColor": "border-pink-500/30 hover:border-pink-500 text-pink-500"
-  },
-  {
     "id": "tiktok",
     "name": "TikTok",
     "handle": "@aguswahyudupayana",
@@ -18,6 +8,16 @@
     "url": "https://tiktok.com/@aguswahyudupayana",
     "iconKey": "tiktok",
     "accentColor": "border-cyan-500/30 hover:border-cyan-500 text-cyan-400"
+  },
+  {
+    "id": "instagram",
+    "name": "Instagram",
+    "handle": "@aguswahyudupayana",
+    "role": "Konten Edukasi Web Dev & Linux",
+    "roleEn": "Web Dev & Linux Educational Content",
+    "url": "https://instagram.com/aguswahyudupayana",
+    "iconKey": "instagram",
+    "accentColor": "border-pink-500/30 hover:border-pink-500 text-pink-500"
   },
   {
     "id": "threads",

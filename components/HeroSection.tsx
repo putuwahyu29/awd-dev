@@ -36,19 +36,6 @@ export default function HeroSection() {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-12">
           {/* Left Text & Value Proposition Column */}
           <div className="flex-1 space-y-6">
-            {/* Status & Location Pill */}
-            <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-sub bg-card px-3 py-1.5 rounded-full border border-main shadow-xs">
-                <MapPin className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                <span>{t('Surabaya, Indonesia', 'Surabaya, Indonesia')}</span>
-              </div>
-
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400 bg-blue-500/10 px-3 py-1.5 rounded-full border border-blue-500/20">
-                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-                <span>{t('Terbuka untuk Proyek & Riset Sistem', 'Available for Systems & Cloud Projects')}</span>
-              </div>
-            </div>
-
             {/* Main Title */}
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-main tracking-tight leading-[1.1]">

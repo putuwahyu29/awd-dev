@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import LinksBioView from '@/components/LinksBioView';
+import { getSocialChannels } from '@/lib/socials';
 
 export const metadata: Metadata = {
   title: 'Pusat Tautan & Bio - I Putu Agus Wahyu Dupayana (awd.dev)',
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-export default function BioLinksPage() {
-  return <LinksBioView />;
+export default async function BioLinksPage() {
+  const socials = await getSocialChannels();
+  return <LinksBioView socials={socials} />;
 }

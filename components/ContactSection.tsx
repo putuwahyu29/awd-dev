@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Copy, Check, Send, MapPin } from 'lucide-react';
+import { Mail, Copy, Check, Send } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactSection() {
@@ -73,11 +73,6 @@ export default function ContactSection() {
                 </>
               )}
             </button>
-          </div>
-
-          <div className="pt-4 border-t border-main flex items-center justify-center gap-1.5 text-xs font-mono text-muted">
-            <MapPin className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span>Surabaya, Indonesia (UTC+7)</span>
           </div>
         </div>
       </div>
