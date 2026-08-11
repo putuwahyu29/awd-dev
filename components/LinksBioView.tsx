@@ -202,13 +202,13 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
   const topSocialLinks = socialLinks.filter((s) => s.id !== 'kaggle');
 
   const kaggleSocial = socials?.find((s) => s.id === 'kaggle');
-  const kaggleUrl = kaggleSocial?.url || 'https://kaggle.com/aguswahyudupayana';
-  const kaggleHandle = kaggleSocial?.handle || '@aguswahyudupayana';
+  const kaggleUrl = kaggleSocial?.url || 'https://kaggle.com/iputuaguswahyud';
+  const kaggleHandle = kaggleSocial?.handle || '@iputuaguswahyud';
 
   const researchLinks: BioLinkItem[] = [
     {
       id: 'kaggle',
-      title: kaggleSocial?.name ? `Kaggle (${kaggleSocial.name})` : 'Kaggle Data & Machine Learning',
+      title: 'Kaggle Data & Machine Learning',
       subtitle: `${kaggleHandle} • Datasets, Notebooks, & Model ML`,
       url: kaggleUrl,
       icon: KaggleIcon,

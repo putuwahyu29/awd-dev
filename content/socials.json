@@ -32,10 +32,10 @@
   {
     "id": "kaggle",
     "name": "Kaggle",
-    "handle": "@aguswahyudupayana",
+    "handle": "@iputuaguswahyud",
     "role": "Kumpulan Dataset, Notebook, & Kompetisi ML",
     "roleEn": "Datasets, Notebooks & ML Competitions",
-    "url": "https://kaggle.com/aguswahyudupayana",
+    "url": "https://kaggle.com/iputuaguswahyud",
     "iconKey": "kaggle",
     "accentColor": "border-sky-500/30 hover:border-sky-500 text-sky-400"
   },
