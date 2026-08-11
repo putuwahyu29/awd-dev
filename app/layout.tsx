@@ -55,9 +55,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: `${siteUrl}/opengraph-image.png`,
+        url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
+        type: 'image/jpeg',
         alt: 'I Putu Agus Wahyu Dupayana — Software Engineer & Content Creator',
       },
     ],
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
     title: 'awd.dev | I Putu Agus Wahyu Dupayana',
     description:
       'Software Engineer & Content Creator — Next.js, Laravel, Proxmox VE, GCP.',
-    images: [`${siteUrl}/opengraph-image.png`],
+    images: [`${siteUrl}/og-image.jpg`],
     creator: '@putuwahyu29',
   },
   alternates: {
