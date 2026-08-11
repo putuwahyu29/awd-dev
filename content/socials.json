@@ -1,0 +1,62 @@
+[
+  {
+    "id": "instagram",
+    "name": "Instagram",
+    "handle": "@aguswahyudupayana",
+    "role": "Konten Edukasi Web Dev & Linux",
+    "roleEn": "Web Dev & Linux Educational Content",
+    "url": "https://instagram.com/aguswahyudupayana",
+    "iconKey": "instagram",
+    "accentColor": "border-pink-500/30 hover:border-pink-500 text-pink-500"
+  },
+  {
+    "id": "tiktok",
+    "name": "TikTok",
+    "handle": "@aguswahyudupayana",
+    "role": "Tips Coding & Tutorial Singkat",
+    "roleEn": "Coding Tips & Short Tutorials",
+    "url": "https://tiktok.com/@aguswahyudupayana",
+    "iconKey": "tiktok",
+    "accentColor": "border-cyan-500/30 hover:border-cyan-500 text-cyan-400"
+  },
+  {
+    "id": "threads",
+    "name": "Threads",
+    "handle": "@aguswahyudupayana",
+    "role": "Diskusi Teknologi & Rekayasa Perangkat Lunak",
+    "roleEn": "Tech & Software Engineering Discussions",
+    "url": "https://threads.net/@aguswahyudupayana",
+    "iconKey": "threads",
+    "accentColor": "border-purple-500/30 hover:border-purple-500 text-purple-400"
+  },
+  {
+    "id": "kaggle",
+    "name": "Kaggle",
+    "handle": "@aguswahyudupayana",
+    "role": "Kumpulan Dataset, Notebook, & Kompetisi ML",
+    "roleEn": "Datasets, Notebooks & ML Competitions",
+    "url": "https://kaggle.com/aguswahyudupayana",
+    "iconKey": "kaggle",
+    "accentColor": "border-sky-500/30 hover:border-sky-500 text-sky-400"
+  },
+  {
+    "id": "youtube",
+    "name": "YouTube",
+    "handle": "@aguswahyudupayana",
+    "role": "Screencast Tutorial Full-Stack & Homelab",
+    "roleEn": "Full-Stack & Homelab Screencast Tutorials",
+    "url": "https://youtube.com/@aguswahyudupayana",
+    "iconKey": "youtube",
+    "accentColor": "border-red-500/30 hover:border-red-500 text-red-500"
+  },
+  {
+    "id": "facebook",
+    "name": "Facebook",
+    "handle": "aguswahyudupayana",
+    "role": "Diskusi Komunitas & Update Artikel",
+    "roleEn": "Community Discussion & Article Updates",
+    "url": "https://facebook.com/aguswahyudupayana",
+    "iconKey": "facebook",
+    "accentColor": "border-blue-500/30 hover:border-blue-500 text-blue-500"
+  }
+]

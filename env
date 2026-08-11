@@ -1,0 +1,7 @@
+NEXT_PUBLIC_SITE_URL=
+RSS_FEED_URL=
+
+# GitHub Personal Access Token (read:user scope) — untuk menampilkan Pinned Repos
+# Buat token di: https://github.com/settings/tokens/new?scopes=read:user,public_repo
+# Jika dikosongkan, akan tampil repos dengan bintang terbanyak (fallback)
+GITHUB_TOKEN=

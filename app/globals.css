@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-input: #f1f5f9;
+  --text-main: #0f172a;
+  --text-sub: #1e293b;
+  --text-muted: #334155;
+  --border-main: #cbd5e1;
+  --border-sub: #94a3b8;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --accent-dark: #1d4ed8;
+}
+
+.dark {
+  --bg-main: #090d16;
+  --bg-card: #111827;
+  --bg-card-hover: #1f2937;
+  --bg-input: #1f2937;
+  --text-main: #ffffff;
+  --text-sub: #f1f5f9;
+  --text-muted: #e2e8f0;
+  --border-main: #334155;
+  --border-sub: #475569;
+  --accent: #3b82f6;
+  --accent-light: #60a5fa;
+  --accent-dark: #2563eb;
+}
+
+@theme inline {
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Helper Utilities for Light/Dark Semantic Variables */
+.bg-main { background-color: var(--bg-main); }
+.bg-card { background-color: var(--bg-card); }
+.bg-card-hover:hover { background-color: var(--bg-card-hover); }
+.bg-input { background-color: var(--bg-input); }
+.text-main { color: var(--text-main); }
+.text-sub { color: var(--text-sub); }
+.text-muted { color: var(--text-muted); }
+.border-main { border-color: var(--border-main); }
+.border-sub { border-color: var(--border-sub); }
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-main);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Typography & Prose Styling for Case Studies & Markdown Content */
+.prose h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-main);
+  letter-spacing: -0.02em;
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.prose h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.prose strong {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.prose ul {
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.prose li {
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin-bottom: 0.4rem;
+}
+
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.prose a:hover {
+  color: var(--accent-light);
+}
