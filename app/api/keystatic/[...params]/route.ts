@@ -19,16 +19,43 @@ async function handleRequest(
     (url.protocol.startsWith('https') ? 'https' : 'http');
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const origin = siteUrl && siteUrl.startsWith('http') ? siteUrl : `${proto}://${host}`;
+  const origin =
+    siteUrl && siteUrl.startsWith('http') && !siteUrl.includes('localhost')
+      ? siteUrl
+      : `${proto}://${host}`;
 
-  // Paksa URL publik jika tidak sedang diakses via localhost
+  let currentReq = request;
   if (!host.includes('localhost') && !host.includes('127.0.0.1')) {
     const publicUrl = new URL(url.pathname + url.search, origin);
-    const modifiedRequest = new Request(publicUrl.toString(), request);
-    return handler(modifiedRequest);
+    currentReq = new Request(publicUrl.toString(), request);
   }
 
-  return handler(request);
+  const response = await handler(currentReq);
+
+  // Intercept response headers to ensure Location redirect never contains localhost on production
+  const location = response.headers.get('Location');
+  if (
+    !host.includes('localhost') &&
+    !host.includes('127.0.0.1') &&
+    location &&
+    (location.includes('localhost') || location.includes('127.0.0.1'))
+  ) {
+    const newHeaders = new Headers(response.headers);
+    try {
+      const locUrl = new URL(location);
+      const newLoc = `${origin}${locUrl.pathname}${locUrl.search}`;
+      newHeaders.set('Location', newLoc);
+    } catch {
+      // Relative URL or invalid URL
+    }
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers: newHeaders,
+    });
+  }
+
+  return response;
 }
 
 export async function GET(request: Request) {
