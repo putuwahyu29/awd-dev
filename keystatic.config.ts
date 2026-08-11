@@ -16,6 +16,7 @@ export default config({
     ? {
         kind: 'github',
         repo: (process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO as `${string}/${string}`) || 'putuwahyu29/awd-dev',
+        appSlug: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG || 'keystatic',
       }
     : {
         kind: 'local',
