@@ -1,3 +1,4 @@
+import React from 'react';
 import { config, collection, singleton, fields } from '@keystatic/core';
 import { masterTechStack, masterCategories } from './lib/master-data';
 
@@ -20,6 +21,48 @@ export default config({
     : {
         kind: 'local',
       },
+  ui: {
+    brand: {
+      name: 'awd.dev Studio',
+      mark: () =>
+        React.createElement(
+          'svg',
+          {
+            width: 28,
+            height: 28,
+            viewBox: '0 0 24 24',
+            fill: 'none',
+            xmlns: 'http://www.w3.org/2000/svg',
+          },
+          React.createElement('path', {
+            d: 'M12 2L2 7L12 12L22 7L12 2Z',
+            stroke: '#38BDF8',
+            strokeWidth: '2.2',
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+          }),
+          React.createElement('path', {
+            d: 'M2 17L12 22L22 17',
+            stroke: '#818CF8',
+            strokeWidth: '2.2',
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+          }),
+          React.createElement('path', {
+            d: 'M2 12L12 17L22 12',
+            stroke: '#60A5FA',
+            strokeWidth: '2.2',
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+          })
+        ),
+    },
+    navigation: {
+      '📁 KONTEN PORTOFOLIO': ['projects', 'certifications', 'publications'],
+      '👤 PROFIL & INFORMASI': ['hero', 'about', 'contact', 'socials'],
+      '⚙️ MASTER DATA': ['techStackMaster', 'categoriesMaster'],
+    },
+  },
   singletons: {
     hero: singleton({
       label: 'Profil & Hero Principal',
