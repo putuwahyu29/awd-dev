@@ -1,16 +1,6 @@
 import { makeRouteHandler } from '@keystatic/next/route-handler';
 import config from '../../../../keystatic.config';
 
-if (typeof process !== 'undefined' && process.env.NODE_ENV === 'production') {
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID =
-    process.env.KEYSTATIC_GITHUB_CLIENT_ID || 'Iv23li1tTeoBzeVmRNKB';
-  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET =
-    process.env.KEYSTATIC_GITHUB_CLIENT_SECRET ||
-    '68798dd176638b29abf4d6d0c3319cd6cd85e082';
-  process.env.KEYSTATIC_SECRET =
-    process.env.KEYSTATIC_SECRET || 'keystatic-secret-awd-dev-production-key-2026';
-}
-
 const routeHandler = makeRouteHandler({
   config,
 });
