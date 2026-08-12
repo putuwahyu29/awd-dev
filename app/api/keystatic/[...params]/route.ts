@@ -1,3 +1,6 @@
+import { makeRouteHandler } from '@keystatic/next/route-handler';
+import config from '../../../../keystatic.config';
+
 if (typeof process !== 'undefined' && process.env.NODE_ENV === 'production') {
   process.env.KEYSTATIC_GITHUB_CLIENT_ID =
     process.env.KEYSTATIC_GITHUB_CLIENT_ID || 'Iv23li1tTeoBzeVmRNKB';
