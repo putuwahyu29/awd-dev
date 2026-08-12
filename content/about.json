@@ -23,6 +23,12 @@
       "titleEn": "AI Integration & Automation",
       "descId": "Mengembangkan solusi kecerdasan buatan, sistem RAG (Retrieval-Augmented Generation), dan bot otomatisasi workflows.",
       "descEn": "Developing artificial intelligence solutions, RAG (Retrieval-Augmented Generation) systems, and workflow automation bots."
+    },
+    {
+      "titleId": "Keamanan Cloud & Basis Data",
+      "titleEn": "Cloud & Database Security",
+      "descId": "Penggelaran aplikasi di Google Cloud Platform (GCP), optimasi query database PostgreSQL & MySQL, dan arsitektur otentikasi berbasis peran (RBAC).",
+      "descEn": "Application deployment on Google Cloud Platform (GCP), PostgreSQL & MySQL database query optimization, and role-based authentication architecture (RBAC)."
     }
   ]
 }
