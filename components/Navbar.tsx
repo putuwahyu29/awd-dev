@@ -1,21 +1,28 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Menu, X, FileText, Sun, Moon } from 'lucide-react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
+import Link from 'next/link';
+import { Menu, X, FileText, Sun, Moon, Search } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
+import CommandPalette from '@/components/CommandPalette';
+
+const emptySubscribe = () => () => {};
+function useIsMounted() {
+  return useSyncExternalStore(emptySubscribe, () => true, () => false);
+}
 
 export default function Navbar() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsMounted();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   const { theme, toggleTheme } = useTheme();
   const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setIsScrolled(true);
@@ -43,160 +50,186 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Listen for global Cmd+K / Ctrl+K keyboard shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const navLinks = [
-    { name: t('Beranda', 'Home'), href: '/#home', id: 'home' },
     { name: t('Proyek', 'Projects'), href: '/#projects', id: 'projects' },
     { name: 'GitHub', href: '/#github', id: 'github' },
     { name: t('Publikasi', 'Publications'), href: '/#publications', id: 'publications' },
     { name: t('Sertifikasi', 'Certifications'), href: '/#certifications', id: 'certifications' },
-    { name: t('Komunitas', 'Community'), href: '/#creator', id: 'creator' },
     { name: 'Blog', href: '/#blog', id: 'blog' },
-    { name: t('Kontak', 'Contact'), href: '/#contact', id: 'contact' },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        isScrolled
-          ? 'bg-card border-b border-main py-3 shadow-md'
-          : 'bg-transparent py-4'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo / Brand Name: awd.dev */}
-          <a
-            href="/#home"
-            className="font-mono text-base font-bold tracking-tight text-main hover:text-blue-600 transition-colors"
-          >
-            awd<span className="text-blue-600 font-extrabold">.dev</span>
-          </a>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          isScrolled
+            ? 'bg-card/90 backdrop-blur-md border-b border-main py-2.5 shadow-md'
+            : 'bg-transparent py-3.5'
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            {/* Logo / Brand Name: awd.dev */}
+            <Link
+              href="/#home"
+              className="font-mono text-base sm:text-lg font-extrabold tracking-tight text-main hover:text-blue-600 transition-colors shrink-0"
+            >
+              awd<span className="text-blue-600 font-extrabold">.dev</span>
+            </Link>
 
-          {/* Desktop Nav Links (Solid background, high contrast text) */}
-          <nav className="hidden lg:flex items-center gap-1 bg-card px-3 py-1.5 rounded-full border border-main shadow-sm">
+            {/* Desktop Nav Links (Streamlined 5 main links) */}
+            <nav className="hidden lg:flex items-center gap-1 bg-card/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-main shadow-xs">
+              {navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={link.href}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                    activeSection === link.id
+                      ? 'bg-blue-600 text-white shadow-xs'
+                      : 'text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-card-hover'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            {/* Glassmorphism Consolidated Right Utilities Toolbar */}
+            <div className="hidden lg:flex items-center gap-2">
+              <div className="flex items-center gap-1.5 bg-card/80 backdrop-blur-md p-1 rounded-full border border-main shadow-xs">
+                {/* Command Palette Trigger */}
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-sub hover:text-main bg-main/50 hover:bg-card-hover transition-all font-medium"
+                  aria-label="Open Command Palette Search"
+                  title="Search (Cmd+K / Ctrl+K)"
+                >
+                  <Search className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  <span className="font-bold">⌘K</span>
+                </button>
+
+                {/* Language Switcher Button */}
+                <button
+                  onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
+                  className="px-2.5 py-1 rounded-full text-xs font-mono font-bold text-sub hover:text-main transition-colors hover:bg-card-hover"
+                  title={lang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
+                >
+                  {lang.toUpperCase()}
+                </button>
+
+                {/* Theme Switcher Button */}
+                {mounted && (
+                  <button
+                    onClick={toggleTheme}
+                    className="p-1.5 rounded-full text-sub hover:text-main hover:bg-card-hover transition-colors"
+                    aria-label="Toggle Theme"
+                    title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+                  >
+                    {theme === 'dark' ? (
+                      <Sun className="w-3.5 h-3.5 text-amber-400" />
+                    ) : (
+                      <Moon className="w-3.5 h-3.5 text-indigo-500" />
+                    )}
+                  </button>
+                )}
+
+                {/* CV Download Badge */}
+                <a
+                  href="/cv.pdf"
+                  download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-xs ml-0.5"
+                >
+                  <FileText className="w-3.5 h-3.5" />
+                  <span>CV</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Mobile Utilities & Menu Toggle */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="p-1.5 rounded-md bg-card text-main border border-main flex items-center gap-1 text-xs font-mono font-bold"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span className="text-[11px]">⌘K</span>
+              </button>
+
+              {mounted && (
+                <button
+                  onClick={toggleTheme}
+                  className="p-1.5 rounded-md bg-card text-main border border-main"
+                >
+                  {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-500" />}
+                </button>
+              )}
+
+              <button
+                onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
+                className="px-2 py-1.5 rounded-md bg-card text-main border border-main text-xs font-mono font-bold"
+              >
+                {lang.toUpperCase()}
+              </button>
+
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-1.5 rounded-md text-main bg-card border border-main"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Menu Drawer */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-card border-b border-main px-4 pt-3 pb-6 mt-2 space-y-1 shadow-lg">
             {navLinks.map((link) => (
               <a
                 key={link.id}
                 href={link.href}
-                className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block px-3 py-2 rounded-md text-sm font-bold transition-colors ${
                   activeSection === link.id
-                    ? 'bg-blue-600 text-white shadow-xs'
-                    : 'text-slate-700 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-card-hover'
+                    ? 'bg-blue-600 text-white font-bold'
+                    : 'text-slate-700 dark:text-slate-100 hover:bg-card-hover'
                 }`}
               >
                 {link.name}
               </a>
             ))}
-          </nav>
-
-          {/* Right Utilities: Language Switcher + Theme Switcher + CV */}
-          <div className="hidden lg:flex items-center gap-2">
-            {/* Language Switcher */}
-            <div className="flex items-center bg-card p-0.5 rounded-md border border-main text-xs font-mono">
-              <button
-                onClick={() => setLang('id')}
-                className={`px-2 py-1 rounded transition-colors ${
-                  lang === 'id'
-                    ? 'bg-blue-600 text-white font-bold'
-                    : 'text-slate-700 dark:text-slate-200 hover:text-main font-semibold'
-                }`}
+            <div className="pt-3 border-t border-main">
+              <a
+                href="/cv.pdf"
+                download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md text-xs font-bold text-main bg-card border border-main"
               >
-                ID
-              </button>
-              <button
-                onClick={() => setLang('en')}
-                className={`px-2 py-1 rounded transition-colors ${
-                  lang === 'en'
-                    ? 'bg-blue-600 text-white font-bold'
-                    : 'text-slate-700 dark:text-slate-200 hover:text-main font-semibold'
-                }`}
-              >
-                EN
-              </button>
+                <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                <span>{t('Unduh CV (PDF)', 'Download CV (PDF)')}</span>
+              </a>
             </div>
-
-            {/* Dark / Light Theme Switcher */}
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-md bg-card text-main hover:text-blue-600 border border-main transition-colors"
-                aria-label="Toggle Theme"
-                title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-              >
-                {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-500" />}
-              </button>
-            )}
-
-            {/* CV Download Button */}
-            <a
-              href="/cv.pdf"
-              download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold text-main bg-card hover:bg-card-hover border border-main transition-colors shadow-xs"
-            >
-              <FileText className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>{t('Unduh CV', 'CV PDF')}</span>
-            </a>
           </div>
+        )}
+      </header>
 
-          {/* Mobile Utilities & Menu Toggle */}
-          <div className="flex items-center gap-2 lg:hidden">
-            {mounted && (
-              <button
-                onClick={toggleTheme}
-                className="p-1.5 rounded-md bg-card text-main border border-main"
-              >
-                {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-500" />}
-              </button>
-            )}
-
-            <button
-              onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
-              className="px-2 py-1.5 rounded-md bg-card text-main border border-main text-xs font-mono font-bold"
-            >
-              {lang.toUpperCase()}
-            </button>
-
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 rounded-md text-main bg-card border border-main"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-card border-b border-main px-4 pt-3 pb-6 mt-2 space-y-1 shadow-lg">
-          {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
-              className={`block px-3 py-2 rounded-md text-sm font-bold transition-colors ${
-                activeSection === link.id
-                  ? 'bg-blue-600 text-white font-bold'
-                  : 'text-slate-700 dark:text-slate-100 hover:bg-card-hover'
-              }`}
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className="pt-3 border-t border-main">
-            <a
-              href="/cv.pdf"
-              download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md text-xs font-bold text-main bg-card border border-main"
-            >
-              <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span>{t('Unduh CV (PDF)', 'Download CV (PDF)')}</span>
-            </a>
-          </div>
-        </div>
-      )}
-    </header>
+      {/* Global Interactive Command Palette */}
+      <CommandPalette isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+    </>
   );
 }

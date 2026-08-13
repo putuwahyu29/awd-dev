@@ -46,8 +46,16 @@ export async function getLatestBlogPosts(limit = 6): Promise<BlogPost[]> {
         }
       }
 
-      const itemAny = item as any;
-      const rawContent = itemAny['content:encoded'] || itemAny.description || itemAny.content || itemAny.contentSnippet || '';
+      interface RSSItemExtended {
+        'content:encoded'?: string;
+        description?: string;
+        content?: string;
+        contentSnippet?: string;
+        category?: string;
+      }
+
+      const itemExtended = item as unknown as RSSItemExtended;
+      const rawContent = itemExtended['content:encoded'] || itemExtended.description || itemExtended.content || itemExtended.contentSnippet || '';
       const cleanSnippet = typeof rawContent === 'string'
         ? rawContent.replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim()
         : '';
@@ -56,8 +64,8 @@ export async function getLatestBlogPosts(limit = 6): Promise<BlogPost[]> {
 
       const categories = Array.isArray(item.categories)
         ? item.categories
-        : itemAny.category
-        ? [itemAny.category]
+        : itemExtended.category
+        ? [itemExtended.category]
         : [];
 
       return {

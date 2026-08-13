@@ -4,8 +4,9 @@ import { ArrowLeft } from 'lucide-react';
 import { getProjects } from '@/lib/projects';
 import Navbar from '@/components/Navbar';
 import ProjectsSection from '@/components/ProjectsSection';
-import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://awd.my.id';
 
 export const metadata: Metadata = {
   title: 'Semua Proyek Portofolio - awd.dev',
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Semua Proyek Portofolio - awd.dev',
     description: 'Daftar lengkap proyek sistem informasi & aplikasi web enterprise oleh I Putu Agus Wahyu Dupayana.',
-    url: 'https://awd.dev/projects',
+    url: `${siteUrl}/projects`,
     siteName: 'awd.dev',
     type: 'website',
   },
@@ -54,8 +55,6 @@ export default async function ProjectsPage() {
 
         {/* Full Projects Showcase with Search & Filters */}
         <ProjectsSection initialProjects={projects} isHomePage={false} />
-
-        <ContactSection />
       </main>
 
       <Footer />

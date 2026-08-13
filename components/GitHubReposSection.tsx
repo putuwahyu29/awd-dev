@@ -1,6 +1,6 @@
 'use client';
 
-import { Star, ExternalLink, Code2, ArrowRight } from 'lucide-react';
+import { Star, ExternalLink, Code2 } from 'lucide-react';
 import { GitHubRepo } from '@/lib/github';
 import { useLanguage } from '@/context/LanguageContext';
 

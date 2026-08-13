@@ -134,3 +134,31 @@ body {
 .prose a:hover {
   color: var(--accent-light);
 }
+
+.prose img {
+  max-width: 100%;
+  max-height: 420px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 1rem auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-main);
+  display: block;
+}
+
+.prose pre {
+  max-width: 100%;
+  overflow-x: auto;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-main);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 0.85rem;
+}
+
+.prose table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}

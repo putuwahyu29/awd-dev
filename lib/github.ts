@@ -85,9 +85,19 @@ async function getGitHubPinnedReposGraphQL(limit = 6): Promise<GitHubRepo[]> {
     if (errors || !data?.user?.pinnedItems?.nodes) return [];
 
     const nodes = data.user.pinnedItems.nodes;
-    if (!nodes.length) return [];
+interface GraphQLPinnedNode {
+  databaseId: number;
+  name: string;
+  nameWithOwner: string;
+  description: string | null;
+  url: string;
+  stargazerCount: number;
+  primaryLanguage: { name: string } | null;
+  updatedAt: string;
+  isFork: boolean;
+}
 
-    return nodes.map((node: any) => ({
+    return nodes.map((node: GraphQLPinnedNode) => ({
       id: node.databaseId,
       name: node.name,
       full_name: node.nameWithOwner,

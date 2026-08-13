@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import { FileText, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { HeroData } from '@/lib/hero';
@@ -79,13 +81,13 @@ export default function HeroSection({ data }: HeroSectionProps) {
                 <span>{t('Unduh CV (PDF)', 'Download CV (PDF)')}</span>
               </a>
 
-              <a
+              <Link
                 href="/#projects"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-main bg-card hover:bg-card-hover border border-main transition-colors shadow-xs"
               >
                 <span>{t('Lihat Portofolio', 'Explore Portfolio')}</span>
                 <ArrowRight className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              </a>
+              </Link>
             </div>
 
             {/* Metric Highlights Bar */}
@@ -104,10 +106,13 @@ export default function HeroSection({ data }: HeroSectionProps) {
             <div className="relative group">
               {/* Outer Decorative Ring */}
               <div className="w-60 h-60 sm:w-72 sm:h-72 rounded-full p-1.5 bg-gradient-to-tr from-blue-600 via-indigo-500 to-cyan-500 border border-main shadow-2xl overflow-hidden ring-8 ring-blue-500/10 transition-transform duration-300 group-hover:scale-102">
-                <div className="w-full h-full rounded-full overflow-hidden bg-card flex items-center justify-center">
-                  <img
+                <div className="w-full h-full rounded-full overflow-hidden bg-card flex items-center justify-center relative">
+                  <Image
                     src={profileImage}
                     alt={name}
+                    width={288}
+                    height={288}
+                    priority
                     className="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

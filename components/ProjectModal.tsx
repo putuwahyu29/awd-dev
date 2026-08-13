@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import {
   X,
   ExternalLink,
@@ -23,21 +24,17 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const { t } = useLanguage();
+  const [prevProject, setPrevProject] = useState<ProjectData | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [images, setImages] = useState<string[]>([]);
 
-  useEffect(() => {
+  if (project !== prevProject) {
+    setPrevProject(project);
     if (project) {
-      document.body.style.overflow = 'hidden';
-
-      // Combine project.images auto-discovered + any <img> tags from contentHtml
       const allImgs: string[] = [...(project.images || [])];
-
       if (allImgs.length === 0 && project.image_preview) {
         allImgs.push(project.image_preview);
       }
-
-      // Also extract any embedded images from Markdown HTML if not already included
       const imgRegex = /<img[^>]+src=["']([^"']+)["']/gi;
       let match;
       while ((match = imgRegex.exec(project.contentHtml)) !== null) {
@@ -45,9 +42,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           allImgs.push(match[1]);
         }
       }
-
       setImages(allImgs);
       setCurrentIndex(0);
+    } else {
+      setImages([]);
+      setCurrentIndex(0);
+    }
+  }
+
+  useEffect(() => {
+    if (project) {
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
@@ -106,29 +111,29 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl bg-card border border-main rounded-2xl shadow-2xl overflow-hidden z-10 my-auto flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-3xl bg-card border border-main rounded-2xl shadow-2xl overflow-hidden z-10 my-auto flex flex-col max-h-[88vh]">
         {/* Sticky Header Bar */}
-        <div className="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-main bg-main/95 backdrop-blur-md sticky top-0 z-30">
-          <div className="flex items-center gap-3 min-w-0 pr-4">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b border-main bg-main/95 backdrop-blur-md sticky top-0 z-30">
+          <div className="flex items-center gap-2.5 min-w-0 pr-4">
             <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0 animate-pulse" />
-            <h3 className="text-base sm:text-lg font-bold text-main truncate">
+            <h3 className="text-sm sm:text-base font-bold text-main truncate">
               {project.title}
             </h3>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 text-sub hover:text-main bg-card hover:bg-card-hover border border-main rounded-xl transition-all shrink-0 hover:scale-105 active:scale-95"
+            className="p-1.5 text-sub hover:text-main bg-card hover:bg-card-hover border border-main rounded-lg transition-all shrink-0 hover:scale-105 active:scale-95"
             aria-label={t('Tutup modal', 'Close modal')}
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Scrollable Modal Body */}
-        <div className="p-5 sm:p-8 overflow-y-auto space-y-7">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-5">
           {/* Main Title & Short Description Header Card */}
-          <div className="bg-main border border-main rounded-xl p-5 sm:p-6 space-y-4 shadow-xs">
+          <div className="bg-main border border-main rounded-xl p-4 sm:p-5 space-y-3 shadow-xs">
             <div className="flex flex-wrap items-center gap-2">
               {categoryList.map((cat) => (
                 <span
@@ -146,19 +151,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-main tracking-tight leading-tight">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-main tracking-tight leading-tight">
               {project.title}
             </h2>
 
-            <p className="text-sub text-sm sm:text-base leading-relaxed">
+            <p className="text-sub text-xs sm:text-sm leading-relaxed">
               {project.description}
             </p>
           </div>
 
           {/* Interactive Image Carousel Viewer */}
           {activeImage && (
-            <div className="space-y-3">
-              <div className="relative w-full h-64 sm:h-96 rounded-xl overflow-hidden border border-main bg-black/50 shadow-inner flex items-center justify-center group select-none">
+            <div className="space-y-2.5">
+              <div className="relative w-full h-52 sm:h-72 max-h-[340px] rounded-xl overflow-hidden border border-main bg-black/50 shadow-inner flex items-center justify-center group select-none">
                 <img
                   src={activeImage}
                   alt={`${project.title} - ${currentIndex + 1}`}
@@ -275,24 +280,36 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </div>
         </div>
 
-        {/* Sticky Footer Bar with Repository Link Button */}
-        {project.link && (
-          <div className="px-6 py-4 border-t border-main bg-main/95 backdrop-blur-md sticky bottom-0 z-30 flex items-center justify-between">
-            <div className="flex items-center gap-2 text-xs font-mono text-sub font-medium hidden sm:flex">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-              <span>{t('Arsip Kode & Repositori Resmi', 'Official Code Repository')}</span>
-            </div>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-mono text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md shadow-blue-500/20 w-full sm:w-auto"
-            >
-              <span>{t('Buka Repositori / Demo Sistem', 'Open Repository / System Demo')}</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
+        {/* Sticky Footer Bar with Repository Link & Full Page Buttons */}
+        <div className="px-6 py-4 border-t border-main bg-main/95 backdrop-blur-md sticky bottom-0 z-30 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-xs font-mono text-sub font-medium hidden sm:flex">
+            <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+            <span>{t('Studi Kasus & Repositori Resmi', 'Case Study & Official Repository')}</span>
           </div>
-        )}
+
+          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+            <Link
+              href={`/projects/${project.slug}`}
+              onClick={onClose}
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-bold text-main bg-card hover:bg-card-hover border border-main transition-colors shadow-2xs w-full sm:w-auto"
+            >
+              <span>{t('Halaman Detail Penuh', 'Full Detail Page')}</span>
+              <ExternalLink className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+            </Link>
+
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-mono text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md shadow-blue-500/20 w-full sm:w-auto"
+              >
+                <span>{t('Buka Repositori / Demo', 'Open Repository / Demo')}</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
