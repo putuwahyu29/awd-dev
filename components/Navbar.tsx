@@ -76,7 +76,7 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
           isScrolled
-            ? 'bg-card/90 backdrop-blur-md border-b border-main py-2.5 shadow-md'
+            ? 'bg-card border-b border-main py-2.5 shadow-md'
             : 'bg-transparent py-3.5'
         }`}
       >
@@ -85,21 +85,22 @@ export default function Navbar() {
             {/* Logo / Brand Name: awd.dev */}
             <Link
               href="/#home"
-              className="font-mono text-base sm:text-lg font-extrabold tracking-tight text-main hover:text-blue-600 transition-colors shrink-0"
+              className="notranslate font-mono text-base sm:text-lg font-extrabold tracking-tight text-main hover:text-blue-600 transition-colors shrink-0"
+              translate="no"
             >
               awd<span className="text-blue-600 font-extrabold">.dev</span>
             </Link>
 
             {/* Desktop Nav Links (Streamlined 5 main links) */}
-            <nav className="hidden lg:flex items-center gap-1 bg-card/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-main shadow-xs">
+            <nav className="hidden lg:flex items-center gap-1 bg-card px-3 py-1.5 rounded-full border border-main shadow-md">
               {navLinks.map((link) => (
                 <a
                   key={link.id}
                   href={link.href}
-                  className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${
                     activeSection === link.id
                       ? 'bg-blue-600 text-white shadow-xs'
-                      : 'text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-card-hover'
+                      : 'text-main hover:text-blue-600 dark:hover:text-blue-400 hover:bg-card-hover'
                   }`}
                 >
                   {link.name}
@@ -107,24 +108,25 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Glassmorphism Consolidated Right Utilities Toolbar */}
+            {/* Consolidated Right Utilities Toolbar (100% Solid Opacity) */}
             <div className="hidden lg:flex items-center gap-2">
-              <div className="flex items-center gap-1.5 bg-card/80 backdrop-blur-md p-1 rounded-full border border-main shadow-xs">
+              <div className="flex items-center gap-1.5 bg-card p-1 rounded-full border border-main shadow-md">
                 {/* Command Palette Trigger */}
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-sub hover:text-main bg-main/50 hover:bg-card-hover transition-all font-medium"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-extrabold text-main hover:text-blue-600 dark:hover:text-blue-400 hover:bg-card-hover transition-colors"
                   aria-label="Open Command Palette Search"
                   title="Search (Cmd+K / Ctrl+K)"
                 >
                   <Search className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-                  <span className="font-bold">⌘K</span>
+                  <span>⌘K</span>
                 </button>
 
                 {/* Language Switcher Button */}
                 <button
                   onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
-                  className="px-2.5 py-1 rounded-full text-xs font-mono font-bold text-sub hover:text-main transition-colors hover:bg-card-hover"
+                  className="notranslate px-2.5 py-1 rounded-full text-xs font-mono font-extrabold text-main hover:text-blue-600 dark:hover:text-blue-400 hover:bg-card-hover transition-colors"
+                  translate="no"
                   title={lang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
                 >
                   {lang.toUpperCase()}
@@ -134,7 +136,7 @@ export default function Navbar() {
                 {mounted && (
                   <button
                     onClick={toggleTheme}
-                    className="p-1.5 rounded-full text-sub hover:text-main hover:bg-card-hover transition-colors"
+                    className="p-1.5 rounded-full text-main hover:text-blue-600 dark:hover:text-blue-400 hover:bg-card-hover transition-colors"
                     aria-label="Toggle Theme"
                     title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                   >
@@ -153,7 +155,7 @@ export default function Navbar() {
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-xs ml-0.5"
                 >
                   <FileText className="w-3.5 h-3.5" />
-                  <span>CV</span>
+                  <span className="notranslate" translate="no">CV</span>
                 </a>
               </div>
             </div>
@@ -180,7 +182,8 @@ export default function Navbar() {
 
               <button
                 onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
-                className="px-2 py-1.5 rounded-md bg-card text-main border border-main text-xs font-mono font-bold"
+                className="notranslate px-2 py-1.5 rounded-md bg-card text-main border border-main text-xs font-mono font-bold"
+                translate="no"
               >
                 {lang.toUpperCase()}
               </button>

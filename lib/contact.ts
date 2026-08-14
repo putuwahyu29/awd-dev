@@ -13,7 +13,7 @@ const contactJsonPath = path.join(process.cwd(), 'content', 'contact.json');
 
 export async function getContactData(): Promise<ContactData> {
   const fallback: ContactData = {
-    email: 'iputuaguswahyu@gmail.com',
+    email: 'aguswahyu@office.awd.my.id',
     locationId: 'Klungkung, Bali / Mataram, NTB, Indonesia',
     locationEn: 'Klungkung, Bali / Mataram, NTB, Indonesia',
     availabilityId: 'Terbuka untuk kolaborasi proyek freelance, pembuatan sistem web, & konsultasi arsitektur cloud/server.',

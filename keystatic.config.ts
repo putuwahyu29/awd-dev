@@ -172,7 +172,7 @@ export default config({
       schema: {
         email: fields.text({
           label: 'Email Utama Kontak',
-          defaultValue: 'iputuaguswahyu@gmail.com',
+          defaultValue: 'aguswahyu@office.awd.my.id',
         }),
         locationId: fields.text({
           label: 'Lokasi / Domisili (ID)',

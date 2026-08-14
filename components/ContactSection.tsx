@@ -11,7 +11,7 @@ interface ContactSectionProps {
 
 export default function ContactSection({ data }: ContactSectionProps) {
   const [copied, setCopied] = useState(false);
-  const email = data?.email || 'iputuaguswahyu@gmail.com';
+  const email = data?.email || 'aguswahyu@office.awd.my.id';
   const { t, lang } = useLanguage();
 
   const availability = lang === 'en' && data?.availabilityEn ? data.availabilityEn : data?.availabilityId || t(

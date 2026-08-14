@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
+import GoogleTranslateScript from '@/components/GoogleTranslateScript';
 import ScrollToTop from '@/components/ScrollToTop';
 import './globals.css';
 
@@ -96,11 +97,15 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${jakarta.variable} ${mono.variable} scroll-smooth`}
     >
-      <body className="font-sans bg-main text-main antialiased selection:bg-blue-600 selection:text-white min-h-screen">
+      <body
+        suppressHydrationWarning
+        className="font-sans bg-main text-main antialiased selection:bg-blue-600 selection:text-white min-h-screen"
+      >
         <ThemeProvider>
           <LanguageProvider>
             {children}
             <ScrollToTop />
+            <GoogleTranslateScript />
           </LanguageProvider>
         </ThemeProvider>
       </body>

@@ -57,7 +57,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
           <div className="flex-1 space-y-6">
             {/* Main Title */}
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-main tracking-tight leading-[1.1]">
+              <h1 className="notranslate text-4xl sm:text-5xl lg:text-6xl font-extrabold text-main tracking-tight leading-[1.1]" translate="no">
                 {name}
               </h1>
               <p className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
@@ -136,7 +136,8 @@ export default function HeroSection({ data }: HeroSectionProps) {
             {techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1 rounded-md text-xs font-mono bg-card text-sub border border-main shadow-2xs hover:border-blue-500/40 transition-colors"
+                className="notranslate px-3 py-1 rounded-md text-xs font-mono bg-card text-sub border border-main shadow-2xs hover:border-blue-500/40 transition-colors"
+                translate="no"
               >
                 {tech}
               </span>

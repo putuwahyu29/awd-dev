@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export type Language = 'id' | 'en';
 
@@ -73,9 +73,58 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return 'id';
   });
 
+  const syncGoogleTranslate = (targetLang: Language) => {
+    if (typeof window === 'undefined') return;
+    const domain = window.location.hostname;
+
+    if (targetLang === 'en') {
+      const cookieVal = '/id/en';
+      document.cookie = `googtrans=${cookieVal}; path=/;`;
+      if (domain && domain !== 'localhost') {
+        document.cookie = `googtrans=${cookieVal}; domain=${domain}; path=/;`;
+      }
+
+      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+      if (select) {
+        select.value = 'en';
+        select.dispatchEvent(new Event('change'));
+      }
+    } else {
+      // Returning to original Indonesian language:
+      // Completely clear Google Translate cookies & reset DOM to original text
+      const pastCookie = document.cookie;
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      if (domain && domain !== 'localhost') {
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${domain}; path=/;`;
+      }
+
+      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
+      if (select) {
+        select.value = '';
+        select.dispatchEvent(new Event('change'));
+      }
+
+      // If Google Translate cookie was active, reload to ensure 100% original DOM text
+      if (pastCookie.includes('googtrans=/id/en')) {
+        window.location.reload();
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (lang === 'en') {
+      // Delay slightly to ensure script elements are mounted
+      const timer = setTimeout(() => {
+        syncGoogleTranslate('en');
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [lang]);
+
   const setLang = (newLang: Language) => {
     setLangState(newLang);
     localStorage.setItem('awd_lang', newLang);
+    syncGoogleTranslate(newLang);
   };
 
   const t = (idText: string, enText?: string): string => {
