@@ -9,7 +9,7 @@ export interface SearchItem {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Proyek' | 'Sertifikasi' | 'Publikasi' | 'Blog' | 'Media Sosial';
+  category: 'Proyek' | 'Sertifikasi' | 'Publikasi' | 'Blog' | 'Media Sosial' | 'Presentasi' | 'Tautan';
   url: string;
   isExternal?: boolean;
 }
@@ -25,6 +25,24 @@ export async function GET() {
     ]);
 
     const items: SearchItem[] = [
+      // Quick Mode Shortcuts
+      {
+        id: 'mode-links',
+        title: '🔗 Pusat Tautan & Bio (Bio Links Hub)',
+        subtitle: 'Akses cepat seluruh tautan resmi sosial media, GitHub, dan profil kontak (/links)',
+        category: 'Tautan' as const,
+        url: '/links',
+        isExternal: false,
+      },
+      {
+        id: 'mode-presentation',
+        title: '🎬 Mode Presentasi (Presentation Deck)',
+        subtitle: 'Slide interaktif layar penuh pitch deck portofolio & proyek (/presentation)',
+        category: 'Presentasi' as const,
+        url: '/presentation',
+        isExternal: false,
+      },
+
       // Projects
       ...projects.map((p) => ({
         id: `proj-${p.slug}`,

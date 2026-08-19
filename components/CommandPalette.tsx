@@ -13,6 +13,8 @@ import {
   ExternalLink,
   CornerDownLeft,
   Command,
+  Tv,
+  Link2,
 } from 'lucide-react';
 import { SearchItem } from '@/app/api/search/route';
 import { useLanguage } from '@/context/LanguageContext';
@@ -118,6 +120,10 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
 
   const getCategoryIcon = (cat: string) => {
     switch (cat) {
+      case 'Tautan':
+        return <Link2 className="w-4 h-4 text-cyan-500" />;
+      case 'Presentasi':
+        return <Tv className="w-4 h-4 text-purple-500" />;
       case 'Proyek':
         return <Folder className="w-4 h-4 text-blue-500" />;
       case 'Sertifikasi':
