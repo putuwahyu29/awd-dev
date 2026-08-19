@@ -40,32 +40,47 @@ export async function generateMetadata({ params }: ProjectSlugPageProps): Promis
     : `${siteUrl}/og-image.jpg`;
 
   return {
-    title: `${project.title} — Studi Kasus & Detail Proyek | awd.dev`,
+    title: `${project.title} — Studi Kasus & Detail Arsitektur`,
     description: project.description || `Detail sistem dan studi kasus proyek ${project.title} karya I Putu Agus Wahyu Dupayana.`,
     alternates: {
       canonical: pageUrl,
     },
+    keywords: [
+      project.title,
+      ...project.categories,
+      ...project.tech_stack,
+      'I Putu Agus Wahyu Dupayana',
+      'awd.dev',
+      'Software Architecture',
+    ],
     openGraph: {
-      title: `${project.title} — Studi Kasus & Detail Proyek`,
+      title: `${project.title} — Studi Kasus & Detail Proyek | awd.dev`,
       description: project.description,
       url: pageUrl,
       siteName: 'awd.dev',
       type: 'article',
+      publishedTime: project.date ? new Date(project.date).toISOString() : undefined,
+      authors: [`${siteUrl}/#person`],
+      tags: [...project.categories, ...project.tech_stack],
       images: [
         {
           url: ogImage,
+          width: 1200,
+          height: 630,
           alt: project.title,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: project.title,
+      title: `${project.title} | awd.dev`,
       description: project.description,
       images: [ogImage],
+      creator: '@putuwahyu29',
     },
   };
 }
+
 
 export default async function ProjectDetailPage({ params }: ProjectSlugPageProps) {
   const { slug } = await params;
@@ -81,9 +96,81 @@ export default async function ProjectDetailPage({ params }: ProjectSlugPageProps
     allImages.push(project.image_preview);
   }
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://awd.my.id';
+  const pageUrl = `${siteUrl}/projects/${project.slug}`;
+  const ogImage = project.image_preview
+    ? (project.image_preview.startsWith('http') ? project.image_preview : `${siteUrl}${project.image_preview}`)
+    : `${siteUrl}/og-image.jpg`;
+
+  const projectJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Beranda',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Proyek',
+            item: `${siteUrl}/projects`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: project.title,
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: project.title,
+        description: project.description,
+        url: pageUrl,
+        image: ogImage,
+        applicationCategory: project.categories.join(', ') || 'Software Development',
+        operatingSystem: 'Web, Linux, Cloud Infrastructure',
+        author: {
+          '@id': `${siteUrl}/#person`,
+        },
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'IDR',
+        },
+      },
+      {
+        '@type': 'TechArticle',
+        headline: `${project.title} — Studi Kasus & Detail Arsitektur`,
+        description: project.description,
+        url: pageUrl,
+        image: ogImage,
+        datePublished: project.date ? new Date(project.date).toISOString() : new Date().toISOString(),
+        author: {
+          '@id': `${siteUrl}/#person`,
+        },
+        publisher: {
+          '@id': `${siteUrl}/#person`,
+        },
+        mainEntityOfPage: pageUrl,
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
+      />
       <Navbar />
+
 
       <main className="flex-1 pt-20 sm:pt-24 pb-16">
         {/* Top Header & Breadcrumb Bar */}

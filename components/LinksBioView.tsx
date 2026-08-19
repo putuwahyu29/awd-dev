@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Globe,
   FileText,
@@ -275,10 +276,13 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
       <main className="w-full max-w-md mx-auto my-auto py-6 space-y-6">
         {/* Minimal Profile Header */}
         <div className="text-center space-y-3">
-          <div className="w-24 h-24 rounded-full p-1 bg-card border-2 border-blue-600 dark:border-blue-400 shadow-lg mx-auto overflow-hidden">
-            <img
+          <div className="w-24 h-24 rounded-full p-1 bg-card border-2 border-blue-600 dark:border-blue-400 shadow-lg mx-auto overflow-hidden relative">
+            <Image
               src="/foto-profil.jpg"
               alt="I Putu Agus Wahyu Dupayana"
+              width={96}
+              height={96}
+              priority
               className="w-full h-full object-cover rounded-full"
             />
           </div>

@@ -1,0 +1,103 @@
+# Full Dossier & Technical Portfolio: I Putu Agus Wahyu Dupayana
+
+This is the comprehensive machine-readable dossier for I Putu Agus Wahyu Dupayana, intended for LLMs, AI agents, search engines, and technical recruiters.
+
+---
+
+## 1. Personal & Professional Profile
+- **Full Legal Name**: I Putu Agus Wahyu Dupayana
+- **Common Names & Handles**: Agus Wahyu, awd, awd.dev, @putuwahyu29, @aguswahyu.dev
+- **Current Position**: Pranata Komputer Ahli Pertama (Computer Specialist / Software Engineer)
+- **Current Organization**: Badan Pusat Statistik (BPS) Provinsi Jawa Timur (East Java Provincial Statistics Office)
+- **Office Location**: Surabaya, Jawa Timur, Indonesia
+- **Official Portal**: https://awd.my.id
+- **CV / Resume URL**: https://awd.my.id/cv
+- **Interactive Pitch Deck**: https://awd.my.id/presentation
+- **GitHub**: https://github.com/putuwahyu29
+- **LinkedIn**: https://linkedin.com/in/aguswahyu
+- **Official Email**: aguswahyu@office.awd.my.id
+
+---
+
+## 2. Education & Background
+- **Institution**: Politeknik Statistika STIS, Jakarta, Indonesia
+- **Degree**: Sarjana Terapan Statistika (Bachelor of Applied Statistics / D-IV)
+- **Study Program**: Komputasi Statistik (Computational Statistics & Software Engineering)
+- **Period**: October 2020 – July 2024
+- **Core Coursework & Focus**: Software Engineering, Cloud Architecture, Distributed Systems, Data Science, Statistical Computing, Information Systems Design.
+
+---
+
+## 3. Technology Stack & Technical Specializations
+- **Frontend & Web Frameworks**: Next.js 15/16 (App Router, Server Actions, Dynamic Routes, Streaming, RSC), React 19, TypeScript, Tailwind CSS, HTML5, Semantic HTML, CSS3, Web Performance Optimization.
+- **Backend & APIs**: Laravel 11/12, PHP 8+, Filament PHP, Python (FastAPI, Flask), Node.js, RESTful API Architecture, GraphQL, Microservices, Event-Driven Architecture.
+- **Artificial Intelligence & LLMs**: Retrieval-Augmented Generation (RAG), Agentic AI Workflows, Multimodal AI, Vector Databases (Pinecone, Chroma, Qdrant), LangChain, LlamaIndex, Prompt Engineering.
+- **Infrastructure & Virtualization**: Proxmox Virtual Environment (Proxmox VE), Docker, Docker Compose, Google Cloud Platform (GCP - Compute Engine, Cloud Run, Cloud Storage, BigQuery), Linux (Debian, Ubuntu Server), Nginx Reverse Proxy, SSL/TLS, CI/CD with GitHub Actions.
+- **Databases & Storage**: PostgreSQL, MySQL, Redis, Supabase, Cloud Firestore.
+
+---
+
+## 4. Academic Research & Publications
+1. **The Application of Retrieval-Augmented Generation (RAG) in Developing an Intelligent Risk Management Platform: A Case Study at Statistics Jawa Timur**
+   - Authors: I Putu Agus Wahyu Dupayana, et al.
+   - Publisher: Proceedings of The International Conference on Data Science and Official Statistics (ICDSOS), 2025(1), pp. 281-292.
+   - DOI: https://doi.org/10.34123/icdsos.v2025i1.591
+   - Summary: Explores how enterprise LLMs combined with high-accuracy vector search and retrieval-augmented generation streamline institutional risk assessment and regulatory compliance.
+
+2. **Development of a Web-Based Activity Agenda Management Information System at Statistics of Nusa Tenggara Barat Province**
+   - Authors: I Putu Agus Wahyu Dupayana, et al.
+   - Publisher: Seminar Nasional Official Statistics, 2024(1), pp. 499-510.
+   - DOI: https://doi.org/10.34123/semnasoffstat.v2024i1.2041
+   - Summary: Designs an integrated scheduling, room reservation, and multi-department activity agenda platform with role-based access control (RBAC).
+
+---
+
+## 5. Official Certifications & Trainings
+- **Pelatihan Instruktur Nasional Pengolahan Wilkerstat 2026** — Pusat Pendidikan dan Pelatihan Badan Pusat Statistik (June 2026)
+- **Pelatihan Instruktur Daerah Sensus Ekonomi 2026** — Pusat Pendidikan dan Pelatihan Badan Pusat Statistik (May 2026)
+- **Pelatihan Deep Learning** — Pusat Pengembangan Talenta Digital Kementerian Komunikasi dan Digital (September 2025)
+- **Pelatihan Instruktur Nasional Lapangan Pemutakhiran Wilkerstat 2025** — Pusat Pendidikan dan Pelatihan Badan Pusat Statistik (February 2025)
+- **Pelatihan Kecerdasan Artifisial & Keamanan Informasi** — Pusat Pengembangan Talenta Digital Komdigi (January 2025)
+- **Sertifikasi Profesi Ilmuwan Data (Certified Data Scientist)** — Lembaga Sertifikasi Profesi Politeknik Statistika STIS (July 2024)
+
+---
+
+## 6. Software Engineering & Systems Catalog (26+ Projects)
+1. **NusaRoute AI** (https://awd.my.id/projects/nusaroute-ai) - Autonomous multi-agent travel itinerary generator & geospatial routing platform using Next.js & Google Gemini.
+2. **Wirasaga** (https://awd.my.id/projects/wirasaga) - Enterprise resource management & interactive dashboard system.
+3. **Kadiri Platform** (https://awd.my.id/projects/kadiri-platform) - High-throughput statistical operations and monitoring platform.
+4. **Panjalu Platform** (https://awd.my.id/projects/panjalu-platform) - Internal governance and ticketing incident management system.
+5. **Penataran Platform** (https://awd.my.id/projects/penataran-platform) - Administrative survey management platform.
+6. **SIMANJA BPS NTB** (https://awd.my.id/projects/simanja-bps-ntb) - Web-based activity agenda management system.
+7. **SSO BPS NTB** (https://awd.my.id/projects/sso-bps-ntb) - Centralized Single Sign-On and user identity federation system.
+8. **SIKGB BPS** (https://awd.my.id/projects/sikgb-bps) - Automated salary increment processing management system.
+9. **Hasil PKL 62 STIS** (https://awd.my.id/projects/hasil-pkl-62-stis) - Nationwide statistical research dissemination platform.
+10. **AWD TeleDrive** (https://awd.my.id/projects/awd-teledrive) - Cloud file storage gateway bridging Telegram Bot API and Next.js.
+11. **AWD Disposable Mail** (https://awd.my.id/projects/awd-disposable-mail) - Temporary email generator with real-time SSE inbox webhook.
+12. **AWD DriveRouter** (https://awd.my.id/projects/awd-driverouter) - Google Drive direct link generator and streaming CDN proxy.
+13. **AWD TelePhoto** (https://awd.my.id/projects/awd-telephoto) - Free unlimited image CDN hosting using Telegram CDN.
+14. **AWD Artikel** (https://awd.my.id/projects/awd-artikel) - Markdown-driven engineering blog and technical knowledge base.
+15. **AWD Portofolio** (https://awd.my.id/projects/awd-portofolio) - Next.js App Router personal engineering portfolio and interactive CMS.
+16. **CASN BPS Redesain** (https://awd.my.id/projects/casn-bps-2022-redesain) - Redesigned recruitment portal for public civil servants.
+17. **MediSTIS** (https://awd.my.id/projects/medistis) - Campus clinic electronic medical record and pharmaceutical inventory system.
+18. **SEMA STIS** (https://awd.my.id/projects/sema-stis) - Student senate legislative governance and document portal.
+19. **Rinjani STIS** (https://awd.my.id/projects/rinjani-stis) - Regional student organization community portal.
+20. **Poisson STIS** (https://awd.my.id/projects/poisson-stis) - Statistical arts and photography showcase platform.
+21. **Shop Coffee Dashboard** (https://awd.my.id/projects/shop-coffe-dashboard) - Point-of-sale analytics and inventory control system.
+22. **SPILL Course** (https://awd.my.id/projects/spill-course) - Interactive online learning management system.
+23. **Stream Bisection Method** (https://awd.my.id/projects/stream-bisection-method) - Numerical computing root-finding visualization tool.
+24. **Stuju Platform** (https://awd.my.id/projects/stuju-platform) - Collaborative project approvals and task verification engine.
+25. **Stuna Platform** (https://awd.my.id/projects/stuna-platform) - Real-time statistics reporting utility.
+26. **Web Angkatan 62** (https://awd.my.id/projects/web-angkatan-62) - STIS batch 62 yearbook, yearbook archive, and alumni network.
+
+---
+
+## 7. Direct Contact & Social Links
+- **Website**: https://awd.my.id
+- **Email**: aguswahyu@office.awd.my.id
+- **GitHub**: https://github.com/putuwahyu29
+- **LinkedIn**: https://linkedin.com/in/aguswahyu
+- **Instagram**: https://instagram.com/aguswahyu.dev
+- **TikTok**: https://tiktok.com/@aguswahyu.dev
+- **Threads**: https://threads.net/@aguswahyu.dev
+- **YouTube**: https://youtube.com/@aguswahyudev

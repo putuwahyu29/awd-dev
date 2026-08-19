@@ -102,7 +102,12 @@ export async function GET() {
       })),
     ];
 
-    return NextResponse.json(items);
+    return NextResponse.json(items, {
+      status: 200,
+      headers: {
+        'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+      },
+    });
   } catch (error) {
     console.error('Search API error:', error);
     return NextResponse.json([], { status: 500 });

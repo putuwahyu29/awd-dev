@@ -4,48 +4,61 @@ import { getProjects } from '@/lib/projects';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://awd.my.id';
   const projects = await getProjects();
+  const currentDate = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/proyek`,
-      lastModified: new Date(),
+      url: `${baseUrl}/cv`,
+      lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/links`,
-      lastModified: new Date(),
+      url: `${baseUrl}/presentation`,
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/links`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/proyek`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/bio`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
       url: `${baseUrl}/link`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     },
   ];
 
   const projectRoutes: MetadataRoute.Sitemap = projects.map((p) => {
-    let lastModified = new Date();
+    let lastModified = currentDate;
     if (p.date) {
       const parsed = new Date(p.date);
       if (!isNaN(parsed.getTime())) {
@@ -56,9 +69,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/projects/${p.slug}`,
       lastModified,
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.85,
     };
   });
 
   return [...staticRoutes, ...projectRoutes];
 }
+

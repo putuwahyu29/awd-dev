@@ -1,0 +1,45 @@
+# I Putu Agus Wahyu Dupayana (awd.dev)
+
+> Official Portfolio & Systems Architecture Dossier of I Putu Agus Wahyu Dupayana — Software Engineer, Systems Architect, and Pranata Komputer Ahli Pertama at BPS Provinsi Jawa Timur.
+
+## Identity & Professional Overview
+- **Full Name**: I Putu Agus Wahyu Dupayana
+- **Aliases**: Agus Wahyu, awd, awd.dev, putuwahyu29
+- **Title / Role**: Software Engineer & Systems Architect / Pranata Komputer Ahli Pertama
+- **Organization**: BPS Provinsi Jawa Timur (Statistics of East Java Province), Surabaya, Indonesia
+- **Education**: D-IV Computational Statistics (Sarjana Terapan Statistika), Politeknik Statistika STIS, Jakarta (2020 – 2024)
+- **Primary Website**: https://awd.my.id
+- **Alternative URLs**: https://awd.dev
+
+## Core Competencies & Tech Stack
+- **Web & Full-Stack Development**: Next.js (App Router, Server Components, SSR/SSG), React 19, TypeScript, Laravel, Filament PHP, Tailwind CSS, RESTful APIs, GraphQL.
+- **Artificial Intelligence & LLMs**: Agentic AI, Multimodal AI, Retrieval-Augmented Generation (RAG), LangChain, LlamaIndex, LLM Evaluation & Integration.
+- **Cloud Computing & Virtualization**: Google Cloud Platform (GCP - Compute Engine, Cloud Run, Cloud Storage, BigQuery), Proxmox Virtual Environment (Proxmox VE), Docker & Docker Compose, Nginx Reverse Proxy, Linux System Administration.
+- **Data Engineering & Databases**: PostgreSQL, MySQL, Redis, Database Optimization, ETL Pipelines, Statistical Computing.
+
+## Key Projects & Systems
+- [Portfolio & Case Studies](https://awd.my.id/projects): Comprehensive directory of enterprise web applications, microservices, and statistical computing systems.
+- [Curriculum Vitae](https://awd.my.id/cv): Official structured Curriculum Vitae with exportable ATS-compliant PDF.
+- [Interactive Pitch Deck](https://awd.my.id/presentation): Interactive presentation deck showcasing systems architecture and work experience.
+- [Links Hub](https://awd.my.id/links): Fast access hub to all official social channels and code repositories.
+
+## Academic Publications & Research Papers
+1. **The Application of Retrieval-Augmented Generation (RAG) in Developing an Intelligent Risk Management Platform: A Case Study at Statistics Jawa Timur**
+   - Published in: *Proceedings of The International Conference on Data Science and Official Statistics (ICDSOS)*, 2025(1), 281-292.
+   - DOI: https://doi.org/10.34123/icdsos.v2025i1.591
+2. **Development of a Web-Based Activity Agenda Management Information System at Statistics of Nusa Tenggara Barat Province**
+   - Published in: *Seminar Nasional Official Statistics*, 2024(1), 499-510.
+   - DOI: https://doi.org/10.34123/semnasoffstat.v2024i1.2041
+
+## Verified Social & Developer Profiles
+- GitHub: https://github.com/putuwahyu29
+- LinkedIn: https://linkedin.com/in/aguswahyu
+- Instagram: https://instagram.com/aguswahyu.dev
+- TikTok: https://tiktok.com/@aguswahyu.dev
+- Threads: https://threads.net/@aguswahyu.dev
+- Kaggle: https://kaggle.com/aguswahyu
+- YouTube: https://youtube.com/@aguswahyudev
+- Email: aguswahyu@office.awd.my.id
+
+## Optional / Extended Context
+- For full project breakdowns, detailed architecture notes, and comprehensive career history, see: https://awd.my.id/llms-full.txt

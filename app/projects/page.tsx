@@ -9,14 +9,35 @@ import Footer from '@/components/Footer';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://awd.my.id';
 
 export const metadata: Metadata = {
-  title: 'Semua Proyek Portofolio - awd.dev',
-  description: 'Daftar lengkap seluruh proyek sistem informasi, arsitektur microservices, aplikasi web enterprise, dan infrastruktur cloud karya I Putu Agus Wahyu Dupayana.',
+  title: 'Katalog Seluruh Proyek & Rekam Jejak Sistem',
+  description:
+    'Eksplorasi katalog 26+ sistem perangkat lunak, aplikasi web enterprise, arsitektur microservices, dan infrastruktur cloud virtualisasi karya I Putu Agus Wahyu Dupayana.',
+  alternates: {
+    canonical: `${siteUrl}/projects`,
+  },
   openGraph: {
-    title: 'Semua Proyek Portofolio - awd.dev',
-    description: 'Daftar lengkap proyek sistem informasi & aplikasi web enterprise oleh I Putu Agus Wahyu Dupayana.',
+    title: 'Katalog Seluruh Proyek & Sistem | awd.dev',
+    description:
+      'Daftar lengkap proyek sistem informasi & aplikasi web enterprise oleh I Putu Agus Wahyu Dupayana.',
     url: `${siteUrl}/projects`,
     siteName: 'awd.dev',
     type: 'website',
+    images: [
+      {
+        url: `${siteUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Katalog Proyek — I Putu Agus Wahyu Dupayana',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Katalog Proyek & Sistem | awd.dev',
+    description:
+      'Eksplorasi 26+ sistem informasi dan aplikasi web modern.',
+    images: [`${siteUrl}/og-image.jpg`],
+    creator: '@putuwahyu29',
   },
 };
 
@@ -25,8 +46,47 @@ export const revalidate = 3600;
 export default async function ProjectsPage() {
   const projects = await getProjects();
 
+  const projectsJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': `${siteUrl}/projects/#collectionpage`,
+        url: `${siteUrl}/projects`,
+        name: 'Katalog Proyek & Sistem — I Putu Agus Wahyu Dupayana',
+        description:
+          'Daftar lengkap proyek sistem informasi & aplikasi web enterprise oleh I Putu Agus Wahyu Dupayana.',
+        publisher: {
+          '@id': `${siteUrl}/#person`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Beranda',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Proyek',
+            item: `${siteUrl}/projects`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
+      />
+
       <Navbar />
 
       <main className="flex-1 pt-24">
