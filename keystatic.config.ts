@@ -59,7 +59,7 @@ export default config({
     },
     navigation: {
       '📁 KONTEN PORTOFOLIO': ['projects', 'certifications', 'publications'],
-      '👤 PROFIL & INFORMASI': ['hero', 'about', 'contact', 'socials'],
+      '👤 PROFIL & INFORMASI': ['hero', 'about', 'cv', 'contact', 'socials'],
       '⚙️ MASTER DATA': ['techStackMaster', 'categoriesMaster'],
     },
   },
@@ -240,6 +240,110 @@ export default config({
           label: 'Daftar Master Kategori Proyek',
           itemLabel: (props) => props.value || 'Kategori',
         }),
+      },
+    }),
+    cv: singleton({
+      label: 'Curriculum Vitae (Resume)',
+      path: 'content/cv',
+      format: { data: 'json' },
+      schema: {
+        personalInfo: fields.object({
+          fullName: fields.text({
+            label: 'Nama Lengkap (Heading CV)',
+            defaultValue: 'I PUTU AGUS WAHYU DUPAYANA',
+          }),
+          website: fields.text({
+            label: 'Website Pribadi (misal: awd.my.id)',
+            defaultValue: 'awd.my.id',
+          }),
+          email: fields.text({
+            label: 'Email Kontak',
+            defaultValue: 'aguswahyu@office.awd.my.id',
+          }),
+          linkedin: fields.text({
+            label: 'LinkedIn (misal: linkedin.com/in/aguswahyu)',
+            defaultValue: 'linkedin.com/in/aguswahyu',
+          }),
+        }),
+        summary: fields.text({
+          label: 'Ringkasan Profesional / Profil Singkat (Opsional)',
+          multiline: true,
+          defaultValue:
+            'Pengembang perangkat lunak berdedikasi dengan fokus pada rekayasa sistem web berkinerja tinggi (Next.js, Laravel), integrasi Agentic AI & Multimodal LLMs, serta otomatisasi cloud dan virtualisasi server (Proxmox VE, Docker, GCP).',
+        }),
+        experiences: fields.array(
+          fields.object({
+            role: fields.text({ label: 'Jabatan / Posisi' }),
+            company: fields.text({ label: 'Instansi / Perusahaan' }),
+            location: fields.text({ label: 'Lokasi (misal: Surabaya)' }),
+            period: fields.text({ label: 'Periode (misal: Desember 2024 – Sekarang)' }),
+            descriptions: fields.array(fields.text({ label: 'Poin Tanggung Jawab / Pencapaian' }), {
+              label: 'Daftar Bullet Points Deskripsi Pekerjaan',
+              itemLabel: (props) => props.value || 'Poin Deskripsi',
+            }),
+          }),
+          {
+            label: 'Pengalaman Kerja (Work Experience)',
+            itemLabel: (props) =>
+              props.fields.role.value
+                ? `${props.fields.role.value} - ${props.fields.company.value || ''}`
+                : 'Pengalaman Kerja',
+          }
+        ),
+        education: fields.array(
+          fields.object({
+            institution: fields.text({ label: 'Nama Institusi / Perguruan Tinggi' }),
+            location: fields.text({ label: 'Lokasi (misal: Jakarta)' }),
+            degree: fields.text({ label: 'Gelar / Strata (misal: Sarjana Terapan Statistika)' }),
+            major: fields.text({ label: 'Program Studi / Jurusan' }),
+            period: fields.text({ label: 'Periode Pendidikan (misal: Oktober 2020 – Juli 2024)' }),
+            details: fields.text({ label: 'Keterangan Tambahan / Fokus Studi (Opsional)' }),
+          }),
+          {
+            label: 'Riwayat Pendidikan (Education)',
+            itemLabel: (props) =>
+              props.fields.institution.value
+                ? `${props.fields.degree.value || ''} - ${props.fields.institution.value}`
+                : 'Riwayat Pendidikan',
+          }
+        ),
+        certifications: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Nama Pelatihan / Sertifikasi' }),
+            issuer: fields.text({ label: 'Lembaga Penerbit / Penyelenggara' }),
+            period: fields.text({ label: 'Waktu / Periode (misal: Juni 2026)' }),
+            credentialUrl: fields.text({ label: 'URL Kredensial / Sertifikat (Opsional)' }),
+          }),
+          {
+            label: 'Pelatihan & Sertifikasi (Training & Certifications)',
+            itemLabel: (props) =>
+              props.fields.title.value
+                ? `${props.fields.title.value} (${props.fields.period.value || ''})`
+                : 'Pelatihan / Sertifikasi',
+          }
+        ),
+        publications: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Judul Publikasi / Paper' }),
+            publisher: fields.text({ label: 'Jurnal / Konferensi / Penyelenggara' }),
+            year: fields.text({ label: 'Tahun / Edisi & Halaman (misal: 2025(1), 281–292)' }),
+            link: fields.text({ label: 'Tautan / DOI Publikasi (Opsional)' }),
+          }),
+          {
+            label: 'Publikasi Ilmiah & Penelitian',
+            itemLabel: (props) => props.fields.title.value || 'Publikasi Ilmiah',
+          }
+        ),
+        skills: fields.array(
+          fields.object({
+            category: fields.text({ label: 'Kategori Keahlian (misal: Pengembangan Perangkat Lunak)' }),
+            description: fields.text({ label: 'Deskripsi / Detail Tools & Keahlian', multiline: true }),
+          }),
+          {
+            label: 'Keahlian Utama (Core Skills)',
+            itemLabel: (props) => props.fields.category.value || 'Kategori Keahlian',
+          }
+        ),
       },
     }),
   },

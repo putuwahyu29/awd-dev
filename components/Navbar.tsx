@@ -229,7 +229,7 @@ export default function Navbar() {
                 className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-98 transition-all shadow-sm cursor-pointer"
               >
                 <FileText className="w-4 h-4" />
-                <span>{t('Pratinjau CV (PDF)', 'Preview CV (PDF)')}</span>
+                <span>{t('Lihat CV', 'View CV')}</span>
               </button>
             </div>
           </div>

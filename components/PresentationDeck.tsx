@@ -498,7 +498,7 @@ export default function PresentationDeck({
                     className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-main bg-card border border-main hover:bg-card-hover active:scale-98 transition-all cursor-pointer"
                   >
                     <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                    <span>{t('Lihat CV (PDF)', 'Preview CV (PDF)')}</span>
+                    <span>{t('Lihat CV', 'View CV')}</span>
                   </button>
                 </div>
               </div>
@@ -1012,7 +1012,7 @@ export default function PresentationDeck({
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-98 transition-all shadow-md cursor-pointer"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>{t('Lihat CV Resmi (PDF)', 'Preview Official CV (PDF)')}</span>
+                  <span>{t('Lihat CV', 'View CV')}</span>
                 </button>
                 <Link
                   href="/"

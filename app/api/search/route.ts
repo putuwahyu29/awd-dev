@@ -28,8 +28,8 @@ export async function GET() {
       // Quick Mode Shortcuts
       {
         id: 'mode-cv',
-        title: '📄 Curriculum Vitae (PDF)',
-        subtitle: 'Pratinjau interaktif & unduh naskah CV resmi I Putu Agus Wahyu Dupayana (/cv)',
+        title: '📄 Curriculum Vitae',
+        subtitle: 'Naskah resmi Curriculum Vitae I Putu Agus Wahyu Dupayana (/cv)',
         category: 'Tautan' as const,
         url: '/cv',
         isExternal: false,

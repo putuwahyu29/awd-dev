@@ -184,3 +184,51 @@ body > .skiptranslate {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+
+/* Print Optimization for CV & Documents */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 16mm;
+  }
+  html, body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .cv-paper {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .cv-paper * {
+    color: #000000 !important;
+    background-color: transparent !important;
+    text-shadow: none !important;
+  }
+  .cv-divider {
+    background-color: #94a3b8 !important;
+    height: 1px !important;
+  }
+  .cv-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .cv-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  a {
+    text-decoration: none !important;
+    color: #000000 !important;
+  }
+}

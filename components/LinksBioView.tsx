@@ -173,8 +173,8 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
     },
     {
       id: 'cv',
-      title: 'Curriculum Vitae (PDF)',
-      subtitle: 'Pratinjau & Unduh Resume Resmi I Putu Agus Wahyu Dupayana',
+      title: 'Curriculum Vitae',
+      subtitle: 'Naskah Resume Resmi I Putu Agus Wahyu Dupayana',
       url: '/cv',
       icon: FileText,
       iconBadgeStyle: 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30',
