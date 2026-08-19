@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { CvModalProvider } from '@/context/CvModalContext';
+import CvPreviewModal from '@/components/CvPreviewModal';
 import GoogleTranslateScript from '@/components/GoogleTranslateScript';
 import ScrollToTop from '@/components/ScrollToTop';
 import './globals.css';
@@ -103,9 +105,12 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <LanguageProvider>
-            {children}
-            <ScrollToTop />
-            <GoogleTranslateScript />
+            <CvModalProvider>
+              {children}
+              <CvPreviewModal />
+              <ScrollToTop />
+              <GoogleTranslateScript />
+            </CvModalProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>

@@ -27,6 +27,14 @@ export async function GET() {
     const items: SearchItem[] = [
       // Quick Mode Shortcuts
       {
+        id: 'mode-cv',
+        title: '📄 Curriculum Vitae (PDF)',
+        subtitle: 'Pratinjau interaktif & unduh naskah CV resmi I Putu Agus Wahyu Dupayana (/cv)',
+        category: 'Tautan' as const,
+        url: '/cv',
+        isExternal: false,
+      },
+      {
         id: 'mode-links',
         title: '🔗 Pusat Tautan & Bio (Bio Links Hub)',
         subtitle: 'Akses cepat seluruh tautan resmi sosial media, GitHub, dan profil kontak (/links)',

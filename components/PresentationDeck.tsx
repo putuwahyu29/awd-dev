@@ -44,6 +44,7 @@ import { ContactData } from '@/lib/contact';
 
 import { useTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { useCvModal } from '@/context/CvModalContext';
 
 interface PresentationDeckProps {
   heroData: HeroData;
@@ -72,6 +73,7 @@ export default function PresentationDeck({
   const mounted = useIsMounted();
   const { theme, toggleTheme } = useTheme();
   const { lang, setLang, t } = useLanguage();
+  const { openCvModal } = useCvModal();
 
   // Slide navigation state
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -490,14 +492,14 @@ export default function PresentationDeck({
                     <span>{t('Mulai Presentasi', 'Start Presentation')}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
-                  <a
-                    href="/cv.pdf"
-                    download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-main bg-card border border-main hover:bg-card-hover transition-colors"
+                  <button
+                    type="button"
+                    onClick={() => openCvModal()}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-bold text-main bg-card border border-main hover:bg-card-hover active:scale-98 transition-all cursor-pointer"
                   >
                     <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                    <span>{t('Unduh CV Lengkap', 'Download Full CV')}</span>
-                  </a>
+                    <span>{t('Lihat CV (PDF)', 'Preview CV (PDF)')}</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -1004,14 +1006,14 @@ export default function PresentationDeck({
 
               {/* Big Action Buttons */}
               <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-                <a
-                  href="/cv.pdf"
-                  download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md"
+                <button
+                  type="button"
+                  onClick={() => openCvModal()}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-98 transition-all shadow-md cursor-pointer"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>{t('Unduh CV Resmi (PDF)', 'Download Official CV (PDF)')}</span>
-                </a>
+                  <span>{t('Lihat CV Resmi (PDF)', 'Preview Official CV (PDF)')}</span>
+                </button>
                 <Link
                   href="/"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-main bg-card border border-main hover:bg-card-hover transition-colors"

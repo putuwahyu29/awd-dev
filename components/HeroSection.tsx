@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FileText, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { useCvModal } from '@/context/CvModalContext';
 import { HeroData } from '@/lib/hero';
 
 interface HeroSectionProps {
@@ -12,6 +13,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ data }: HeroSectionProps) {
   const { t, lang } = useLanguage();
+  const { openCvModal } = useCvModal();
 
   const name = data?.name || 'I Putu Agus Wahyu Dupayana';
   const role = lang === 'en' && data?.roleEn ? data.roleEn : data?.role || 'Software Engineer & Content Creator';
@@ -72,14 +74,14 @@ export default function HeroSection({ data }: HeroSectionProps) {
 
             {/* Action CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-3.5">
-              <a
-                href={cvUrl}
-                download={`CV_${name.replace(/\s+/g, '_')}.pdf`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md shadow-blue-500/20"
+              <button
+                type="button"
+                onClick={() => openCvModal(cvUrl)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-98 transition-all shadow-md shadow-blue-500/20 cursor-pointer"
               >
                 <FileText className="w-4 h-4" />
-                <span>{t('Unduh CV (PDF)', 'Download CV (PDF)')}</span>
-              </a>
+                <span>{t('Lihat CV (PDF)', 'Preview CV (PDF)')}</span>
+              </button>
 
               <Link
                 href="/#projects"

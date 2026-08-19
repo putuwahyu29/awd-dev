@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Menu, X, FileText, Sun, Moon, Search } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { useCvModal } from '@/context/CvModalContext';
 import CommandPalette from '@/components/CommandPalette';
 
 const emptySubscribe = () => () => {};
@@ -21,6 +22,7 @@ export default function Navbar() {
 
   const { theme, toggleTheme } = useTheme();
   const { lang, setLang, t } = useLanguage();
+  const { openCvModal } = useCvModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -148,15 +150,16 @@ export default function Navbar() {
                   </button>
                 )}
 
-                {/* CV Download Badge */}
-                <a
-                  href="/cv.pdf"
-                  download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-xs ml-0.5"
+                {/* CV Preview Badge */}
+                <button
+                  type="button"
+                  onClick={() => openCvModal()}
+                  title={t('Pratinjau CV (PDF)', 'Preview CV (PDF)')}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all shadow-xs ml-0.5 cursor-pointer"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span className="notranslate" translate="no">CV</span>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -217,15 +220,17 @@ export default function Navbar() {
               </a>
             ))}
             <div className="pt-3 border-t border-main">
-              <a
-                href="/cv.pdf"
-                download="CV_I_Putu_Agus_Wahyu_Dupayana.pdf"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md text-xs font-bold text-main bg-card border border-main"
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  openCvModal();
+                }}
+                className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-98 transition-all shadow-sm cursor-pointer"
               >
-                <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span>{t('Unduh CV (PDF)', 'Download CV (PDF)')}</span>
-              </a>
+                <FileText className="w-4 h-4" />
+                <span>{t('Pratinjau CV (PDF)', 'Preview CV (PDF)')}</span>
+              </button>
             </div>
           </div>
         )}
