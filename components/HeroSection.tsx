@@ -38,8 +38,8 @@ export default function HeroSection({ data }: HeroSectionProps) {
         label: lang === 'en' && h.labelEn ? h.labelEn : h.labelId,
       }))
     : [
-        { number: '21+', label: t('Proyek', 'Projects') },
-        { number: t('4+ Tahun', '4+ Years'), label: t('Pengalaman Kerja', 'Years Experience') },
+        { number: '26+', label: t('Proyek', 'Projects') },
+        { number: t('5+ Tahun', '5+ Years'), label: t('Pengalaman Kerja', 'Years Experience') },
         { number: '500+', label: t('Kontribusi GitHub', 'GitHub Contributions') },
       ];
 

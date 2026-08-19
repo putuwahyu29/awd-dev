@@ -30,7 +30,7 @@ export async function getHeroData(): Promise<HeroData> {
     profileImage: '/foto-profil.jpg',
     highlights: [
       { number: '26+', labelId: 'Proyek', labelEn: 'Projects' },
-      { number: '4+ Tahun', labelId: 'Pengalaman Kerja', labelEn: 'Years Experience' },
+      { number: '5+ Tahun', labelId: 'Pengalaman Kerja', labelEn: 'Years Experience' },
       { number: '500+', labelId: 'Kontribusi GitHub', labelEn: 'GitHub Contributions' },
     ],
     coreTechStack: [
