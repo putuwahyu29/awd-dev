@@ -1,6 +1,6 @@
 ---
-title: "Stream Bisection Calculator - Numerical Methods Tool"
-description: "Aplikasi kalkulator komputasi metode numerik Bisection & Sekan berbasis Streamlit Python."
+title: "Stream Bisection — Alat Komputasi & Visualisasi Metode Numerik"
+description: "Aplikasi kalkulator komputasi iterasi akar fungsi non-linear dengan visualisasi plot kurva interaktif berbasis Streamlit Python."
 tech_stack: ["Python", "Streamlit", "NumPy", "Matplotlib"]
 categories: ["Data & Analytics"]
 image_preview: "/images/projects/stream-bisection-method/preview.png"
@@ -9,16 +9,21 @@ featured: false
 date: "2022-07-19"
 ---
 
-## Gambaran Umum & Alat Komputasi
+## 📌 Tentang Stream Bisection
 
-**Stream Bisection Calculator** adalah aplikasi interaktif berbantuan Web Streamlit Python yang dirancang untuk mempermudah perhitungan iteratif akar persamaan non-linear menggunakan algoritma numerik Bisection dan Sekan.
+**Stream Bisection** adalah aplikasi kalkulator interaktif berbasis web yang dirancang untuk mempermudah perhitungan numerik dalam menemukan akar-akar persamaan matematika non-linear menggunakan metode Bagi Dua (*Bisection*) dan metode Sekan (*Secant*).
 
-### Fitur Utama & Visualisasi Grafik
+---
 
-- **Input Persamaan Matematika Dinamis**: Fleksibilitas memasukkan fungsi matematika non-linear dan batas nilai awal secara bebas.
-- **Visualisasi Plot Konvergensi (Matplotlib)**: Grafik kurva fungsi dan titik lelaran iterasi yang diperbarui saat tombol hitung ditekan.
-- **Tabel Langkah Iterasi Lengkap**: Output rincian iterasi nilai akar, Galat Toleransi, dan akar akhir dalam bentuk tabel yang dapat diunduh.
+### 🌟 Fitur & Kemampuan Utama
 
-### Nilai Edukatif
+- **Input Persamaan Matematika Bebas**: Memungkinkan pengguna memasukkan berbagai bentuk fungsi non-linear serta menentukan rentang interval awal iterasi.
+- **Visualisasi Kurva Konvergensi Interaktif**: Menampilkan grafik plot fungsi matematika dan pergerakan titik tebakan akar di setiap langkah iterasi.
+- **Tabel Langkah Iterasi Lengkap**: Menyajikan rincian proses komputasi per iterasi, nilai galat toleransi (*error margin*), hingga estimasi akar akhir.
+- **Eksport Hasil Komputasi**: Fitur pengunduhan ringkasan hasil kalkulasi numerik untuk kebutuhan dokumentasi akademis.
 
-Membantu mahasiswa dalam memahami konvergensi dan iterasi perhitungan metode numerik matematika secara intuitif.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Mempermudah mahasiswa dan praktisi sains dalam memahami visualisasi konvergensi algoritma numerik secara cepat dan intuitif.

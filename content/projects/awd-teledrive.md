@@ -1,19 +1,29 @@
 ---
-title: "Awd TeleDrive - Unlimited Multi-Platform Telegram Cloud Storage"
-description: "Platform & aplikasi penyimpanan cloud tanpa batas lintas platform (Web, Desktop, Android) yang memanfaatkan akun Telegram via MTProto Client-Side (GramJS)."
-tech_stack: ["React 19", "TypeScript", "Vite", "MTProto GramJS", "Desktop App", "Android App", "Material Design 3"]
-categories: ["Aplikasi Web", "Aplikasi Desktop", "Aplikasi Mobile"]
+title: "AWD TeleDrive — Penyimpanan Cloud Tanpa Batas Berbasis Telegram MTProto"
+description: "Platform penyimpanan cloud multi-platform (Web, Desktop, Android) yang memanfaatkan infrastruktur Telegram secara langsung dari sisi klien."
+tech_stack: ["React", "TypeScript", "Vite", "MTProto GramJS", "Desktop App", "Android App"]
+categories: ["Aplikasi Web", "Aplikasi Desktop", "Mobile & API"]
 image_preview: "/images/projects/awd-teledrive/preview.jpg"
 link: "https://teledrive.biz.id"
 featured: true
 date: "2026-07-16"
 ---
 
-Awd TeleDrive adalah ekosistem aplikasi penyimpanan cloud tanpa batas kuota (Web, Desktop, dan Android) yang memanfaatkan infrastruktur Telegram MTProto secara langsung dari perangkat pengguna.
+## 📌 Tentang AWD TeleDrive
 
-### Fitur Utama
-- **Multi-Platform Support**: Tersedia versi Web Browser, Aplikasi Desktop (Windows/macOS/Linux), dan Aplikasi Mobile Android.
-- **Penyimpanan Cloud Tanpa Batas**: Mengunggah & mengunduh file ukuran apa pun langsung ke Telegram via WebSocket MTProto tanpa batas kuota serverless.
-- **Client-Side Direct Transfer**: Transfer file langsung dari perangkat pengguna ke server Telegram tanpa terhalang limit timeout serverless backend.
-- **Autentikasi Aman Telegram**: Login langsung menggunakan API ID, API Hash, Nomor HP, OTP, dan 2FA Password Telegram.
-- **Material Design 3 Responsive UI**: Antarmuka modern dengan dukungan Light & Dark mode.
+**AWD TeleDrive** adalah platform penyimpanan awan (*cloud storage*) multi-perangkat yang memanfaatkan kapasitas penyimpanan tak terbatas dari infrastruktur Telegram. Aplikasi ini memungkinkan pengguna menyimpan, mengelola, dan mengunduh berkas berbagai ukuran secara langsung dan aman.
+
+---
+
+### 🌟 Fitur & Kemampuan Utama
+
+- **Dukungan Multi-Platform**: Tersedia dalam versi Web Browser interaktif, Aplikasi Desktop (Windows, macOS, Linux), serta Aplikasi Ponsel Android.
+- **Penyimpanan Awan Bebas Kuota**: Mengunggah dan mengunduh berkas dengan memanfaatkan protokol MTProto Telegram tanpa batas kuota serverless.
+- **Transfer Langsung Sisi Klien (Client-Side)**: Berkas dikirim langsung dari perangkat pengguna ke server Telegram, memastikan proses transfer tetap cepat tanpa kendala *timeout*.
+- **Autentikasi Aman Resmi Telegram**: Masuk secara aman menggunakan kredensial akun Telegram pribadi dengan proteksi verifikasi dua langkah (2FA).
+
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Menyediakan alternatif solusi penyimpanan data yang aman, hemat biaya, dan fleksibel untuk kebutuhan backup data harian pengguna di berbagai perangkat.

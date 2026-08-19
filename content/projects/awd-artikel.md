@@ -1,18 +1,29 @@
 ---
-title: "AWD Artikel - Platform Publikasi & Knowledge Sharing"
-description: "Platform publikasi artikel dan knowledge sharing teknis seputar Software Engineering, Arsitektur Web, Proxmox VE, dan Cloud Automation."
+title: "AWD Artikel — Platform Publikasi & Knowledge Sharing Teknis"
+description: "Platform publikasi artikel dan knowledge sharing teknis seputar Software Engineering, Arsitektur Web, Server Virtualisasi Proxmox VE, dan Cloud Automation."
 tech_stack: ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "SEO Optimization"]
-categories: ["Sistem Web"]
+categories: ["Aplikasi Web"]
 image_preview: "/images/projects/awd-artikel/preview.png"
 link: "https://github.com/putuwahyu29/awd-artikel"
 featured: true
 date: "2024-01-30"
 ---
 
-Platform publikasi artikel dan knowledge sharing berbasis Next.js App Router dan Markdown (MDX) untuk membagikan wawasan teknis seputar Software Engineering, Arsitektur Web, Server Virtualisasi Proxmox VE, dan Cloud Automation.
+## 📌 Tentang AWD Artikel
 
-### Fitur Utama
-- **High-Performance Static Site Generation (SSG)**: Rendering halaman artikel dengan kecepatan muat sub-detik dan skor Google Lighthouse optimal.
-- **Dukungan MDX & Syntax Highlighting**: Penulisan artikel berbasis Markdown dengan penataan kode, diagram, dan snippet interaktif.
-- **Search & Tag Categorization**: Fitur pencarian cepat dan pengelompokan artikel berdasarkan topik seperti Web Architecture, DevOps, dan Data Science.
-- **SEO & OpenGraph Dynamic Cards**: Optimasi meta tag SEO dan penataan kartu pratinjau media sosial untuk setiap publikasi artikel.
+**AWD Artikel** adalah platform publikasi blog dan *knowledge sharing* teknis yang dibangun untuk membagikan wawasan mendalam seputar Rekayasa Perangkat Lunak, Arsitektur Web modern, Server Virtualisasi Proxmox VE, serta Otomatisasi Cloud. Dirancang dengan pendekatan minimalis, cepat, dan teroptimasi penuh untuk kenyamanan membaca.
+
+---
+
+### 🌟 Fitur & Kemampuan Utama
+
+- **Kecepatan Muat Sub-Detik (SSG)**: Memanfaatkan *Static Site Generation* Next.js untuk menghadirkan halaman artikel super cepat dan hemat sumber daya server.
+- **Dukungan Format MDX Interaktif**: Penulisan konten fleksibel berbasis Markdown dengan penataan blok kode (*syntax highlighting*), diagram alur, dan komponen interaktif.
+- **Pencarian Cepat & Filter Topik**: Pengelompokan artikel berdasarkan kategori keahlian (Web Architecture, DevOps, Database, dan Cloud Automation) untuk kemudahan penelusuran.
+- **Optimasi SEO & Kartu Sosial Otomatis**: Pengaturan meta tag SEO dinamis dan pratinjau kartu OpenGraph otomatis saat artikel dibagikan ke media sosial.
+
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Menyediakan media literasi teknologi yang terstruktur bagi pengembang perangkat lunak serta mendokumentasikan praktik terbaik rekayasa sistem secara terbuka.

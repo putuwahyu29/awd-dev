@@ -1,6 +1,6 @@
 ---
-title: "Stuna - Student Announcement Platform & Mobile App"
-description: "Platform pengumuman mahasiswa terpadu berbasis mikroservis: Web Frontend (Next.js), REST API (Node.js), dan Mobile App (Flutter)."
+title: "Stuna — Platform Distribusi Pengumuman Akademik Multi-Platform"
+description: "Ekosistem publikasi dan pengiriman notifikasi pengumuman akademik terpadu berbasis Dashboard Web dan Aplikasi Mobile."
 tech_stack: ["Node.js", "Express.js", "Flutter", "React", "REST API", "Postman"]
 categories: ["Mobile & API", "Aplikasi Web"]
 image_preview: "/images/projects/stuna-platform/preview.png"
@@ -9,16 +9,21 @@ featured: true
 date: "2022-10-25"
 ---
 
-## Gambaran Umum & Arsitektur Microservices
+## 📌 Tentang Stuna
 
-**Stuna (Student Announcement Platform)** adalah sistem distribusi pengumuman akademik terpadu yang dibangun dengan arsitektur microservices terisolasi demi menjamin skalabilitas tinggi saat pengiriman notifikasi masal.
+**Stuna** (Student Announcement Platform) adalah ekosistem aplikasi distribusi warta dan pengumuman akademik kampus yang dirancang dengan arsitektur *microservices* terpisah untuk menjamin keandalan pengiriman pesan massal kepada seluruh mahasiswa.
 
-### Komponen Ekosistem Platform
+---
 
-- **Dashboard Web (Next.js)**: Portal manajemen pengumuman bagi pengajar dan staf administrasi untuk mempublikasikan pengumuman.
-- **REST API Microservice (Node.js/Express)**: Layanan backend cepat untuk autentikasi token JWT, pengelolaan data, dan antrean notifikasi.
-- **Aplikasi Seluler (Flutter Mobile App)**: Aplikasi Android/iOS bagi mahasiswa untuk penerimaan pengumuman dan push notification seketika.
+### 🌟 Fitur & Kemampuan Utama
 
-### Hasil Kinerja Sistem
+- **Dasbor Manajemen Pengumuman Web**: Portal bagi staf pengajar dan bagian kemahasiswaan untuk mempublikasikan pengumuman berdasarkan kategori dan jurusan.
+- **Aplikasi Mobile Mahasiswa (Flutter)**: Aplikasi seluler yang ringan bagi mahasiswa untuk menerima notifikasi pesan baru secara seketika (*instant push notification*).
+- **Layanan API Terisolasi (Node.js)**: Mesin backend berkecepatan tinggi yang mengelola autentikasi pengguna dan antrean pengiriman notifikasi.
+- **Penyaringan Pengumuman Terarah**: Mahasiswa hanya menerima pemberitahuan kegiatan dan akademik yang relevan dengan angkatan dan program studinya.
 
-Berhasil mempercepat penyampaian info akademik mendadak dari jam ke hitungan detik langsung ke ponsel mahasiswa.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Mempercepat penyebaran informasi akademik penting sehingga mahasiswa tidak tertinggal jadwal perkuliahan, praktikum, maupun agenda kampus mendadak.

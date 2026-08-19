@@ -1,7 +1,7 @@
 ---
-title: "Shoffee - Coffee Shop Analytics & POS Dashboard"
-description: "Dashboard analisis penjualan dan sistem kasir Point of Sale (POS) untuk jaringan kedai kopi."
-tech_stack: ["R", "R Shiny", "Shiny Dashboard", "Multinomial Logistic Regression", "Data Visualization"]
+title: "Shoffee — Dasbor Analisis Penjualan & Point of Sale Kedai Kopi"
+description: "Dasbor analitik visualisasi tren penjualan, pola transaksi pelanggan, dan pemantauan stok persediaan bahan baku kedai kopi."
+tech_stack: ["R", "R Shiny", "Shiny Dashboard", "Logistic Regression", "Data Visualization"]
 categories: ["Data & Analytics"]
 image_preview: "/images/projects/shop-coffe-dashboard/preview.png"
 link: "https://aguswahyu.shinyapps.io/coffee/"
@@ -9,16 +9,21 @@ featured: false
 date: "2022-06-22"
 ---
 
-## Gambaran Umum & Analisis Bisnis
+## 📌 Tentang Shoffee Dashboard
 
-**Shoffee Dashboard** adalah platform visualisasi analytics operasional kedai kopi yang menyajikan tren omset harian, analisis preferensi produk minuman terfavorit, serta pengawasan persediaan stok berbasis visualisasi R Shiny.
+**Shoffee Dashboard** adalah platform analitik bisnis interaktif yang dikembangkan menggunakan R Shiny untuk membantu pengelola kedai kopi dalam memantau kinerja penjualan harian, memahami preferensi menu pelanggan, dan mengontrol ketersediaan bahan baku.
 
-### Fitur Utama & Visualisasi R Shiny
+---
 
-- **Dashboard Omzet & Pendapatan Real-Time**: Visualisasi data transaksi harian, mingguan, dan bulanan.
-- **Analisis Demografi & Preferensi Pelanggan**: Pembagian segmen pembeli berdasarkan kategori usia dan paket menu terlaris.
-- **Monitoring Stok Bahan Baku**: Peringatan dini otomatis ketika persediaan biji kopi atau bahan sirup mendekati ambang batas minimum.
+### 🌟 Fitur & Kemampuan Utama
 
-### Manfaat Pengambilan Keputusan
+- **Pemantauan Omzet Penjualan Real-Time**: Visualisasi data transaksi harian, mingguan, dan bulanan secara grafis dan interaktif.
+- **Analisis Preferensi Menu Terlaris**: Pemetaan varian kopi dan makanan yang paling diminati berdasarkan kategori segmen pembeli.
+- **Peringatan Batas Stok Bahan Baku**: Notifikasi otomatis saat stok biji kopi, susu, atau sirup mendekati batas minimum pemesanan ulang.
+- **Simulasi Proyeksi Penjualan**: Penggunaan model regresi statistik sederhana untuk memperkirakan kebutuhan stok di masa mendatang.
 
-Membantu manajer outlet kopi dalam menentukan estimasi belanja stok dan strategi promosi menu secara data-driven.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Membantu pemilik kedai kopi mengambil keputusan pengadaan bahan baku dan strategi promosi menu secara tepat berbasis data (*data-driven decision*).

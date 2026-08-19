@@ -1,6 +1,6 @@
 ---
-title: "Portal Web Angkatan 62 Politeknik Statistika STIS"
-description: "Website resmi angkatan 62 STIS sebagai pusat informasi kegiatan alumni, direktori mahasiswa, dan artikel angkatan."
+title: "Web Angkatan 62 STIS — Direktori & Portal Komunitas Alumni"
+description: "Portal resmi komunitas alumni Politeknik Statistika STIS Angkatan 62 dengan direktori sebaran penempatan kerja dan galeri memori."
 tech_stack: ["Laravel", "Livewire", "PHP", "MySQL", "Bootstrap 5"]
 categories: ["Aplikasi Web"]
 image_preview: "/images/projects/web-angkatan-62/preview.png"
@@ -9,16 +9,21 @@ featured: false
 date: "2023-08-16"
 ---
 
-## Gambaran Umum & Portal Alumni
+## 📌 Tentang Web Angkatan 62 STIS
 
-**Web Angkatan 62** adalah portal komunitas resmi alumni Politeknik Statistika STIS Angkatan 62 yang menyajikan direktori anggota, pengumuman kelulusan, galeri memori perjalanan kuliah, serta portal penulisan artikel komputasi.
+**Web Angkatan 62 STIS** adalah portal komunitas resmi bagi alumni Politeknik Statistika STIS Angkatan 62. Portal ini berfungsi sebagai wadah silaturahmi, direktori sebaran penempatan kerja aparatur, serta arsip dokumentasi memori selama masa perkuliahan.
 
-### Fitur Utama Portal
+---
 
-- **Direktori Mahasiswa & Pencarian Lanjutan**: Filter pencarian mahasiswa berbasis nama, kelas, jurusan, dan provinsi asal.
-- **Statistik Sebaran Alumni**: Dashboard peta tematik penyebaran penempatan tugas alumni di seluruh BPS provinsi/kabupaten se-Indonesia.
-- **Arsip Galeri Memori & Artikel**: Linimasa kenangan foto kegiatan serta artikel publikasi tulisan alumni.
+### 🌟 Fitur & Kemampuan Utama
 
-### Manfaat Jejaring
+- **Direktori Alumni & Pencarian Lanjutan**: Basis data profil seluruh alumni dengan fitur filter berdasarkan nama, peminatan studi, dan provinsi penempatan dinas.
+- **Peta Sebaran Tugas Penempatan**: Visualisasi peta tematik penempatan kerja lulusan di seluruh kantor Badan Pusat Statistik (BPS) se-Indonesia.
+- **Linimasa Galeri Memori Perkuliahan**: Kumpulan foto dokumentasi kegiatan akademik, organisasi, dan momen wisuda angkatan.
+- **Pusat Kabar & Publikasi Artikel**: Ruang berbagi wawasan teknis, pengalaman dinas, dan kabar terkini antar-alumni.
 
-Mempererat hubungan komunikasi antar alumni angkatan 62 yang bertugas di berbagai wilayah perkantoran BPS seluruh Indonesia.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Mempererat jejaring komunikasi dan kolaborasi profesional antar-alumni yang bertugas di berbagai pelosok wilayah kerja instansi statistik Indonesia.

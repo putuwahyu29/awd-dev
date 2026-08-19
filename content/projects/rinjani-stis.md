@@ -1,7 +1,7 @@
 ---
-title: "Rinjani STIS - Portal Manajemen Kegiatan & UKM STIS"
-description: "Sistem Informasi Ormawa & Manajemen Kegiatan Organisasi Kemahasiswaan Politeknik Statistika STIS."
-tech_stack: ["CodeIgniter 3", "PHP", "MySQL", "Bootstrap"]
+title: "Rinjani STIS — Sistem Informasi Tata Kelola Organisasi Kemahasiswaan"
+description: "Platform digitalisasi administrasi keorganisasian mahasiswa daerah, pengelolaan SKKM, dan transparansi keuangan kas."
+tech_stack: ["CodeIgniter", "PHP", "MySQL", "Bootstrap"]
 categories: ["Sistem Enterprise"]
 image_preview: "/images/projects/rinjani-stis/preview.png"
 link: "https://github.com/putuwahyu29/rinjani-stis"
@@ -9,16 +9,21 @@ featured: false
 date: "2021-08-01"
 ---
 
-## Gambaran Umum & Manajemen Ormawa
+## 📌 Tentang Rinjani STIS
 
-**Rinjani STIS** dirancang untuk mempermudah tata kelola organisasi kemahasiswaan (Himada Rinjani) meliputi manajemen keanggotaan, pengajuan proposal kegiatan, serta alokasi fasilitas kemahasiswaan.
+**Rinjani STIS** adalah sistem informasi manajemen yang dibangun untuk mempermudah tata kelola organisasi kemahasiswaan daerah (Himada Rinjani) di Politeknik Statistika STIS, mulai dari pendataan anggota hingga pelaporan pertanggungjawaban kegiatan.
 
-### Fitur Utama Sistem
+---
 
-- **Manajemen Data Anggota & Alumni**: Direktori profil mahasiswa daerah dengan filter angkatan dan status keanggotaan.
-- **Pengajuan & Verifikasi SKKM**: Alur digitalisasi bukti keikutsertaan kegiatan untuk kredit poin SKKM mahasiswa.
-- **Manajemen Kas & Keuangan**: Transparansi pembukuan iuran bulanan dan laporan anggaran bendahara.
+### 🌟 Fitur & Kemampuan Utama
 
-### Perbaikan Proses Kerja
+- **Direktori Anggota & Alumni**: Basis data profil anggota terstruktur dengan filter angkatan, daerah asal, dan status keaktifan.
+- **Pengajuan & Verifikasi Poin SKKM**: Digitalisasi pencatatan partisipasi kegiatan untuk pengajuan Satuan Kredit Kegiatan Mahasiswa (SKKM).
+- **Pembukuan Kas & Transparansi Keuangan**: Pencatatan iuran kas dan laporan anggaran kegiatan yang transparan bagi seluruh anggota.
+- **Manajemen Proposal Kegiatan**: Pengunggahan dan pengesahan berkas rancangan kegiatan secara terpusat.
 
-Memangkas proses birokrasi manual pembuatan laporan kegiatan organisasi dari berbasis kertas menjadi 100% tersimpan secara digital.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Memangkas proses birokrasi manual dari berbasis kertas menjadi arsip digital yang rapi, akurat, dan mudah diaudit.

@@ -1,6 +1,6 @@
 ---
-title: "Simanja BPS NTB - Sistem Manajemen Agenda Kegiatan"
-description: "Sistem Informasi Manajemen Agenda Kegiatan Berbasis Web untuk pencegahan tumpang tindih jadwal dan sinkronisasi agenda tim di BPS Provinsi Nusa Tenggara Barat."
+title: "Simanja BPS NTB — Sistem Manajemen Agenda Kerja & Fasilitas Kegiatan"
+description: "Sistem informasi manajemen agenda kegiatan kerja dan alokasi ruang rapat untuk pencegahan benturan jadwal tim di BPS NTB."
 tech_stack: ["Laravel", "PHP", "MySQL", "Bootstrap 5", "FullCalendar", "REST API"]
 categories: ["Sistem Enterprise", "Aplikasi Web"]
 image_preview: "/images/projects/simanja-bps-ntb/preview.png"
@@ -9,17 +9,21 @@ featured: true
 date: "2024-05-08"
 ---
 
-## Gambaran Umum & Arsitektur Sistem
+## 📌 Tentang Simanja BPS NTB
 
-**Simanja BPS NTB** (Sistem Informasi Manajemen Agenda Kegiatan) adalah aplikasi web enterprise berbasis Laravel yang dirancang untuk mendukung penyederhanaan birokrasi di lingkungan BPS Provinsi Nusa Tenggara Barat. Sistem ini memusatkan pengjadwalan agenda kerja, reservasi ruang pertemuan, serta koordinasi tim secara efisien.
+**Simanja BPS NTB** (Sistem Informasi Manajemen Agenda Kegiatan) adalah aplikasi web yang dirancang untuk mendukung kelancaran birokrasi di lingkungan BPS Provinsi Nusa Tenggara Barat. Sistem ini memusatkan penjadwalan agenda kerja tim, reservasi ruang rapat, dan koordinasi kegiatan kedinasan secara terintegrasi.
 
-### Fitur Utama Sistem
+---
 
-- **Kalender Agenda Interaktif**: Tampilan visual agenda tim berbasis FullCalendar yang diperbarui secara real-time.
-- **Deteksi Otomatis Benturan Jadwal**: Sistem verifikasi cerdas yang menolak reservasi jadwal apabila personel atau ruang rapat bentrok.
-- **Alokasi Ruang Rapat & Fasilitas**: Manajemen sarana proyektor, Zoom room, dan konsumsi pertemuan secara transparan.
-- **Pengingat & Notifikasi Email**: Pengiriman pengingat jadwal otomatis ke email pegawai terdaftar.
+### 🌟 Fitur & Kemampuan Utama
 
-### Evaluasi Performa & Usability
+- **Kalender Agenda Interaktif**: Tampilan kalender kerja tim berbasis FullCalendar yang sinkron dan diperbarui secara real-time.
+- **Deteksi Benturan Jadwal Otomatis**: Sistem verifikasi cerdas yang menolak reservasi jadwal apabila personel utama atau ruangan rapat sedang digunakan acara lain.
+- **Pemesanan Ruang Rapat & Fasilitas**: Manajemen alokasi proyektor, ruang Zoom virtual, dan kebutuhan konsumsi pertemuan dinas secara tertib.
+- **Notifikasi Pengingat Rapat**: Pengiriman pengingat jadwal kegiatan otomatis ke surel pegawai yang terdaftar sebagai peserta rapat.
 
-Sistem telah diuji menggunakan metodologi **SDLC Prototype** dan dievaluasi dengan instrumen kepuasan **PSSUQ (Post-Study System Usability Questionnaire)** dengan skor kelayakan mencapai **94% (Sangat Layak Operasional)**.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Mencegah terjadinya tumpang tindih jadwal kegiatan penting dan meningkatkan efektivitas pemanfaatan ruang rapat serta fasilitas kantor.

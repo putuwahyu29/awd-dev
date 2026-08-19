@@ -1,6 +1,6 @@
 ---
-title: "SSO BPS NTB - Single Sign-On Portal"
-description: "Portal Otentikasi Terpusat (Single Sign-On) & Gateway Aplikasi Internal BPS Provinsi Nusa Tenggara Barat."
+title: "SSO BPS NTB — Portal Otentikasi Terpusat & Gateway Aplikasi Internal"
+description: "Portal Single Sign-On (SSO) dan peluncur aplikasi internal terpadu berbasis protokol OAuth2 untuk aparatur BPS Provinsi NTB."
 tech_stack: ["Keycloak", "OAuth2", "SSO Integration", "PHP", "Laravel", "Tailwind CSS"]
 categories: ["Sistem Enterprise", "Mobile & API"]
 image_preview: "/images/projects/sso-bps-ntb/preview.png"
@@ -9,16 +9,21 @@ featured: true
 date: "2023-10-23"
 ---
 
-## Gambaran Umum & Keamanan Akses
+## 📌 Tentang SSO BPS NTB
 
-**SSO BPS NTB** merupakan portal otentikasi tunggal (*Single Sign-On*) dan peluncur aplikasi (*App Launcher Gateway*) yang mengamankan serta menyelaraskan izin akses pegawai BPS Provinsi NTB ke seluruh aplikasi ekosistem internal dalam satu kali autentikasi.
+**SSO BPS NTB** adalah portal otentikasi tunggal (*Single Sign-On*) dan gerbang peluncur aplikasi internal (*App Launcher Gateway*) yang menyatukan seluruh akses sistem digital di lingkungan BPS Provinsi Nusa Tenggara Barat dalam satu akun kredensial yang aman.
 
-### Fitur Utama & Protokol Keamanan
+---
 
-- **Identity Provider (IdP) Terpusat**: Otentikasi terstandarisasi mengadopsi protokol OAuth2 dan OpenID Connect.
-- **Launcher Aplikasi Berbasis Peran**: Tampilan katalog aplikasi disesuaikan dengan wewenang jabatan dan unit kerja pegawai.
-- **Session Management & Single Logout**: Sesi login aman yang otomatis kedaluwarsa saat tidak ada aktivitas serta fitur sekali logout untuk semua layanan.
+### 🌟 Fitur & Kemampuan Utama
 
-### Dampak Keamanan & Efisiensi
+- **Penyedia Identitas Tunggal (IdP Terpusat)**: Standarisasi proses masuk pegawai mengadopsi protokol keamanan OAuth2 dan OpenID Connect.
+- **Peluncur Aplikasi Berbasis Peran**: Menampilkan katalog sistem kerja internal sesuai dengan jabatan dan unit kerja masing-masing aparatur.
+- **Manajemen Sesi & Sekali Keluar (Single Logout)**: Menjaga keamanan data dinas dengan pembatasan durasi sesi aktif dan fitur keluar akun terintegrasi.
+- **Dasbor Akses Satu Pintu**: Mengurangi kebiasaan mengingat banyak kata sandi untuk puluhan aplikasi instansi yang berbeda.
 
-Mengeliminasi penggunaan banyak password berulang oleh pegawai serta memperketat perimeter keamanan akses sistem internal.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Meningkatkan efisiensi kerja harian pegawai serta memperkuat perimeter keamanan akses terhadap data dan sistem internal instansi.

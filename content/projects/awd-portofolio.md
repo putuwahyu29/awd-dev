@@ -1,7 +1,7 @@
 ---
-title: "Awd - Personal Portfolio & Systems Showcase"
-description: "Website portofolio interaktif berbasis Next.js 15, Tailwind CSS v4, TypeScript, Multi-language (ID/EN), dan Dark Mode."
-tech_stack: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Lucide Icons", "RSS Reader", "GitHub API"]
+title: "AWD Portfolio — Platform Portofolio Interaktif & Etalase Sistem"
+description: "Website portofolio interaktif modern dengan dukungan multi-bahasa, tema adaptif, pencarian command palette, dan mode presentasi slide deck."
+tech_stack: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Keystatic CMS", "Lucide Icons"]
 categories: ["Aplikasi Web"]
 image_preview: "/images/projects/awd-portofolio/preview.png"
 link: "https://github.com/putuwahyu29/awd"
@@ -9,17 +9,21 @@ featured: true
 date: "2023-08-15"
 ---
 
-## Gambaran Umum & Tujuan Sistem
+## 📌 Tentang AWD Portfolio
 
-**Awd** adalah platform web portofolio pribadi modern yang dirancang untuk menampilkan rekam jejak proyek sistem informasi, arsitektur microservices, riset publikasi, dan kredensial keahlian teknologi secara interaktif dan dinamis.
+**AWD Portfolio** adalah platform web portofolio pribadi modern yang dirancang untuk menampilkan rekam jejak proyek rekayasa sistem, riset ilmiah, sertifikasi keahlian, dan konten edukasi teknologi secara interaktif, dinamis, dan berestetika tinggi.
 
-### Fitur Utama & Arsitektur Sistem
+---
 
-- **Arsitektur Next.js 15 App Router**: Menggunakan fitur Server Components dan static generation untuk waktu muat halaman *sub-second*.
-- **Dukungan Multi-Bahasa (ID/EN)**: Fitur peralihan bahasa instan berbasis React Context API untuk jangkauan audiens internasional.
-- **Manajemen Tema (Dark & Light Mode)**: Pengaturan skema warna otomatis mengikuti preferensi sistem operasi pengguna tanpa *flicker*.
-- **Integrasi Konten Markdown & Dynamic Filter**: Parsing otomatis frontmatter markdown proyek dan publikasi dengan sistem filter kategori *data-driven*.
+### 🌟 Fitur & Kemampuan Utama
 
-### Nilai Tambah & Performa Sistem
+- **Arsitektur Next.js Modern**: Menggunakan Server Components dan Static Site Generation (SSG) untuk menghasilkan kecepatan muat halaman yang instan dan optimal.
+- **Pencarian Cerdas Command Palette (`⌘K`)**: Memudahkan pengunjung menemukan proyek, artikel blog, sertifikasi, maupun publikasi dalam hitungan detik.
+- **Mode Presentasi Layar Penuh (Slide Deck)**: Fitur khusus untuk kebutuhan presentasi proyek dan portofolio langsung di depan klien atau pewawancara kerja.
+- **Dukungan Multi-Bahasa & Tema Adaptif**: Beralih bahasa instan (Indonesia & Inggris) serta dukungan Dark Mode dan Light Mode yang nyaman di mata.
 
-Dioptimalkan secara penuh untuk performa SEO, aksesibilitas antarmuka pengguna (UI/UX), serta performa skor Lighthouse 100% pada aspek aksesibilitas dan performa sistem.
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Menyajikan profil profesional dan hasil karya perangkat lunak secara terstruktur, informatif, dan mudah diakses oleh calon mitra kerja maupun perekrut global.

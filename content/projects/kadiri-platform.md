@@ -1,7 +1,7 @@
 ---
-title: "Kadiri - Kertas Kerja & Sistem Informasi Manajemen Risiko BPS Jatim"
-description: "Platform manajemen risiko berstandar BPS Provinsi Jawa Timur berbasis AI (Retrieval-Augmented Generation / RAG) & Laravel Filament yang mentransformasi identifikasi, analisis, dan mitigasi risiko."
-tech_stack: ["Laravel 13", "Filament PHP", "Livewire 4", "Retrieval-Augmented Generation (RAG)", "Python AI Service", "PostgreSQL"]
+title: "KADIRI — Sistem Informasi Kertas Kerja & Manajemen Risiko BPS Jatim"
+description: "Platform manajemen risiko berbasis kecerdasan buatan (AI RAG) dan Laravel Filament untuk identifikasi, analisis, dan mitigasi risiko operasional."
+tech_stack: ["Laravel", "Filament PHP", "Livewire", "Retrieval-Augmented Generation (RAG)", "Python AI Service", "PostgreSQL"]
 categories: ["Sistem Enterprise"]
 image_preview: "/images/projects/kadiri-platform/preview.png"
 link: "https://github.com/putuwahyu29/kadiri-app"
@@ -9,9 +9,21 @@ featured: true
 date: "2024-12-20"
 ---
 
-Kadiri adalah Sistem Informasi Kertas Kerja & Manajemen Risiko berbasis kecerdasan buatan (AI) yang dirancang khusus untuk Badan Pusat Statistik (BPS) Provinsi Jawa Timur.
+## 📌 Tentang KADIRI
 
-### Fitur Utama
-- **AI-Assisted Risk Analysis**: Integrasi mesin RAG (Retrieval-Augmented Generation) & Google Gemini AI untuk otomatisasi rekomendasi analisis dan mitigasi risiko operasional.
-- **Kertas Kerja Manajemen Risiko**: Digitalisasi penilaian risiko dari spreadsheet manual menjadi sistem terstruktur.
-- **Role-Based Access Control & SSO**: Otorisasi berjenjang berbasis peran dan autentikasi SSO Keycloak BPS.
+**KADIRI** adalah Sistem Informasi Kertas Kerja dan Manajemen Risiko berbasis Kecerdasan Buatan (AI) yang dibangun untuk Badan Pusat Statistik (BPS) Provinsi Jawa Timur. Platform ini mentransformasikan proses penilaian risiko manual menjadi alur digital yang terstruktur, akurat, dan terstandarisasi.
+
+---
+
+### 🌟 Fitur & Kemampuan Utama
+
+- **Rekomendasi Mitigasi Cerdas (AI RAG)**: Mengintegrasikan mesin AI Retrieval-Augmented Generation untuk memberikan saran mitigasi dan perumusan matriks risiko secara kontekstual.
+- **Kertas Kerja Penilaian Risiko Digital**: Menggantikan lembar kerja spreadsheet manual dengan sistem input terpandu dan kalkulasi level risiko otomatis.
+- **Hierarki Otorisasi & Hak Akses Berjenjang**: Pengaturan peran pengguna (Admin, Validator, Tim Kerja) yang terhubung dengan sistem SSO Keycloak BPS.
+- **Dasbor Pemantauan Matriks Risiko**: Visualisasi matriks level risiko tinggi, sedang, dan rendah di seluruh unit kerja secara real-time.
+
+---
+
+### 💡 Nilai Tambah & Dampak
+
+Mempercepat proses audit dan perumusan mitigasi risiko tahunan serta meningkatkan kepatuhan tata kelola pemerintahan yang baik (*Good Governance*).

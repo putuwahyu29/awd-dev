@@ -29,7 +29,7 @@ export async function getHeroData(): Promise<HeroData> {
     cvUrl: '/cv.pdf',
     profileImage: '/foto-profil.jpg',
     highlights: [
-      { number: '21+', labelId: 'Proyek', labelEn: 'Projects' },
+      { number: '26+', labelId: 'Proyek', labelEn: 'Projects' },
       { number: '4+ Tahun', labelId: 'Pengalaman Kerja', labelEn: 'Years Experience' },
       { number: '500+', labelId: 'Kontribusi GitHub', labelEn: 'GitHub Contributions' },
     ],
