@@ -197,25 +197,31 @@ export default config({
       },
     }),
     socials: singleton({
-      label: 'Saluran Media Sosial',
+      label: 'Saluran Media Sosial & Bio Links',
       path: 'content/socials',
       format: { data: 'json' },
       schema: {
         channels: fields.array(
           fields.object({
-            id: fields.text({ label: 'ID Platform (misal: instagram, tiktok, kaggle)' }),
-            name: fields.text({ label: 'Nama Platform' }),
-            handle: fields.text({ label: 'Handle / Username (@username)' }),
-            role: fields.text({ label: 'Deskripsi Role (Bahasa Indonesia)' }),
-            roleEn: fields.text({ label: 'Deskripsi Role (English)' }),
-            url: fields.text({ label: 'URL Profil Media Sosial' }),
-            iconKey: fields.text({ label: 'Icon Key (instagram, tiktok, youtube, kaggle, dll.)' }),
+            id: fields.text({ label: 'ID Platform (misal: website, cv, linkedin, github, tiktok, instagram, threads, kaggle, youtube, facebook, scholar, blog)' }),
+            name: fields.text({ label: 'Nama Platform / Link' }),
+            handle: fields.text({ label: 'Handle / Subtitle Singkat (@username / deskripsi ringkas)' }),
+            role: fields.text({ label: 'Deskripsi Role / Keterangan (Bahasa Indonesia)' }),
+            roleEn: fields.text({ label: 'Deskripsi Role / Keterangan (English)' }),
+            url: fields.text({ label: 'URL Tautan' }),
+            iconKey: fields.text({ label: 'Icon Key (website, cv, linkedin, github, tiktok, instagram, threads, kaggle, youtube, facebook, scholar, blog)' }),
             accentColor: fields.text({ label: 'Tailwind Accent Color Class' }),
+            isPinned: fields.checkbox({
+              label: '📌 Sematkan Link ke Paling Atas (Pinned Link - Maks 3)',
+              description: 'Centang jika ingin link ini disematkan di urutan paling atas halaman Bio Links (maksimal 3 link teratas).',
+            }),
           }),
           {
-            label: 'Daftar Link Media Sosial',
+            label: 'Daftar Link & Media Sosial',
             itemLabel: (props) =>
-              props.fields.name.value ? `${props.fields.name.value} (${props.fields.handle.value || ''})` : 'Saluran Media Sosial',
+              props.fields.name.value
+                ? `${props.fields.isPinned.value ? '📌 ' : ''}${props.fields.name.value} (${props.fields.handle.value || props.fields.url.value || ''})`
+                : 'Saluran Media Sosial / Link',
           }
         ),
       },

@@ -1,6 +1,6 @@
 'use client';
 
-import { ExternalLink } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { SocialChannel } from '@/lib/socials';
 
@@ -29,14 +29,6 @@ function ThreadsLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-function KaggleLogo(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...props}>
-      <path d="M18.825 23.859h-3.46l-5.632-8.212-2.222 2.052v6.16H4.352V.14h3.159v12.215l7.262-8.543h3.811l-7.07 8.012 7.311 12.035z" />
-    </svg>
-  );
-}
-
 function YoutubeLogo(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...props}>
@@ -53,33 +45,34 @@ function FacebookLogo(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+function LinkedinLogo(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" {...props}>
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.75a1.45 1.45 0 1 0 0 2.9 1.45 1.45 0 0 0 0-2.9z" />
+    </svg>
+  );
+}
+
 const logoMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   instagram: InstagramLogo,
   tiktok: TikTokLogo,
   threads: ThreadsLogo,
-  kaggle: KaggleLogo,
   youtube: YoutubeLogo,
   facebook: FacebookLogo,
+  linkedin: LinkedinLogo,
 };
 
 interface ContentCreatorHubProps {
   channels?: SocialChannel[];
 }
 
+// Exactly the 6 official social media platforms requested
+const allowedSocialKeys = ['tiktok', 'instagram', 'threads', 'youtube', 'facebook', 'linkedin'];
+
 export default function ContentCreatorHub({ channels }: ContentCreatorHubProps) {
   const { t, lang } = useLanguage();
 
-  const activeChannels = channels || [
-    {
-      id: 'instagram',
-      name: 'Instagram',
-      handle: '@aguswahyudupayana',
-      role: 'Konten Edukasi Pemrograman Web & Linux',
-      roleEn: 'Web Development & Linux Educational Content',
-      url: 'https://instagram.com/aguswahyudupayana',
-      iconKey: 'instagram',
-      accentColor: 'border-pink-500/30 hover:border-pink-500 text-pink-500',
-    },
+  const defaultChannels: SocialChannel[] = [
     {
       id: 'tiktok',
       name: 'TikTok',
@@ -91,6 +84,16 @@ export default function ContentCreatorHub({ channels }: ContentCreatorHubProps) 
       accentColor: 'border-cyan-500/30 hover:border-cyan-500 text-cyan-400',
     },
     {
+      id: 'instagram',
+      name: 'Instagram',
+      handle: '@aguswahyudupayana',
+      role: 'Konten Edukasi Pemrograman Web & Linux',
+      roleEn: 'Web Development & Linux Educational Content',
+      url: 'https://instagram.com/aguswahyudupayana',
+      iconKey: 'instagram',
+      accentColor: 'border-pink-500/30 hover:border-pink-500 text-pink-500',
+    },
+    {
       id: 'threads',
       name: 'Threads',
       handle: '@aguswahyudupayana',
@@ -99,16 +102,6 @@ export default function ContentCreatorHub({ channels }: ContentCreatorHubProps) 
       url: 'https://threads.net/@aguswahyudupayana',
       iconKey: 'threads',
       accentColor: 'border-purple-500/30 hover:border-purple-500 text-purple-400',
-    },
-    {
-      id: 'kaggle',
-      name: 'Kaggle',
-      handle: '@aguswahyudupayana',
-      role: 'Kumpulan Dataset, Catatan Riset, & Model Machine Learning',
-      roleEn: 'Datasets, Research Notebooks & ML Models',
-      url: 'https://kaggle.com/aguswahyudupayana',
-      iconKey: 'kaggle',
-      accentColor: 'border-sky-500/30 hover:border-sky-500 text-sky-400',
     },
     {
       id: 'youtube',
@@ -130,31 +123,51 @@ export default function ContentCreatorHub({ channels }: ContentCreatorHubProps) 
       iconKey: 'facebook',
       accentColor: 'border-blue-500/30 hover:border-blue-500 text-blue-500',
     },
+    {
+      id: 'linkedin',
+      name: 'LinkedIn',
+      handle: 'in/aguswahyu',
+      role: 'Jaringan Profesional & Pembaruan Karir Rekayasa Perangkat Lunak',
+      roleEn: 'Professional Network & Software Engineering Career Updates',
+      url: 'https://www.linkedin.com/in/aguswahyu/',
+      iconKey: 'linkedin',
+      accentColor: 'border-sky-500/30 hover:border-sky-500 text-sky-400',
+    },
   ];
 
+  const sourceList = channels && channels.length > 0 ? channels : defaultChannels;
+
+  // Filter to keep ONLY the 6 official social media platforms
+  const activeChannels = allowedSocialKeys
+    .map((key) => {
+      const match = sourceList.find((c) => c.id.toLowerCase() === key || c.iconKey?.toLowerCase() === key);
+      return match || defaultChannels.find((d) => d.id === key);
+    })
+    .filter((item): item is SocialChannel => Boolean(item));
+
   return (
-    <section id="creator" className="py-16 border-b border-main">
+    <section id="creator" className="py-12 sm:py-16 border-b border-main">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-10">
+        <div className="mb-6 sm:mb-8">
           <h2 className="text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1 font-bold">
             {t('Media Sosial & Diskusi', 'Social Media & Discussions')}
           </h2>
           <h3 className="text-2xl sm:text-3xl font-bold text-main">
             {t('Media Sosial Resmi', 'Official Social Media')}
           </h3>
-          <p className="text-sub text-sm mt-2 max-w-2xl">
+          <p className="text-sub text-sm mt-1.5 max-w-2xl">
             {t(
-              'Ikuti akun media sosial saya untuk melihat tips coding, tutorial pemrograman web, dan berbagai konten edukasi teknologi terbaru.',
-              'Follow my social media accounts to watch coding tips, web programming tutorials, and latest tech content.'
+              'Ikuti akun media sosial resmi saya untuk melihat tips coding, tutorial pemrograman web, dan diskusi rekayasa perangkat lunak.',
+              'Follow my official social media accounts for coding tips, web tutorials, and software engineering discussions.'
             )}
           </p>
         </div>
 
-        {/* Official Social Media Platform Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Official Social Media Platform Cards Grid (Sleek Compact Tiles) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5">
           {activeChannels.map((platform) => {
-            const Icon = logoMap[platform.iconKey] || InstagramLogo;
+            const Icon = logoMap[platform.iconKey || platform.id] || InstagramLogo;
             const displayRole = lang === 'en' && platform.roleEn ? platform.roleEn : platform.role;
 
             return (
@@ -163,35 +176,26 @@ export default function ContentCreatorHub({ channels }: ContentCreatorHubProps) 
                 href={platform.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group p-6 rounded-xl bg-card hover:bg-card-hover border ${platform.accentColor} transition-all duration-200 flex flex-col justify-between shadow-2xs`}
+                className={`group p-3.5 sm:p-4 rounded-xl bg-card hover:bg-card-hover border ${platform.accentColor || 'border-main'} transition-all duration-200 shadow-2xs hover:shadow-md flex items-center justify-between gap-3 cursor-pointer`}
               >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <div className="p-2.5 rounded-lg bg-main border border-main">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <ExternalLink className="w-4 h-4 text-muted group-hover:text-main transition-colors" />
+                <div className="flex items-center gap-3.5 min-w-0">
+                  <div className="p-2.5 rounded-lg bg-main border border-main shrink-0">
+                    <Icon className="w-5 h-5" />
                   </div>
-
-                  <div>
-                    <span className="text-[11px] font-mono uppercase text-muted font-bold tracking-wider block mb-1">
+                  <div className="min-w-0">
+                    <span className="text-[10px] font-mono uppercase text-muted font-bold tracking-wider block truncate">
                       {platform.name}
                     </span>
-                    <h4 className="text-base font-bold text-main group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <h4 className="text-sm font-bold text-main group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
                       {platform.handle}
                     </h4>
-                    <p className="text-xs text-sub mt-1.5 leading-relaxed">
+                    <p className="text-xs text-sub truncate mt-0.5">
                       {displayRole}
                     </p>
                   </div>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-main flex items-center justify-end text-xs font-mono text-muted">
-                  <span className="text-sub font-semibold group-hover:text-main flex items-center gap-1">
-                    <span>{t('Buka', 'Open')}</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </span>
-                </div>
+                <ArrowUpRight className="w-4 h-4 text-muted group-hover:text-main group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-1" />
               </a>
             );
           })}
@@ -200,3 +204,5 @@ export default function ContentCreatorHub({ channels }: ContentCreatorHubProps) 
     </section>
   );
 }
+
+

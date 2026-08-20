@@ -81,7 +81,7 @@ export default async function ProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
@@ -89,7 +89,7 @@ export default async function ProjectsPage() {
 
       <Navbar />
 
-      <main className="flex-1 pt-24">
+      <main className="pt-24">
         {/* Page Header Banner */}
         <div className="bg-card border-b border-main py-10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">

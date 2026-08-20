@@ -164,7 +164,7 @@ export default async function ProjectDetailPage({ params }: ProjectSlugPageProps
   };
 
   return (
-    <div className="min-h-screen bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(projectJsonLd) }}
@@ -172,7 +172,7 @@ export default async function ProjectDetailPage({ params }: ProjectSlugPageProps
       <Navbar />
 
 
-      <main className="flex-1 pt-20 sm:pt-24 pb-16">
+      <main className="pt-20 sm:pt-24 pb-16">
         {/* Top Header & Breadcrumb Bar */}
         <div className="bg-card border-b border-main py-6 sm:py-10">
           <div className="max-w-3xl sm:max-w-4xl mx-auto px-4 sm:px-6 space-y-3.5">

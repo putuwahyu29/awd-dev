@@ -115,7 +115,7 @@ export default function CvPageView({ cvData }: CvPageViewProps) {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-200">
+    <div className="relative bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white transition-colors duration-200">
       {/* Subtle Ambient Background Lighting for Studio Aesthetic */}
       <div
         className="pointer-events-none fixed inset-0 z-0 opacity-40 dark:opacity-20"
@@ -254,13 +254,13 @@ export default function CvPageView({ cvData }: CvPageViewProps) {
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-10 flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 md:p-10 flex flex-col items-center overflow-x-auto">
+      <main className="relative z-10 flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 md:p-10 pb-20 sm:pb-10 flex flex-col items-center overflow-x-auto">
         {/* Scalable Container */}
         <div
           className="w-full flex justify-center transition-transform duration-150 ease-out origin-top"
           style={{
             transform: `scale(${zoomLevel})`,
-            marginBottom: zoomLevel > 1.0 ? `${(zoomLevel - 1.0) * 950}px` : '0px',
+            marginBottom: zoomLevel > 1.0 ? `${(zoomLevel - 1.0) * 400}px` : '0px',
           }}
         >
           <CvTemplate data={cvData} />

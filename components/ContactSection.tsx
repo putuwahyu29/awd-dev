@@ -26,7 +26,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
   };
 
   return (
-    <section id="contact" className="py-16 border-b border-main bg-main">
+    <section id="contact" className="py-12 sm:py-16 bg-main">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Header */}
         <div className="max-w-xl mx-auto space-y-3 mb-8">

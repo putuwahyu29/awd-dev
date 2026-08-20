@@ -4,7 +4,6 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { CvModalProvider } from '@/context/CvModalContext';
 import CvPreviewModal from '@/components/CvPreviewModal';
-import GoogleTranslateScript from '@/components/GoogleTranslateScript';
 import ScrollToTop from '@/components/ScrollToTop';
 import './globals.css';
 
@@ -227,7 +226,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="font-sans bg-main text-main antialiased selection:bg-blue-600 selection:text-white min-h-screen"
+        className="font-sans bg-main text-main antialiased selection:bg-blue-600 selection:text-white"
       >
         <ThemeProvider>
           <LanguageProvider>
@@ -235,7 +234,6 @@ export default function RootLayout({
               {children}
               <CvPreviewModal />
               <ScrollToTop />
-              <GoogleTranslateScript />
             </CvModalProvider>
           </LanguageProvider>
         </ThemeProvider>

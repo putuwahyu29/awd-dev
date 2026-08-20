@@ -230,7 +230,7 @@ export default function CvPreviewModal({
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="flex-1 overflow-y-auto overflow-x-auto p-3 sm:p-6 md:p-8 bg-slate-100/70 dark:bg-slate-950/80 flex flex-col items-center select-text">
+        <div className="flex-1 overflow-y-auto overflow-x-auto p-3 sm:p-6 pb-8 bg-slate-100/70 dark:bg-slate-950/80 flex flex-col items-center select-text">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center my-auto py-16 text-center space-y-4">
               <div className="relative">
@@ -252,7 +252,7 @@ export default function CvPreviewModal({
               className="w-full flex justify-center animate-fade-in transition-transform duration-150 ease-out origin-top"
               style={{
                 transform: `scale(${zoomLevel})`,
-                marginBottom: zoomLevel > 1.0 ? `${(zoomLevel - 1.0) * 900}px` : '0px',
+                marginBottom: zoomLevel > 1.0 ? `${(zoomLevel - 1.0) * 350}px` : '0px',
               }}
             >
               <CvTemplate data={cvData} />

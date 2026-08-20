@@ -11,6 +11,7 @@ export interface SocialChannel {
   url: string;
   iconKey: string;
   accentColor: string;
+  isPinned?: boolean;
 }
 
 const socialsJsonPath = path.join(process.cwd(), 'content', 'socials.json');

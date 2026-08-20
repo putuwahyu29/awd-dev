@@ -14,6 +14,8 @@ import {
   Sun,
   Moon,
   GraduationCap,
+  Pin,
+  Sparkles,
 } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 import { SocialChannel } from '@/lib/socials';
@@ -92,11 +94,15 @@ interface BioLinkItem {
   isInternal?: boolean;
   colorStyle?: string;
   iconBadgeStyle?: string;
+  isPinned?: boolean;
 }
 
 interface LinksBioViewProps {
   socials?: SocialChannel[];
 }
+
+// 6 Official Social Media platform keys
+const socialMediaKeys = ['tiktok', 'instagram', 'threads', 'youtube', 'facebook', 'linkedin'];
 
 export default function LinksBioView({ socials }: LinksBioViewProps) {
   const { theme, toggleTheme } = useTheme();
@@ -108,8 +114,20 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const getIcon = (iconKey: string) => {
-    switch (iconKey.toLowerCase()) {
+  const getIcon = (iconKey?: string, id?: string): React.FC<React.SVGProps<SVGSVGElement>> => {
+    const key = (iconKey || id || '').toLowerCase();
+    switch (key) {
+      case 'website':
+      case 'globe':
+        return Globe;
+      case 'cv':
+      case 'resume':
+      case 'filetext':
+        return FileText;
+      case 'linkedin':
+        return LinkedinIcon;
+      case 'github':
+        return GithubIcon;
       case 'tiktok':
         return TikTokIcon;
       case 'instagram':
@@ -122,8 +140,46 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
         return YoutubeIcon;
       case 'facebook':
         return FacebookIcon;
+      case 'scholar':
+        return GraduationCap;
+      case 'blog':
+        return BookOpen;
       default:
         return Globe;
+    }
+  };
+
+  const getIconBadgeStyle = (id: string, iconKey?: string) => {
+    const key = (iconKey || id).toLowerCase();
+    switch (key) {
+      case 'website':
+      case 'globe':
+        return 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30';
+      case 'cv':
+      case 'filetext':
+        return 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30';
+      case 'linkedin':
+        return 'bg-sky-600/15 text-sky-600 dark:text-sky-400 border-sky-600/30';
+      case 'github':
+        return 'bg-slate-800 text-white border-slate-700';
+      case 'tiktok':
+        return 'bg-slate-950 text-cyan-400 border-slate-800';
+      case 'instagram':
+        return 'bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30';
+      case 'threads':
+        return 'bg-slate-900 text-purple-400 border-slate-700';
+      case 'kaggle':
+        return 'bg-sky-500/15 text-sky-500 border-sky-500/30';
+      case 'youtube':
+        return 'bg-red-500/15 text-red-600 dark:text-red-500 border-red-500/30';
+      case 'facebook':
+        return 'bg-blue-600/15 text-blue-600 dark:text-blue-400 border-blue-600/30';
+      case 'scholar':
+        return 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30';
+      case 'blog':
+        return 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30';
+      default:
+        return 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30';
     }
   };
 
@@ -135,109 +191,180 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
         return 'bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white shadow-md shadow-rose-500/20 hover:scale-110';
       case 'threads':
         return 'bg-slate-950 text-white border border-slate-800 hover:border-purple-500 shadow-md shadow-purple-500/10 hover:scale-110';
-      case 'kaggle':
-        return 'bg-sky-500/15 text-sky-500 border border-sky-500/30 hover:bg-sky-500 hover:text-white shadow-md shadow-sky-500/10 hover:scale-110';
       case 'youtube':
         return 'bg-red-500/15 text-red-600 dark:text-red-500 border border-red-500/30 hover:bg-red-600 hover:text-white shadow-md shadow-red-500/20 hover:scale-110';
       case 'facebook':
         return 'bg-blue-600/15 text-blue-600 dark:text-blue-400 border border-blue-600/30 hover:bg-blue-600 hover:text-white shadow-md shadow-blue-500/20 hover:scale-110';
+      case 'linkedin':
+        return 'bg-sky-600 text-white border border-sky-500 hover:scale-110';
+      case 'github':
+        return 'bg-slate-900 text-white border border-slate-700 hover:scale-110';
       default:
         return 'bg-card text-main border border-main hover:border-blue-500 hover:scale-110';
     }
   };
 
-  const mainLinks: BioLinkItem[] = [
-    {
-      id: 'website',
-      title: 'Website Portofolio Utama (awd.dev)',
-      subtitle: 'Katalog Proyek, Arsitektur Systems, & Publikasi Riset',
-      url: '/',
-      icon: Globe,
-      isInternal: true,
-      iconBadgeStyle: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
-    },
-    {
-      id: 'linkedin',
-      title: 'LinkedIn Professional Profile',
-      subtitle: 'Pengalaman Kerja & Jaringan Profesional',
-      url: 'https://www.linkedin.com/in/aguswahyu/',
-      icon: LinkedinIcon,
-      iconBadgeStyle: 'bg-sky-600/15 text-sky-600 dark:text-sky-400 border-sky-600/30',
-    },
-    {
-      id: 'github',
-      title: 'GitHub Repositories',
-      subtitle: 'Source Code Open-Source & Project Repos',
-      url: 'https://github.com/putuwahyu29',
-      icon: GithubIcon,
-      iconBadgeStyle: 'bg-slate-800 text-white border-slate-700',
-    },
-    {
-      id: 'cv',
-      title: 'Curriculum Vitae',
-      subtitle: 'Naskah Resume Resmi I Putu Agus Wahyu Dupayana',
-      url: '/cv',
-      icon: FileText,
-      iconBadgeStyle: 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30',
-      isInternal: true,
-    },
-  ];
+  const isInternalUrl = (url: string) => url.startsWith('/') && !url.startsWith('//');
 
-  const socialLinks: BioLinkItem[] = socials && socials.length > 0
+  // Convert raw channels from Keystatic data to BioLinkItem list
+  const allBioLinks: BioLinkItem[] = socials && socials.length > 0
     ? socials.map((s) => ({
         id: s.id,
         title: s.name,
-        subtitle: s.handle,
+        subtitle: s.handle || s.role,
         url: s.url,
-        icon: getIcon(s.iconKey),
+        icon: getIcon(s.iconKey, s.id),
+        isInternal: isInternalUrl(s.url),
+        iconBadgeStyle: getIconBadgeStyle(s.id, s.iconKey),
         colorStyle: getSocialBrandStyle(s.id),
+        isPinned: Boolean(s.isPinned),
       }))
     : [
-        { id: 'tiktok', title: 'TikTok', subtitle: '@aguswahyudupayana', url: 'https://tiktok.com/@aguswahyudupayana', icon: TikTokIcon, colorStyle: getSocialBrandStyle('tiktok') },
-        { id: 'instagram', title: 'Instagram', subtitle: '@aguswahyudupayana', url: 'https://instagram.com/aguswahyudupayana', icon: InstagramIcon, colorStyle: getSocialBrandStyle('instagram') },
-        { id: 'threads', title: 'Threads', subtitle: '@aguswahyudupayana', url: 'https://threads.net/@aguswahyudupayana', icon: ThreadsIcon, colorStyle: getSocialBrandStyle('threads') },
-        { id: 'youtube', title: 'YouTube', subtitle: '@aguswahyudupayana', url: 'https://youtube.com/@aguswahyudupayana', icon: YoutubeIcon, colorStyle: getSocialBrandStyle('youtube') },
-        { id: 'facebook', title: 'Facebook', subtitle: 'aguswahyudupayana', url: 'https://facebook.com/aguswahyudupayana', icon: FacebookIcon, colorStyle: getSocialBrandStyle('facebook') },
+        {
+          id: 'website',
+          title: 'Website Portofolio Utama (awd.dev)',
+          subtitle: 'Katalog Proyek, Arsitektur Systems, & Publikasi Riset',
+          url: '/',
+          icon: Globe,
+          isInternal: true,
+          iconBadgeStyle: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
+          isPinned: true,
+        },
+        {
+          id: 'cv',
+          title: 'Curriculum Vitae',
+          subtitle: 'Naskah Resume Resmi I Putu Agus Wahyu Dupayana',
+          url: '/cv',
+          icon: FileText,
+          iconBadgeStyle: 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30',
+          isInternal: true,
+          isPinned: true,
+        },
+        {
+          id: 'github',
+          title: 'GitHub Repositories',
+          subtitle: 'Source Code Open-Source & Project Repos',
+          url: 'https://github.com/putuwahyu29',
+          icon: GithubIcon,
+          iconBadgeStyle: 'bg-slate-800 text-white border-slate-700',
+          isPinned: true,
+        },
+        {
+          id: 'kaggle',
+          title: 'Kaggle',
+          subtitle: '@iputuaguswahyud • Dataset & ML Notebooks',
+          url: 'https://kaggle.com/iputuaguswahyud',
+          icon: KaggleIcon,
+          iconBadgeStyle: 'bg-sky-500/15 text-sky-500 border-sky-500/30',
+          isPinned: false,
+        },
+        {
+          id: 'scholar',
+          title: 'Google Scholar Profile',
+          subtitle: 'Sitasi & Naskah Riset Ilmiah Resmi',
+          url: 'https://scholar.google.com/citations?user=NeiAOi8AAAAJ',
+          icon: GraduationCap,
+          iconBadgeStyle: 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30',
+          isPinned: false,
+        },
+        {
+          id: 'blog',
+          title: 'Blog Catatan Teknis',
+          subtitle: 'blog.awd.my.id • Artikel Homelab, Linux, & DevOps',
+          url: 'https://blog.awd.my.id',
+          icon: BookOpen,
+          iconBadgeStyle: 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30',
+          isPinned: false,
+        },
       ];
 
-  // Top circular icons exclude Kaggle (since Kaggle is rendered as full button card in research stack below)
-  const topSocialLinks = socialLinks.filter((s) => s.id !== 'kaggle');
+  // 1. Top round social avatar icon row: Strictly the 6 official social media platforms
+  const defaultSocialMap: Record<string, { title: string; subtitle: string; url: string; icon: React.FC<React.SVGProps<SVGSVGElement>>; colorStyle: string }> = {
+    tiktok: { title: 'TikTok', subtitle: '@aguswahyudupayana', url: 'https://tiktok.com/@aguswahyudupayana', icon: TikTokIcon, colorStyle: getSocialBrandStyle('tiktok') },
+    instagram: { title: 'Instagram', subtitle: '@aguswahyudupayana', url: 'https://instagram.com/aguswahyudupayana', icon: InstagramIcon, colorStyle: getSocialBrandStyle('instagram') },
+    threads: { title: 'Threads', subtitle: '@aguswahyudupayana', url: 'https://threads.net/@aguswahyudupayana', icon: ThreadsIcon, colorStyle: getSocialBrandStyle('threads') },
+    youtube: { title: 'YouTube', subtitle: '@aguswahyudupayana', url: 'https://youtube.com/@aguswahyudupayana', icon: YoutubeIcon, colorStyle: getSocialBrandStyle('youtube') },
+    facebook: { title: 'Facebook', subtitle: 'aguswahyudupayana', url: 'https://facebook.com/aguswahyudupayana', icon: FacebookIcon, colorStyle: getSocialBrandStyle('facebook') },
+    linkedin: { title: 'LinkedIn', subtitle: 'in/aguswahyu', url: 'https://www.linkedin.com/in/aguswahyu/', icon: LinkedinIcon, colorStyle: getSocialBrandStyle('linkedin') },
+  };
 
-  const kaggleSocial = socials?.find((s) => s.id === 'kaggle');
-  const kaggleUrl = kaggleSocial?.url || 'https://kaggle.com/iputuaguswahyud';
-  const kaggleHandle = kaggleSocial?.handle || '@iputuaguswahyud';
+  const topSocialLinks = socialMediaKeys.map((key) => {
+    const found = allBioLinks.find((s) => s.id.toLowerCase() === key);
+    if (found) return found;
+    const def = defaultSocialMap[key];
+    return {
+      id: key,
+      title: def.title,
+      subtitle: def.subtitle,
+      url: def.url,
+      icon: def.icon,
+      colorStyle: def.colorStyle,
+    };
+  });
 
-  const researchLinks: BioLinkItem[] = [
-    {
-      id: 'kaggle',
-      title: 'Kaggle Data & Machine Learning',
-      subtitle: `${kaggleHandle} • Datasets, Notebooks, & Model ML`,
-      url: kaggleUrl,
-      icon: KaggleIcon,
-      iconBadgeStyle: 'bg-sky-500/15 text-sky-500 border-sky-500/30',
-    },
-    {
-      id: 'scholar',
-      title: 'Google Scholar Profile',
-      subtitle: 'Sitasi & Naskah Riset Ilmiah Resmi',
-      url: 'https://scholar.google.com/citations?user=NeiAOi8AAAAJ',
-      icon: GraduationCap,
-      iconBadgeStyle: 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30',
-    },
-    {
-      id: 'blog',
-      title: 'Blog Catatan Teknis',
-      subtitle: 'Artikel Homelab, Linux, & DevOps',
-      url: 'https://blog.awd.my.id',
-      icon: BookOpen,
-      iconBadgeStyle: 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30',
-    },
-  ];
+  // 2. Pinned Links: Capped strictly to MAXIMUM 3 items
+  const pinnedLinks = allBioLinks.filter((link) => link.isPinned).slice(0, 3);
+
+  // 3. Other Portfolio & Research Links:
+  // Strictly excludes standard social media platforms so they DO NOT duplicate below the circular row!
+  const otherLinks = allBioLinks.filter(
+    (link) => !pinnedLinks.some((p) => p.id === link.id) && !socialMediaKeys.includes(link.id.toLowerCase())
+  );
+
+  const renderLinkCard = (link: BioLinkItem, isPinnedCard = false) => {
+    const Icon = link.icon;
+    const content = (
+      <div
+        className={`w-full p-3.5 sm:p-4 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md flex items-center justify-between group cursor-pointer relative overflow-hidden ${
+          isPinnedCard
+            ? 'bg-card hover:bg-card-hover border-2 border-blue-500/40 dark:border-blue-400/40 hover:border-blue-600 dark:hover:border-blue-400 ring-2 ring-blue-500/10'
+            : 'bg-card hover:bg-card-hover border border-main hover:border-blue-500/50'
+        }`}
+      >
+        <div className="flex items-center gap-3.5 min-w-0">
+          <div className={`p-2 rounded-lg border shrink-0 ${link.iconBadgeStyle || 'bg-main text-blue-600 dark:text-blue-400 border-main'}`}>
+            <Icon className="w-5 h-5" />
+          </div>
+          <div className="min-w-0 text-left">
+            <div className="flex items-center gap-1.5">
+              <h2 className="text-sm font-bold text-main group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                {link.title}
+              </h2>
+              {isPinnedCard && (
+                <Pin className="w-3 h-3 text-blue-600 dark:text-blue-400 shrink-0 rotate-45" />
+              )}
+            </div>
+            {link.subtitle && (
+              <p className="text-xs text-sub truncate font-normal">
+                {link.subtitle}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {link.isInternal ? (
+          <ArrowRight className="w-4 h-4 text-muted group-hover:text-main group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+        ) : (
+          <ExternalLink className="w-4 h-4 text-muted group-hover:text-main group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
+        )}
+      </div>
+    );
+
+    return link.isInternal ? (
+      <Link key={link.id} href={link.url} className="block">
+        {content}
+      </Link>
+    ) : (
+      <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" className="block">
+        {content}
+      </a>
+    );
+  };
 
   return (
-    <div className="min-h-screen bg-main text-main flex flex-col items-center justify-between p-4 sm:p-6 font-sans selection:bg-blue-600 selection:text-white">
+    <div className="bg-main text-main flex flex-col items-center p-4 sm:p-6 font-sans selection:bg-blue-600 selection:text-white">
       {/* Top Bar Navigation Utility */}
-      <header className="w-full max-w-md mx-auto flex items-center justify-between py-2">
+      <header className="w-full max-w-md mx-auto flex items-center justify-between py-2 shrink-0 mb-2">
         <Link
           href="/"
           className="text-xs font-mono font-bold text-sub hover:text-main px-3 py-1.5 rounded-lg bg-card border border-main shadow-2xs transition-colors"
@@ -248,7 +375,7 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
         <div className="flex items-center gap-2">
           <button
             onClick={handleCopyLink}
-            className="p-2 rounded-lg bg-card hover:bg-card-hover border border-main text-sub hover:text-main text-xs font-mono flex items-center gap-1.5 transition-colors"
+            className="p-2 rounded-lg bg-card hover:bg-card-hover border border-main text-sub hover:text-main text-xs font-mono flex items-center gap-1.5 transition-colors cursor-pointer"
             title="Bagikan Tautan Profil"
           >
             {copied ? (
@@ -260,7 +387,7 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
 
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-card hover:bg-card-hover border border-main text-sub hover:text-main transition-colors text-xs font-mono flex items-center justify-center"
+            className="p-2 rounded-lg bg-card hover:bg-card-hover border border-main text-sub hover:text-main transition-colors text-xs font-mono flex items-center justify-center cursor-pointer"
             title="Ubah Tema"
           >
             {theme === 'dark' ? (
@@ -273,7 +400,7 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
       </header>
 
       {/* Center Linktree-Style Bio Card */}
-      <main className="w-full max-w-md mx-auto my-auto py-6 space-y-6">
+      <main className="w-full max-w-md mx-auto py-2 space-y-6">
         {/* Minimal Profile Header */}
         <div className="text-center space-y-3">
           <div className="w-24 h-24 rounded-full p-1 bg-card border-2 border-blue-600 dark:border-blue-400 shadow-lg mx-auto overflow-hidden relative">
@@ -296,7 +423,7 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
             </p>
           </div>
 
-          {/* Authentic Colorful Brand Icons Row (TikTok, Instagram, Threads, YouTube, Facebook) */}
+          {/* Exactly 6 Official Social Media Icons Row (TikTok, Instagram, Threads, YouTube, Facebook, LinkedIn) */}
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             {topSocialLinks.map((link) => {
               const Icon = link.icon;
@@ -306,9 +433,9 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title={`${link.title} (${link.subtitle})`}
+                  title={`${link.title} (${link.subtitle || ''})`}
                   aria-label={link.title}
-                  className={`p-3.5 rounded-full transition-all duration-200 flex items-center justify-center active:scale-95 ${link.colorStyle}`}
+                  className={`p-3.5 rounded-full transition-all duration-200 flex items-center justify-center active:scale-95 shadow-md ${link.colorStyle || 'bg-card text-main border border-main'}`}
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -317,88 +444,45 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
           </div>
         </div>
 
-        {/* Vertical Stack of Linktree Buttons */}
-        <div className="space-y-3">
-          {/* Main Portfolio Links */}
+        {/* 1. PINNED LINKS SECTION (CAPPED TO MAXIMUM 3 LINKS) */}
+        {pinnedLinks.length > 0 && (
           <div className="space-y-2.5">
-            {mainLinks.map((link) => {
-              const Icon = link.icon;
-              const content = (
-                <div className="w-full p-3.5 sm:p-4 rounded-xl bg-card hover:bg-card-hover border border-main hover:border-blue-500/50 transition-all duration-200 shadow-2xs hover:shadow-md flex items-center justify-between group cursor-pointer">
-                  <div className="flex items-center gap-3.5 min-w-0">
-                    <div className={`p-2 rounded-lg border shrink-0 ${link.iconBadgeStyle || 'bg-main text-blue-600 dark:text-blue-400 border-main'}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div className="min-w-0 text-left">
-                      <h2 className="text-sm font-bold text-main group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
-                        {link.title}
-                      </h2>
-                      {link.subtitle && (
-                        <p className="text-xs text-sub truncate font-normal">
-                          {link.subtitle}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  {link.isInternal ? (
-                    <ArrowRight className="w-4 h-4 text-muted group-hover:text-main group-hover:translate-x-1 transition-all shrink-0 ml-2" />
-                  ) : (
-                    <ExternalLink className="w-4 h-4 text-muted group-hover:text-main group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
-                  )}
-                </div>
-              );
+            <div className="flex items-center gap-1.5 px-1">
+              <Pin className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 rotate-45" />
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                Tautan Tersemat (Pinned)
+              </span>
+            </div>
 
-              return link.isInternal ? (
-                <Link key={link.id} href={link.url} className="block">
-                  {content}
-                </Link>
-              ) : (
-                <a key={link.id} href={link.url} target="_blank" rel="noopener noreferrer" className="block">
-                  {content}
-                </a>
-              );
-            })}
+            <div className="space-y-2.5">
+              {pinnedLinks.map((link) => renderLinkCard(link, true))}
+            </div>
           </div>
+        )}
 
-          {/* Research & Data Buttons (including Kaggle Card) */}
+        {/* 2. OTHER LINKS SECTION */}
+        {otherLinks.length > 0 && (
           <div className="space-y-2.5">
-            {researchLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.id}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full p-3.5 sm:p-4 rounded-xl bg-card hover:bg-card-hover border border-main hover:border-blue-500/50 transition-all duration-200 shadow-2xs hover:shadow-md flex items-center justify-between group block cursor-pointer"
-                >
-                  <div className="flex items-center gap-3.5 min-w-0">
-                    <div className={`p-2 rounded-lg border shrink-0 ${link.iconBadgeStyle || 'bg-main text-blue-600 dark:text-blue-400 border-main'}`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div className="min-w-0 text-left">
-                      <h2 className="text-sm font-bold text-main group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
-                        {link.title}
-                      </h2>
-                      {link.subtitle && (
-                        <p className="text-xs text-sub truncate font-normal">
-                          {link.subtitle}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-muted group-hover:text-main group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all shrink-0 ml-2" />
-                </a>
-              );
-            })}
+            <div className="flex items-center gap-1.5 px-1 pt-1">
+              <Sparkles className="w-3.5 h-3.5 text-muted" />
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-muted">
+                Tautan Lainnya
+              </span>
+            </div>
+
+            <div className="space-y-2.5">
+              {otherLinks.map((link) => renderLinkCard(link, false))}
+            </div>
           </div>
-        </div>
+        )}
       </main>
 
       {/* Simple Footer */}
-      <footer className="w-full max-w-md mx-auto text-center py-4 border-t border-main text-xs font-mono text-muted">
-        <p>awd.dev • Software Engineer & Content Creator</p>
+      <footer className="w-full max-w-md mx-auto text-center pt-4 pb-2 border-t border-main text-xs font-mono text-muted shrink-0 mt-4">
+        <p>© {new Date().getFullYear()} I Putu Agus Wahyu Dupayana</p>
       </footer>
     </div>
   );
 }
+
+

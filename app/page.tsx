@@ -36,10 +36,10 @@ export default async function HomePage() {
   const githubRepos = await getGitHubRepos(3);
 
   return (
-    <div className="min-h-screen bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="bg-main text-main flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       <Navbar />
 
-      <main className="flex-1">
+      <main>
         <HeroSection data={heroData} />
         <AboutSection data={aboutData} />
 

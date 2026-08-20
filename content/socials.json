@@ -1,6 +1,50 @@
 {
   "channels": [
     {
+      "id": "website",
+      "name": "Website Portofolio",
+      "handle": "awd.dev • Portofolio & Riset",
+      "role": "Katalog Proyek, Arsitektur Systems, & Publikasi Riset",
+      "roleEn": "Project Catalog, System Architecture & Research",
+      "url": "/",
+      "iconKey": "website",
+      "accentColor": "border-emerald-500/30 hover:border-emerald-500 text-emerald-400",
+      "isPinned": true
+    },
+    {
+      "id": "cv",
+      "name": "Curriculum Vitae",
+      "handle": "Naskah Resume ATS Resmi",
+      "role": "Naskah Resume Resmi I Putu Agus Wahyu Dupayana",
+      "roleEn": "Official ATS Resume of I Putu Agus Wahyu Dupayana",
+      "url": "/cv",
+      "iconKey": "cv",
+      "accentColor": "border-amber-500/30 hover:border-amber-500 text-amber-400",
+      "isPinned": true
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "handle": "in/aguswahyu",
+      "role": "Pengalaman Kerja & Jaringan Profesional",
+      "roleEn": "Work Experience & Professional Network",
+      "url": "https://www.linkedin.com/in/aguswahyu/",
+      "iconKey": "linkedin",
+      "accentColor": "border-sky-500/30 hover:border-sky-500 text-sky-400",
+      "isPinned": false
+    },
+    {
+      "id": "github",
+      "name": "GitHub Repositories",
+      "handle": "@putuwahyu29 • Open Source",
+      "role": "Source Code Open-Source & Project Repos",
+      "roleEn": "Open-Source Source Code & Project Repositories",
+      "url": "https://github.com/putuwahyu29",
+      "iconKey": "github",
+      "accentColor": "border-slate-500/30 hover:border-slate-400 text-slate-300",
+      "isPinned": false
+    },
+    {
       "id": "tiktok",
       "name": "TikTok",
       "handle": "@aguswahyudupayana",
@@ -8,7 +52,8 @@
       "roleEn": "Coding Tips & Short Tutorials",
       "url": "https://tiktok.com/@aguswahyudupayana",
       "iconKey": "tiktok",
-      "accentColor": "border-cyan-500/30 hover:border-cyan-500 text-cyan-400"
+      "accentColor": "border-cyan-500/30 hover:border-cyan-500 text-cyan-400",
+      "isPinned": false
     },
     {
       "id": "instagram",
@@ -18,7 +63,8 @@
       "roleEn": "Web Dev & Linux Educational Content",
       "url": "https://instagram.com/aguswahyudupayana",
       "iconKey": "instagram",
-      "accentColor": "border-pink-500/30 hover:border-pink-500 text-pink-500"
+      "accentColor": "border-pink-500/30 hover:border-pink-500 text-pink-500",
+      "isPinned": false
     },
     {
       "id": "threads",
@@ -28,7 +74,8 @@
       "roleEn": "Tech & Software Engineering Discussions",
       "url": "https://threads.net/@aguswahyudupayana",
       "iconKey": "threads",
-      "accentColor": "border-purple-500/30 hover:border-purple-500 text-purple-400"
+      "accentColor": "border-purple-500/30 hover:border-purple-500 text-purple-400",
+      "isPinned": false
     },
     {
       "id": "kaggle",
@@ -38,7 +85,30 @@
       "roleEn": "Datasets, Notebooks & ML Competitions",
       "url": "https://kaggle.com/iputuaguswahyud",
       "iconKey": "kaggle",
-      "accentColor": "border-sky-500/30 hover:border-sky-500 text-sky-400"
+      "accentColor": "border-sky-500/30 hover:border-sky-500 text-sky-400",
+      "isPinned": false
+    },
+    {
+      "id": "scholar",
+      "name": "Google Scholar Profile",
+      "handle": "Sitasi Riset Ilmiah Resmi",
+      "role": "Sitasi & Naskah Riset Ilmiah Resmi",
+      "roleEn": "Citations & Official Scientific Research Papers",
+      "url": "https://scholar.google.com/citations?user=NeiAOi8AAAAJ",
+      "iconKey": "scholar",
+      "accentColor": "border-indigo-500/30 hover:border-indigo-500 text-indigo-400",
+      "isPinned": false
+    },
+    {
+      "id": "blog",
+      "name": "Blog",
+      "handle": "blog.awd.my.id",
+      "role": "Artikel Homelab, Linux, & DevOps",
+      "roleEn": "Homelab, Linux & DevOps Articles",
+      "url": "https://blog.awd.my.id",
+      "iconKey": "blog",
+      "accentColor": "border-purple-500/30 hover:border-purple-500 text-purple-400",
+      "isPinned": true
     },
     {
       "id": "youtube",
@@ -48,7 +118,8 @@
       "roleEn": "Full-Stack & Homelab Screencast Tutorials",
       "url": "https://youtube.com/@aguswahyudupayana",
       "iconKey": "youtube",
-      "accentColor": "border-red-500/30 hover:border-red-500 text-red-500"
+      "accentColor": "border-red-500/30 hover:border-red-500 text-red-500",
+      "isPinned": false
     },
     {
       "id": "facebook",
@@ -58,7 +129,8 @@
       "roleEn": "Community Discussion & Article Updates",
       "url": "https://facebook.com/aguswahyudupayana",
       "iconKey": "facebook",
-      "accentColor": "border-blue-500/30 hover:border-blue-500 text-blue-500"
+      "accentColor": "border-blue-500/30 hover:border-blue-500 text-blue-500",
+      "isPinned": false
     }
   ]
 }
