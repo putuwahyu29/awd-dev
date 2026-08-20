@@ -111,6 +111,17 @@
       "isPinned": true
     },
     {
+      "id": "course",
+      "name": "AWD Course",
+      "handle": "course.awd.my.id",
+      "role": "Platform Pembelajaran Pemrograman & Analisis Data Interaktif",
+      "roleEn": "Interactive Programming & Data Analysis Learning Platform",
+      "url": "https://course.awd.my.id",
+      "iconKey": "course",
+      "accentColor": "border-blue-500/30 hover:border-blue-500 text-blue-400",
+      "isPinned": false
+    },
+    {
       "id": "youtube",
       "name": "YouTube",
       "handle": "@aguswahyudupayana",

@@ -41,6 +41,15 @@ export default function Footer() {
               {t('Pusat Tautan & Bio', 'Bio Links')}
             </Link>
             <span className="text-muted">•</span>
+            <a
+              href="https://course.awd.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
+            >
+              {t('Awd Course', 'Awd Course')}
+            </a>
+            <span className="text-muted">•</span>
             <Link
               href="/presentation"
               className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"

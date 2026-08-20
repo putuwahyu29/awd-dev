@@ -144,6 +144,9 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
         return GraduationCap;
       case 'blog':
         return BookOpen;
+      case 'course':
+      case 'kursus':
+        return GraduationCap;
       default:
         return Globe;
     }
@@ -178,6 +181,9 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
         return 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30';
       case 'blog':
         return 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30';
+      case 'course':
+      case 'kursus':
+        return 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30';
       default:
         return 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30';
     }
@@ -274,6 +280,15 @@ export default function LinksBioView({ socials }: LinksBioViewProps) {
           url: 'https://blog.awd.my.id',
           icon: BookOpen,
           iconBadgeStyle: 'bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30',
+          isPinned: false,
+        },
+        {
+          id: 'course',
+          title: 'AWD Course',
+          subtitle: 'course.awd.my.id • Platform Pembelajaran & Eksekusi Kode Interaktif',
+          url: 'https://course.awd.my.id',
+          icon: GraduationCap,
+          iconBadgeStyle: 'bg-blue-500/15 text-blue-600 dark:text-blue-400 border-blue-500/30',
           isPinned: false,
         },
       ];
