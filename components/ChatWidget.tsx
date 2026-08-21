@@ -430,12 +430,14 @@ export default function ChatWidget() {
     }
   }, [messages, isOpen, scrollToBottom]);
 
-  // Focus input when opened
+  // Prevent background body scroll when open
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 100);
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
     }
   }, [isOpen]);
 
@@ -616,6 +618,15 @@ export default function ChatWidget() {
         </button>
       </aside>
 
+      {/* Background Blur Overlay for Mobile & Focus */}
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-45 bg-black/40 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
+          aria-hidden="true"
+        />
+      )}
+
       {/* Floating Chat Window */}
       {isOpen && (
         <div
@@ -625,7 +636,7 @@ export default function ChatWidget() {
           className={`fixed z-50 transition-all duration-300 ease-out flex flex-col bg-card border border-main shadow-2xl overflow-hidden ${
             isExpanded
               ? 'inset-2 sm:inset-6 md:inset-10 rounded-2xl'
-              : 'bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] h-[580px] max-h-[calc(100vh-2rem)] rounded-2xl'
+              : 'bottom-0 left-0 right-0 sm:bottom-6 sm:right-6 sm:left-auto w-full sm:w-[440px] h-[85vh] sm:h-[580px] max-h-[100dvh] rounded-t-3xl sm:rounded-2xl'
           }`}
         >
           {/* Header */}
