@@ -3,7 +3,7 @@
     {
       "id": "website",
       "name": "Website Portofolio",
-      "handle": "awd.dev • Portofolio & Riset",
+      "handle": "Web Portofolio",
       "role": "Katalog Proyek, Arsitektur Systems, & Publikasi Riset",
       "roleEn": "Project Catalog, System Architecture & Research",
       "url": "/",
@@ -14,7 +14,7 @@
     {
       "id": "cv",
       "name": "Curriculum Vitae",
-      "handle": "Naskah Resume ATS Resmi",
+      "handle": "Curriculum Vitae",
       "role": "Naskah Resume Resmi I Putu Agus Wahyu Dupayana",
       "roleEn": "Official ATS Resume of I Putu Agus Wahyu Dupayana",
       "url": "/cv",
@@ -112,14 +112,14 @@
     },
     {
       "id": "course",
-      "name": "AWD Course",
+      "name": "Course",
       "handle": "course.awd.my.id",
       "role": "Platform Pembelajaran Pemrograman & Analisis Data Interaktif",
       "roleEn": "Interactive Programming & Data Analysis Learning Platform",
       "url": "https://course.awd.my.id",
       "iconKey": "course",
       "accentColor": "border-blue-500/30 hover:border-blue-500 text-blue-400",
-      "isPinned": false
+      "isPinned": true
     },
     {
       "id": "youtube",
