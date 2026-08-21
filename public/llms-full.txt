@@ -82,7 +82,7 @@ This is the comprehensive machine-readable dossier for I Putu Agus Wahyu Dupayan
 17. **MediSTIS** (https://awd.my.id/projects/medistis) - Campus clinic electronic medical record and pharmaceutical inventory system.
 18. **SEMA STIS** (https://awd.my.id/projects/sema-stis) - Student senate legislative governance and document portal.
 19. **Rinjani STIS** (https://awd.my.id/projects/rinjani-stis) - Regional student organization community portal.
-20. **Poisson STIS** (https://awd.my.id/projects/poisson-stis) - Statistical arts and photography showcase platform.
+20. **Poisson STIS** (https://awd.my.id/projects/poisson-stis) - National student competition registration and event management platform.
 21. **Shop Coffee Dashboard** (https://awd.my.id/projects/shop-coffe-dashboard) - Point-of-sale analytics and inventory control system.
 22. **SPILL Course** (https://awd.my.id/projects/spill-course) - Interactive online learning management system.
 23. **Stream Bisection Method** (https://awd.my.id/projects/stream-bisection-method) - Numerical computing root-finding visualization tool.

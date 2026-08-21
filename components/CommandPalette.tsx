@@ -84,7 +84,9 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
   const handleSelectItem = useCallback(
     (item: SearchItem) => {
       onClose();
-      if (item.isExternal) {
+      if (item.id === 'mode-ai' || item.url === '#ai-chat') {
+        window.dispatchEvent(new CustomEvent('open-ai-chat'));
+      } else if (item.isExternal) {
         window.open(item.url, '_blank', 'noopener,noreferrer');
       } else {
         router.push(item.url);

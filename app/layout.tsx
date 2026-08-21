@@ -5,6 +5,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import { CvModalProvider } from '@/context/CvModalContext';
 import CvPreviewModal from '@/components/CvPreviewModal';
 import ScrollToTop from '@/components/ScrollToTop';
+import ChatWidget from '@/components/ChatWidget';
 import './globals.css';
 
 const jakarta = Plus_Jakarta_Sans({
@@ -233,6 +234,7 @@ export default function RootLayout({
             <CvModalProvider>
               {children}
               <CvPreviewModal />
+              <ChatWidget />
               <ScrollToTop />
             </CvModalProvider>
           </LanguageProvider>

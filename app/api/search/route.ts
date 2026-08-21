@@ -27,6 +27,14 @@ export async function GET() {
     const items: SearchItem[] = [
       // Quick Mode Shortcuts & Featured Portals
       {
+        id: 'mode-ai',
+        title: '✨ AWD AI Assistant',
+        subtitle: 'Tanya asisten kecerdasan buatan seputar profil, proyek, keahlian, dan publikasi Agus Wahyu',
+        category: 'Tautan' as const,
+        url: '#ai-chat',
+        isExternal: false,
+      },
+      {
         id: 'mode-cv',
         title: '📄 Curriculum Vitae',
         subtitle: 'Naskah resmi Curriculum Vitae I Putu Agus Wahyu Dupayana (/cv)',

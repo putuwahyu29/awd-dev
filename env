@@ -5,3 +5,8 @@ RSS_FEED_URL=
 # Buat token di: https://github.com/settings/tokens/new?scopes=read:user,public_repo
 # Jika dikosongkan, akan tampil repos dengan bintang terbanyak (fallback)
 GITHUB_TOKEN=
+
+# Mistral AI Chatbot API Configuration
+# Dapatkan API Key di: https://console.mistral.ai/api-keys/
+MISTRAL_API_KEY=
+MISTRAL_MODEL=mistral-small-latest
