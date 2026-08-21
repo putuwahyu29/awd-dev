@@ -25,7 +25,7 @@ export async function GET() {
     ]);
 
     const items: SearchItem[] = [
-      // Quick Mode Shortcuts
+      // Quick Mode Shortcuts & Featured Portals
       {
         id: 'mode-cv',
         title: '📄 Curriculum Vitae',
@@ -41,6 +41,22 @@ export async function GET() {
         category: 'Tautan' as const,
         url: '/links',
         isExternal: false,
+      },
+      {
+        id: 'portal-course',
+        title: '🎓 AWD Course — Platform Pembelajaran & Eksekusi Python WASM',
+        subtitle: 'Platform edukasi teknis pemrograman & analisis data interaktif (course.awd.my.id)',
+        category: 'Tautan' as const,
+        url: 'https://course.awd.my.id',
+        isExternal: true,
+      },
+      {
+        id: 'portal-blog',
+        title: '✍️ AWD Blog — Catatan Teknis & Artikel Homelab',
+        subtitle: 'Artikel seputar Linux, Homelab, DevOps, Cloud, & Software Engineering (blog.awd.my.id)',
+        category: 'Blog' as const,
+        url: 'https://blog.awd.my.id',
+        isExternal: true,
       },
       {
         id: 'mode-presentation',
@@ -91,15 +107,17 @@ export async function GET() {
         isExternal: true,
       })),
 
-      // Socials
-      ...socials.map((s) => ({
-        id: `social-${s.id}`,
-        title: s.name,
-        subtitle: `${s.handle} - ${s.role}`,
-        category: 'Media Sosial' as const,
-        url: s.url,
-        isExternal: true,
-      })),
+      // Socials & Secondary Channels
+      ...socials
+        .filter((s) => s.id !== 'website' && s.id !== 'cv' && s.id !== 'blog' && s.id !== 'course')
+        .map((s) => ({
+          id: `social-${s.id}`,
+          title: s.name,
+          subtitle: `${s.handle} - ${s.role}`,
+          category: 'Media Sosial' as const,
+          url: s.url,
+          isExternal: true,
+        })),
     ];
 
     return NextResponse.json(items, {

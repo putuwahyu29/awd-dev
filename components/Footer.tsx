@@ -41,6 +41,13 @@ export default function Footer() {
               {t('Pusat Tautan & Bio', 'Bio Links')}
             </Link>
             <span className="text-muted">•</span>
+            <Link
+              href="/presentation"
+              className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            >
+              {t('Slide Deck', 'Interactive Deck')}
+            </Link>
+            <span className="text-muted">•</span>
             <a
               href="https://course.awd.my.id"
               target="_blank"
@@ -50,12 +57,14 @@ export default function Footer() {
               {t('Awd Course', 'Awd Course')}
             </a>
             <span className="text-muted">•</span>
-            <Link
-              href="/presentation"
-              className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            <a
+              href="https://blog.awd.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
             >
-              {t('Slide Deck', 'Interactive Deck')}
-            </Link>
+              {t('Awd Blog', 'Awd Blog')}
+            </a>
           </div>
         </div>
 

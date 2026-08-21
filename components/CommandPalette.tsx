@@ -76,7 +76,8 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
     return (
       item.title.toLowerCase().includes(q) ||
       (item.subtitle && item.subtitle.toLowerCase().includes(q)) ||
-      item.category.toLowerCase().includes(q)
+      item.category.toLowerCase().includes(q) ||
+      (item.url && item.url.toLowerCase().includes(q))
     );
   });
 
@@ -116,7 +117,7 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
 
   if (!isOpen) return null;
 
-  const categories = ['Semua', 'Proyek', 'Sertifikasi', 'Publikasi', 'Blog', 'Media Sosial'];
+  const categories = ['Semua', 'Tautan', 'Proyek', 'Sertifikasi', 'Publikasi', 'Blog', 'Media Sosial'];
 
   const getCategoryIcon = (cat: string) => {
     switch (cat) {

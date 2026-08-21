@@ -101,7 +101,7 @@
     },
     {
       "id": "blog",
-      "name": "Blog",
+      "name": "AWD Blog",
       "handle": "blog.awd.my.id",
       "role": "Artikel Homelab, Linux, & DevOps",
       "roleEn": "Homelab, Linux & DevOps Articles",
