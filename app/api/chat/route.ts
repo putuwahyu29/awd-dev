@@ -1,39 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { buildComprehensiveKnowledgeBase } from '@/lib/portfolio-knowledge';
 
 export const runtime = 'nodejs';
 
-// Cache portfolio facts in memory to prevent repeated disk I/O
-let cachedPortfolioFacts = '';
-
-function getPortfolioFacts(): string {
-  if (cachedPortfolioFacts) {
-    return cachedPortfolioFacts;
-  }
-
-  try {
-    const filePath = path.join(process.cwd(), 'public', 'llms-full.txt');
-    if (fs.existsSync(filePath)) {
-      cachedPortfolioFacts = fs.readFileSync(filePath, 'utf-8');
-      return cachedPortfolioFacts;
-    }
-  } catch (error) {
-    console.error('Error reading llms-full.txt:', error);
-  }
-
-  return `
-Profile: I Putu Agus Wahyu Dupayana (awd.dev / awd.my.id)
-Role: Software Engineer, Systems Architect, Pranata Komputer Ahli Pertama di BPS Provinsi Jawa Timur.
-Education: Politeknik Statistika STIS (Sarjana Terapan Statistika - Komputasi Statistik, 2020-2024).
-Tech Stack: Next.js, React, TypeScript, Laravel, PHP, Filament, Python (FastAPI), Proxmox VE, Docker, GCP, PostgreSQL, Redis, Agentic AI, RAG.
-Key Projects: NusaRoute AI, AWD TeleDrive, Wirasaga, Kadiri Platform, Panjalu Platform, SIMANJA BPS NTB, SSO BPS NTB, CASN BPS, SIKGB BPS, MediSTIS, SEMA STIS, Poisson STIS.
-Publications: The Application of RAG in Developing an Intelligent Risk Management Platform (ICDSOS 2025).
-Contact: aguswahyu@office.awd.my.id, https://github.com/putuwahyu29, https://linkedin.com/in/aguswahyu
-  `.trim();
-}
-
-function buildSystemPrompt(portfolioFacts: string): string {
+function buildSystemPrompt(knowledgeBase: string): string {
   return `Anda adalah "AWD AI Assistant", asisten kecerdasan buatan resmi untuk website portofolio interaktif I Putu Agus Wahyu Dupayana (tersedia di https://awd.my.id dan awd.dev).
 
 ==================================================
@@ -83,8 +53,8 @@ ATURAN GUARDRAILS KETAT (STRICT GUARDRAILS):
    - Jawablah menggunakan bahasa yang sama dengan bahasa yang digunakan pengguna (Bahasa Indonesia atau English).
 
 ==================================================
-DOSSIER DATA RESMI PORTOFOLIO AGUS WAHYU (GROUNDING CONTEXT):
-${portfolioFacts}
+BASIS PENGETAHUAN LENGKAP & DATA PORTOFOLIO AGUS WAHYU (GROUNDING CONTEXT):
+${knowledgeBase}
 ==================================================
 `;
 }
@@ -118,8 +88,8 @@ export async function POST(req: NextRequest) {
     }
 
     const model = process.env.MISTRAL_MODEL || 'mistral-small-latest';
-    const portfolioFacts = getPortfolioFacts();
-    const systemPrompt = buildSystemPrompt(portfolioFacts);
+    const knowledgeBase = buildComprehensiveKnowledgeBase();
+    const systemPrompt = buildSystemPrompt(knowledgeBase);
 
     // Limit conversation history to last 10 messages to keep context focused & efficient
     const recentMessages: IncomingMessage[] = body.messages.slice(-10).map((m: IncomingMessage) => ({
