@@ -16,6 +16,16 @@
         "Mengembangkan dan memelihara sistem informasi dan platform digital internal untuk mendukung percepatan pengolahan data statistik.",
         "Merancang arsitektur aplikasi web modern serta mengintegrasikan solusi otomatisasi data pipeline dan infrastruktur server."
       ]
+    },
+    {
+      "role": "AI Training Engineer",
+      "company": "Shipd",
+      "location": "Remote",
+      "period": "September 2026 – Sekarang",
+      "descriptions": [
+        "Merancang, mengkurasi, dan mengevaluasi dataset berkualitas tinggi untuk pelatihan, fine-tuning, dan alignment Large Language Models (LLMs).",
+        "Mengembangkan pipeline evaluasi performa model, benchmark reasoning dan akurasi kode, serta pengoptimalan prompt engineering guna meningkatkan reliabilitas output model AI."
+      ]
     }
   ],
   "education": [

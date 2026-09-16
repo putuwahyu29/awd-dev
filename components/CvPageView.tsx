@@ -14,14 +14,16 @@ import {
   Share2,
   ChevronUp,
 } from 'lucide-react';
-import { CvData } from '@/lib/cv-types';
+import { CvData, CvAllData, fallbackCvData } from '@/lib/cv-types';
 import CvTemplate from '@/components/CvTemplate';
 import { useLanguage } from '@/context/LanguageContext';
 import { useTheme } from '@/context/ThemeContext';
 import { exportCvToPdf } from '@/lib/export-pdf';
 
 interface CvPageViewProps {
-  cvData: CvData;
+  cvData?: CvData;
+  allCvData?: CvAllData;
+  initialCvData?: CvData;
 }
 
 const emptySubscribe = () => () => {};
@@ -29,18 +31,39 @@ function useIsMounted() {
   return useSyncExternalStore(emptySubscribe, () => true, () => false);
 }
 
-export default function CvPageView({ cvData }: CvPageViewProps) {
+export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageViewProps) {
   const mounted = useIsMounted();
   const { theme, toggleTheme } = useTheme();
   const { lang, setLang, t } = useLanguage();
+  const [clientAllCvData, setClientAllCvData] = useState<CvAllData | null>(allCvData || null);
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const [zoomLevel, setZoomLevel] = useState<number>(1.0);
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
-  const personName = cvData.personalInfo.fullName || 'I Putu Agus Wahyu Dupayana';
-  const fileName = `CV_${personName.replace(/\s+/g, '_')}.pdf`;
+  useEffect(() => {
+    if (!allCvData && !clientAllCvData) {
+      fetch('/api/cv')
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data.id && data.en) {
+            setClientAllCvData({ id: data.id, en: data.en });
+          }
+        })
+        .catch((err) => console.error('Error fetching bilingual CV:', err));
+    }
+  }, [allCvData, clientAllCvData]);
+
+  const activeAllData = allCvData || clientAllCvData;
+  const activeCvData: CvData =
+    (activeAllData && (activeAllData[lang] || activeAllData.id)) ||
+    initialCvData ||
+    cvData ||
+    fallbackCvData;
+
+  const personName = activeCvData.personalInfo.fullName || 'I Putu Agus Wahyu Dupayana';
+  const fileName = `CV_${personName.replace(/\s+/g, '_')}_${lang.toUpperCase()}.pdf`;
 
   // Track scroll position for Floating Scroll-to-Top Button
   useEffect(() => {
@@ -73,7 +96,7 @@ export default function CvPageView({ cvData }: CvPageViewProps) {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [cvData, isExporting]);
+  }, [activeCvData, isExporting, fileName, lang]);
 
   const handleZoomIn = () => {
     setZoomLevel((prev) => Math.min(Number((prev + 0.15).toFixed(2)), 1.6));
@@ -104,7 +127,7 @@ export default function CvPageView({ cvData }: CvPageViewProps) {
     setIsExporting(true);
 
     try {
-      exportCvToPdf(cvData, fileName);
+      exportCvToPdf(activeCvData, fileName, lang);
       setIsSuccess(true);
       setTimeout(() => setIsSuccess(false), 2500);
     } catch (err) {
@@ -263,7 +286,7 @@ export default function CvPageView({ cvData }: CvPageViewProps) {
             marginBottom: zoomLevel > 1.0 ? `${(zoomLevel - 1.0) * 400}px` : '0px',
           }}
         >
-          <CvTemplate data={cvData} />
+          <CvTemplate data={activeCvData} lang={lang} />
         </div>
       </main>
 

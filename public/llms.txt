@@ -1,13 +1,15 @@
 # I Putu Agus Wahyu Dupayana (awd.dev)
 
-> Official Portfolio & Systems Architecture Dossier of I Putu Agus Wahyu Dupayana — Software Engineer, Systems Architect, and Pranata Komputer Ahli Pertama at BPS Provinsi Jawa Timur.
+> Official Portfolio & Systems Architecture Dossier of I Putu Agus Wahyu Dupayana — AI Training Engineer at Shipd, Software Engineer & Systems Architect, and Pranata Komputer Ahli Pertama at BPS Provinsi Jawa Timur.
 
 ## Identity & Professional Overview
 - **Full Name**: I Putu Agus Wahyu Dupayana
 - **Aliases**: Agus Wahyu, awd, awd.dev, putuwahyu29
-- **Title / Role**: Software Engineer & Systems Architect / Pranata Komputer Ahli Pertama
-- **Organization**: BPS Provinsi Jawa Timur (Statistics of East Java Province), Surabaya, Indonesia
-- **Education**: D-IV Computational Statistics (Sarjana Terapan Statistika), Politeknik Statistika STIS, Jakarta (2020 – 2024)
+- **Title / Role**: Pranata Komputer Ahli Pertama / Software Engineer & Systems Architect / AI Training Engineer
+- **Organizations & Roles**:
+  - **BPS Provinsi Jawa Timur**: Pranata Komputer Ahli Pertama / Software Engineer & Systems Architect (December 2024 – Present, Surabaya, Indonesia - Main Organization)
+  - **Shipd**: AI Training Engineer (September 2026 – Present, Remote)
+- **Education**: D-IV Statistical Computing / Bachelor of Applied Statistics (S.Tr.Stat.), Polytechnic of Statistics STIS, Jakarta (2020 – 2024)
 - **Primary Website**: https://awd.my.id
 - **Alternative URLs**: https://awd.dev
 

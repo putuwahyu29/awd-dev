@@ -1,7 +1,12 @@
 import { jsPDF } from 'jspdf';
 import { CvData } from './cv-types';
 
-export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
+export function exportCvToPdf(
+  cvData: CvData,
+  customFileName?: string,
+  lang: 'id' | 'en' = 'id'
+): void {
+  const isEn = lang === 'en';
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -29,7 +34,9 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
 
   const { personalInfo, experiences, education, certifications, publications, skills, summary } = cvData;
   const fullName = personalInfo.fullName || 'I PUTU AGUS WAHYU DUPAYANA';
-  const fileName = customFileName || `CV_${fullName.replace(/\s+/g, '_')}.pdf`;
+  const defaultSuffix = isEn ? '_EN' : '_ID';
+  const fileName =
+    customFileName || `CV_${fullName.replace(/\s+/g, '_')}${defaultSuffix}.pdf`;
 
   // ================= 1. HEADER (STANDARD ATS RESUME) =================
   // Full Name: 22pt Bold Uppercase
@@ -79,7 +86,7 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
 
   // Optional Summary: 10.5pt Standard
   if (summary && summary.trim().length > 0) {
-    renderSectionHeader('TENTANG SAYA', 14);
+    renderSectionHeader(isEn ? 'PROFESSIONAL SUMMARY' : 'TENTANG SAYA', 14);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10.5);
     doc.setTextColor(30, 41, 59); // slate-800
@@ -90,9 +97,9 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
     y += blockHeight + 3.5;
   }
 
-  // ================= 2. PENGALAMAN KERJA =================
+  // ================= 2. PENGALAMAN KERJA / WORK EXPERIENCE =================
   if (experiences && experiences.length > 0) {
-    renderSectionHeader('PENGALAMAN KERJA', 24);
+    renderSectionHeader(isEn ? 'WORK EXPERIENCE' : 'PENGALAMAN KERJA', 24);
 
     experiences.forEach((exp) => {
       checkPageBreak(22);
@@ -138,9 +145,9 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
     });
   }
 
-  // ================= 3. PENDIDIKAN =================
+  // ================= 3. PENDIDIKAN / EDUCATION =================
   if (education && education.length > 0) {
-    renderSectionHeader('PENDIDIKAN', 20);
+    renderSectionHeader(isEn ? 'EDUCATION' : 'PENDIDIKAN', 20);
 
     education.forEach((edu) => {
       checkPageBreak(18);
@@ -180,9 +187,9 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
     });
   }
 
-  // ================= 4. PELATIHAN & SERTIFIKASI =================
+  // ================= 4. PELATIHAN & SERTIFIKASI / TRAINING & CERTIFICATIONS =================
   if (certifications && certifications.length > 0) {
-    renderSectionHeader('PELATIHAN & SERTIFIKASI', 16);
+    renderSectionHeader(isEn ? 'TRAINING & CERTIFICATIONS' : 'PELATIHAN & SERTIFIKASI', 16);
 
     certifications.forEach((cert) => {
       checkPageBreak(12);
@@ -210,9 +217,9 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
     y += 2;
   }
 
-  // ================= 5. PUBLIKASI =================
+  // ================= 5. PUBLIKASI / PUBLICATIONS =================
   if (publications && publications.length > 0) {
-    renderSectionHeader('PUBLIKASI', 16);
+    renderSectionHeader(isEn ? 'PUBLICATIONS' : 'PUBLIKASI', 16);
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10.5);
@@ -231,9 +238,9 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
     y += 2;
   }
 
-  // ================= 6. KEAHLIAN =================
+  // ================= 6. KEAHLIAN / SKILLS =================
   if (skills && skills.length > 0) {
-    renderSectionHeader('KEAHLIAN', 14);
+    renderSectionHeader(isEn ? 'SKILLS' : 'KEAHLIAN', 14);
 
     skills.forEach((skill) => {
       const bullet = '•';
@@ -262,7 +269,8 @@ export function exportCvToPdf(cvData: CvData, customFileName?: string): void {
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(9);
       doc.setTextColor(148, 163, 184); // slate-400
-      doc.text(`Halaman ${i} dari ${totalPages}`, pageWidth / 2, pageHeight - 8, { align: 'center' });
+      const pageLabel = isEn ? `Page ${i} of ${totalPages}` : `Halaman ${i} dari ${totalPages}`;
+      doc.text(pageLabel, pageWidth / 2, pageHeight - 8, { align: 'center' });
     }
   }
 

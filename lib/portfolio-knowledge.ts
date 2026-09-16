@@ -90,6 +90,52 @@ export function buildComprehensiveKnowledgeBase(): string {
     console.error('Error reading cv.json:', err);
   }
 
+  // 3b. English Curriculum Vitae & Experience (content/cv.en.json)
+  try {
+    const cvEnPath = path.join(rootDir, 'content', 'cv.en.json');
+    if (fs.existsSync(cvEnPath)) {
+      const cvEn = JSON.parse(fs.readFileSync(cvEnPath, 'utf-8'));
+      let cvEnText = '=== OFFICIAL ENGLISH CURRICULUM VITAE ===\n';
+      cvEnText += `Summary: ${cvEn.summary || ''}\n\n`;
+
+      if (Array.isArray(cvEn.experiences)) {
+        cvEnText += 'Work Experience:\n';
+        cvEn.experiences.forEach(
+          (exp: { role: string; company: string; period: string; location: string; descriptions: string[] }) => {
+            cvEnText += `* ${exp.role} at ${exp.company} (${exp.location}, ${exp.period})\n`;
+            if (Array.isArray(exp.descriptions)) {
+              exp.descriptions.forEach((d: string) => {
+                cvEnText += `  - ${d}\n`;
+              });
+            }
+          }
+        );
+      }
+
+      if (Array.isArray(cvEn.education)) {
+        cvEnText += '\nEducation:\n';
+        cvEn.education.forEach(
+          (edu: { institution: string; degree: string; major: string; period: string; details: string }) => {
+            cvEnText += `* ${edu.institution} - ${edu.degree} (${edu.major}, ${edu.period}): ${edu.details}\n`;
+          }
+        );
+      }
+
+      if (Array.isArray(cvEn.certifications)) {
+        cvEnText += '\nCertifications & Trainings:\n';
+        cvEn.certifications.forEach(
+          (cert: { title: string; issuer: string; period: string }) => {
+            cvEnText += `* ${cert.title} - ${cert.issuer} (${cert.period})\n`;
+          }
+        );
+      }
+
+      sections.push(cvEnText);
+    }
+  } catch (err) {
+    console.error('Error reading cv.en.json:', err);
+  }
+
   // 4. Tech Stack Breakdown (content/tech-stack.json)
   try {
     const techPath = path.join(rootDir, 'content', 'tech-stack.json');

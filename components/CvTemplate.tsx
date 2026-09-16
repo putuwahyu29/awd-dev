@@ -5,11 +5,13 @@ import { CvData } from '@/lib/cv-types';
 
 interface CvTemplateProps {
   data: CvData;
+  lang?: 'id' | 'en';
   className?: string;
 }
 
-export default function CvTemplate({ data, className = '' }: CvTemplateProps) {
-  const { personalInfo, experiences, education, certifications, publications, skills } = data;
+export default function CvTemplate({ data, lang = 'id', className = '' }: CvTemplateProps) {
+  const isEn = lang === 'en';
+  const { personalInfo, experiences, education, certifications, publications, skills, summary } = data;
   const website = personalInfo.website || personalInfo.websiteDisplay || 'awd.my.id';
   const email = personalInfo.email || 'aguswahyu@office.awd.my.id';
   const linkedin = personalInfo.linkedin || personalInfo.linkedinDisplay || 'linkedin.com/in/aguswahyu';
@@ -17,7 +19,11 @@ export default function CvTemplate({ data, className = '' }: CvTemplateProps) {
   return (
     <div className={`cv-print-root w-full flex justify-center ${className}`}>
       {/* Responsive Document Paper (Supports sleek Dark Mode on screen & Pure White on Print) */}
-      <div id="cv-printable-document" className="cv-paper relative w-full max-w-[210mm] bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6 sm:p-10 md:p-14 rounded-xl sm:rounded-2xl shadow-2xl shadow-slate-900/10 dark:shadow-2xl dark:shadow-black/70 ring-1 ring-slate-900/5 dark:ring-white/10 font-sans select-text leading-normal transition-all duration-200">
+      <div
+        id="cv-printable-document"
+        className="cv-paper notranslate relative w-full max-w-[210mm] bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6 sm:p-10 md:p-14 rounded-xl sm:rounded-2xl shadow-2xl shadow-slate-900/10 dark:shadow-2xl dark:shadow-black/70 ring-1 ring-slate-900/5 dark:ring-white/10 font-sans select-text leading-normal transition-all duration-200"
+        translate="no"
+      >
         {/* 1. HEADER (CENTERED & MINIMALIST ATS STYLE) */}
         <header className="cv-section text-center mb-7">
           <h1 className="text-2xl sm:text-3xl md:text-[28px] font-bold text-slate-950 dark:text-white tracking-tight uppercase">
@@ -71,11 +77,24 @@ export default function CvTemplate({ data, className = '' }: CvTemplateProps) {
           </div>
         </header>
 
-        {/* 2. PENGALAMAN KERJA */}
+        {/* Optional Summary Section */}
+        {summary && summary.trim().length > 0 && (
+          <section className="cv-section mb-7">
+            <h2 className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-slate-950 dark:text-white mb-1">
+              {isEn ? 'PROFESSIONAL SUMMARY' : 'TENTANG SAYA'}
+            </h2>
+            <div className="cv-divider h-[1px] bg-slate-300 dark:bg-slate-700 w-full mb-3"></div>
+            <p className="text-xs sm:text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed text-justify">
+              {summary}
+            </p>
+          </section>
+        )}
+
+        {/* 2. PENGALAMAN KERJA / WORK EXPERIENCE */}
         {experiences && experiences.length > 0 && (
           <section className="cv-section mb-7">
             <h2 className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-slate-950 dark:text-white mb-1">
-              PENGALAMAN KERJA
+              {isEn ? 'WORK EXPERIENCE' : 'PENGALAMAN KERJA'}
             </h2>
             <div className="cv-divider h-[1px] bg-slate-300 dark:bg-slate-700 w-full mb-3.5"></div>
 
@@ -111,11 +130,11 @@ export default function CvTemplate({ data, className = '' }: CvTemplateProps) {
           </section>
         )}
 
-        {/* 3. PENDIDIKAN */}
+        {/* 3. PENDIDIKAN / EDUCATION */}
         {education && education.length > 0 && (
           <section className="cv-section mb-7">
             <h2 className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-slate-950 dark:text-white mb-1">
-              PENDIDIKAN
+              {isEn ? 'EDUCATION' : 'PENDIDIKAN'}
             </h2>
             <div className="cv-divider h-[1px] bg-slate-300 dark:bg-slate-700 w-full mb-3.5"></div>
 
@@ -150,11 +169,11 @@ export default function CvTemplate({ data, className = '' }: CvTemplateProps) {
           </section>
         )}
 
-        {/* 4. PELATIHAN & SERTIFIKASI */}
+        {/* 4. PELATIHAN & SERTIFIKASI / TRAINING & CERTIFICATIONS */}
         {certifications && certifications.length > 0 && (
           <section className="cv-section mb-7">
             <h2 className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-slate-950 dark:text-white mb-1">
-              PELATIHAN & SERTIFIKASI
+              {isEn ? 'TRAINING & CERTIFICATIONS' : 'PELATIHAN & SERTIFIKASI'}
             </h2>
             <div className="cv-divider h-[1px] bg-slate-300 dark:bg-slate-700 w-full mb-3.5"></div>
 
@@ -189,11 +208,11 @@ export default function CvTemplate({ data, className = '' }: CvTemplateProps) {
           </section>
         )}
 
-        {/* 5. PUBLIKASI */}
+        {/* 5. PUBLIKASI / PUBLICATIONS */}
         {publications && publications.length > 0 && (
           <section className="cv-section mb-7">
             <h2 className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-slate-950 dark:text-white mb-1">
-              PUBLIKASI
+              {isEn ? 'PUBLICATIONS' : 'PUBLIKASI'}
             </h2>
             <div className="cv-divider h-[1px] bg-slate-300 dark:bg-slate-700 w-full mb-3.5"></div>
 
@@ -220,11 +239,11 @@ export default function CvTemplate({ data, className = '' }: CvTemplateProps) {
           </section>
         )}
 
-        {/* 6. KEAHLIAN */}
+        {/* 6. KEAHLIAN / SKILLS */}
         {skills && skills.length > 0 && (
           <section className="cv-section">
             <h2 className="text-xs sm:text-[14px] font-bold uppercase tracking-wider text-slate-950 dark:text-white mb-1">
-              KEAHLIAN
+              {isEn ? 'SKILLS' : 'KEAHLIAN'}
             </h2>
             <div className="cv-divider h-[1px] bg-slate-300 dark:bg-slate-700 w-full mb-3.5"></div>
 

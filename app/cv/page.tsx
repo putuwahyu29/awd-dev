@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { getCvData } from '@/lib/cv';
+import { getAllCvData } from '@/lib/cv';
 import CvPageView from '@/components/CvPageView';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://awd.my.id';
@@ -51,7 +51,8 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function CvPage() {
-  const cvData = await getCvData();
+  const allCvData = await getAllCvData();
+  const cvData = allCvData.id;
 
   const cvJsonLd = {
     '@context': 'https://schema.org',
@@ -93,7 +94,7 @@ export default async function CvPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(cvJsonLd) }}
       />
-      <CvPageView cvData={cvData} />
+      <CvPageView allCvData={allCvData} initialCvData={cvData} />
     </>
   );
 }

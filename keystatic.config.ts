@@ -59,7 +59,7 @@ export default config({
     },
     navigation: {
       '📁 KONTEN PORTOFOLIO': ['projects', 'certifications', 'publications'],
-      '👤 PROFIL & INFORMASI': ['hero', 'about', 'cv', 'contact', 'socials'],
+      '👤 PROFIL & INFORMASI': ['hero', 'about', 'cv', 'cvEn', 'contact', 'socials'],
       '⚙️ MASTER DATA': ['techStackMaster', 'categoriesMaster'],
     },
   },
@@ -249,7 +249,7 @@ export default config({
       },
     }),
     cv: singleton({
-      label: 'Curriculum Vitae (Resume)',
+      label: 'Curriculum Vitae (Bahasa Indonesia)',
       path: 'content/cv',
       format: { data: 'json' },
       schema: {
@@ -282,7 +282,7 @@ export default config({
             role: fields.text({ label: 'Jabatan / Posisi' }),
             company: fields.text({ label: 'Instansi / Perusahaan' }),
             location: fields.text({ label: 'Lokasi (misal: Surabaya)' }),
-            period: fields.text({ label: 'Periode (misal: Desember 2024 – Sekarang)' }),
+            period: fields.text({ label: 'Periode (misal: September 2026 – Sekarang)' }),
             descriptions: fields.array(fields.text({ label: 'Poin Tanggung Jawab / Pencapaian' }), {
               label: 'Daftar Bullet Points Deskripsi Pekerjaan',
               itemLabel: (props) => props.value || 'Poin Deskripsi',
@@ -348,6 +348,110 @@ export default config({
           {
             label: 'Keahlian Utama (Core Skills)',
             itemLabel: (props) => props.fields.category.value || 'Kategori Keahlian',
+          }
+        ),
+      },
+    }),
+    cvEn: singleton({
+      label: 'Curriculum Vitae (English Resume)',
+      path: 'content/cv.en',
+      format: { data: 'json' },
+      schema: {
+        personalInfo: fields.object({
+          fullName: fields.text({
+            label: 'Full Name (CV Heading)',
+            defaultValue: 'I PUTU AGUS WAHYU DUPAYANA',
+          }),
+          website: fields.text({
+            label: 'Personal Website (e.g. awd.my.id)',
+            defaultValue: 'awd.my.id',
+          }),
+          email: fields.text({
+            label: 'Contact Email',
+            defaultValue: 'aguswahyu@office.awd.my.id',
+          }),
+          linkedin: fields.text({
+            label: 'LinkedIn Profile',
+            defaultValue: 'linkedin.com/in/aguswahyu',
+          }),
+        }),
+        summary: fields.text({
+          label: 'Professional Summary (Optional)',
+          multiline: true,
+          defaultValue:
+            'Dedicated Software & AI Systems Engineer specializing in high-performance web systems engineering (Next.js, Laravel), Agentic AI & Multimodal LLM integrations, and cloud automation with server virtualization (Proxmox VE, Docker, GCP).',
+        }),
+        experiences: fields.array(
+          fields.object({
+            role: fields.text({ label: 'Role / Job Title' }),
+            company: fields.text({ label: 'Company / Organization' }),
+            location: fields.text({ label: 'Location (e.g. Remote, Surabaya)' }),
+            period: fields.text({ label: 'Period (e.g. September 2026 – Present)' }),
+            descriptions: fields.array(fields.text({ label: 'Responsibility / Achievement Bullet' }), {
+              label: 'Job Description Bullet Points',
+              itemLabel: (props) => props.value || 'Bullet Point',
+            }),
+          }),
+          {
+            label: 'Work Experience',
+            itemLabel: (props) =>
+              props.fields.role.value
+                ? `${props.fields.role.value} - ${props.fields.company.value || ''}`
+                : 'Work Experience',
+          }
+        ),
+        education: fields.array(
+          fields.object({
+            institution: fields.text({ label: 'Institution / University Name' }),
+            location: fields.text({ label: 'Location (e.g. Jakarta, Indonesia)' }),
+            degree: fields.text({ label: 'Degree (e.g. Bachelor of Applied Statistics)' }),
+            major: fields.text({ label: 'Major / Study Program' }),
+            period: fields.text({ label: 'Period (e.g. October 2020 – July 2024)' }),
+            details: fields.text({ label: 'Additional Details (Optional)' }),
+          }),
+          {
+            label: 'Education',
+            itemLabel: (props) =>
+              props.fields.institution.value
+                ? `${props.fields.degree.value || ''} - ${props.fields.institution.value}`
+                : 'Education',
+          }
+        ),
+        certifications: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Certification / Training Title' }),
+            issuer: fields.text({ label: 'Issuing Organization' }),
+            period: fields.text({ label: 'Period / Date (e.g. June 2026)' }),
+            credentialUrl: fields.text({ label: 'Credential URL (Optional)' }),
+          }),
+          {
+            label: 'Certifications & Training',
+            itemLabel: (props) =>
+              props.fields.title.value
+                ? `${props.fields.title.value} (${props.fields.period.value || ''})`
+                : 'Certification',
+          }
+        ),
+        publications: fields.array(
+          fields.object({
+            title: fields.text({ label: 'Publication Title' }),
+            publisher: fields.text({ label: 'Publisher / Conference / Journal' }),
+            year: fields.text({ label: 'Year / Volume & Pages' }),
+            link: fields.text({ label: 'Paper / DOI Link (Optional)' }),
+          }),
+          {
+            label: 'Academic Publications',
+            itemLabel: (props) => props.fields.title.value || 'Publication',
+          }
+        ),
+        skills: fields.array(
+          fields.object({
+            category: fields.text({ label: 'Skill Category' }),
+            description: fields.text({ label: 'Description / Tools & Skills', multiline: true }),
+          }),
+          {
+            label: 'Core Skills',
+            itemLabel: (props) => props.fields.category.value || 'Skill Category',
           }
         ),
       },

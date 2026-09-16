@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { useCvModal } from '@/context/CvModalContext';
 import { useLanguage } from '@/context/LanguageContext';
-import { CvData, fallbackCvData } from '@/lib/cv-types';
+import { CvData, CvAllData, fallbackCvData } from '@/lib/cv-types';
 import CvTemplate from '@/components/CvTemplate';
 
 interface CvPreviewModalProps {
@@ -25,20 +25,22 @@ export default function CvPreviewModal({
   personName = 'I Putu Agus Wahyu Dupayana',
 }: CvPreviewModalProps) {
   const { isCvModalOpen, closeCvModal } = useCvModal();
-  const { t } = useLanguage();
+  const { t, lang, setLang } = useLanguage();
 
+  const [allCvData, setAllCvData] = useState<CvAllData | null>(null);
   const [cvData, setCvData] = useState<CvData>(fallbackCvData);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isExporting, setIsExporting] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [zoomLevel, setZoomLevel] = useState<number>(1.0);
 
-  const rawFullName = cvData.personalInfo.fullName || personName;
+  const activeCvData = (allCvData && (allCvData[lang] || allCvData.id)) || cvData || fallbackCvData;
+  const rawFullName = activeCvData.personalInfo.fullName || personName;
   const fullName = rawFullName
     .split(' ')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
-  const fileName = `CV_${rawFullName.replace(/\s+/g, '_')}.pdf`;
+  const fileName = `CV_${rawFullName.replace(/\s+/g, '_')}_${lang.toUpperCase()}.pdf`;
 
   const handleZoomIn = () => {
     setZoomLevel((prev) => Math.min(Number((prev + 0.15).toFixed(2)), 1.6));
@@ -60,9 +62,14 @@ export default function CvPreviewModal({
 
     fetch('/api/cv')
       .then((res) => res.json())
-      .then((data: CvData) => {
-        if (!isCancelled && data && data.personalInfo) {
-          setCvData(data);
+      .then((data) => {
+        if (!isCancelled && data) {
+          if (data.id && data.en) {
+            setAllCvData({ id: data.id, en: data.en });
+          }
+          if (data.personalInfo) {
+            setCvData(data);
+          }
           setIsLoading(false);
         }
       })
@@ -106,7 +113,7 @@ export default function CvPreviewModal({
 
     try {
       const { exportCvToPdf } = await import('@/lib/export-pdf');
-      exportCvToPdf(cvData, fileName);
+      exportCvToPdf(activeCvData, fileName, lang);
       setIsSuccess(true);
       setTimeout(() => setIsSuccess(false), 2500);
     } catch (err) {
@@ -180,6 +187,17 @@ export default function CvPreviewModal({
                 <ZoomIn className="w-3.5 h-3.5" />
               </button>
             </div>
+
+            {/* Language Switcher Toggle */}
+            <button
+              type="button"
+              onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
+              className="notranslate px-2.5 py-1.5 rounded-lg border border-main bg-card text-main hover:bg-card-hover active:scale-95 text-xs font-mono font-bold transition-all cursor-pointer shadow-2xs"
+              translate="no"
+              title={lang === 'id' ? 'Switch to English CV' : 'Ganti ke CV Bahasa Indonesia'}
+            >
+              {lang.toUpperCase()}
+            </button>
 
             {/* Open Standalone Page: Visible on Mobile & Desktop */}
             <Link
@@ -255,7 +273,7 @@ export default function CvPreviewModal({
                 marginBottom: zoomLevel > 1.0 ? `${(zoomLevel - 1.0) * 350}px` : '0px',
               }}
             >
-              <CvTemplate data={cvData} />
+              <CvTemplate data={activeCvData} lang={lang} />
             </div>
           )}
         </div>

@@ -7,9 +7,9 @@ This is the comprehensive machine-readable dossier for I Putu Agus Wahyu Dupayan
 ## 1. Personal & Professional Profile
 - **Full Legal Name**: I Putu Agus Wahyu Dupayana
 - **Common Names & Handles**: Agus Wahyu, awd, awd.dev, @putuwahyu29, @aguswahyu.dev
-- **Current Position**: Pranata Komputer Ahli Pertama (Computer Specialist / Software Engineer)
-- **Current Organization**: Badan Pusat Statistik (BPS) Provinsi Jawa Timur (East Java Provincial Statistics Office)
-- **Office Location**: Surabaya, Jawa Timur, Indonesia
+- **Current Positions**:
+  - **Pranata Komputer Ahli Pertama** (Software Engineer & Systems Architect) at **Badan Pusat Statistik (BPS) Provinsi Jawa Timur** (December 2024 – Present, Surabaya, Indonesia): Developing enterprise statistical information systems, modern web platforms, and automated data pipelines (Primary Organization).
+  - **AI Training Engineer** at **Shipd** (September 2026 – Present, Remote): Designing high-quality training datasets, model evaluation pipelines, and alignment benchmarks for Large Language Models.
 - **Official Portal**: https://awd.my.id
 - **CV / Resume URL**: https://awd.my.id/cv
 - **Interactive Pitch Deck**: https://awd.my.id/presentation
@@ -20,9 +20,9 @@ This is the comprehensive machine-readable dossier for I Putu Agus Wahyu Dupayan
 ---
 
 ## 2. Education & Background
-- **Institution**: Politeknik Statistika STIS, Jakarta, Indonesia
-- **Degree**: Sarjana Terapan Statistika (Bachelor of Applied Statistics / D-IV)
-- **Study Program**: Komputasi Statistik (Computational Statistics & Software Engineering)
+- **Institution**: Polytechnic of Statistics STIS (Polstat STIS), Jakarta, Indonesia
+- **Degree**: Sarjana Terapan Statistika / Bachelor of Applied Statistics (S.Tr.Stat. / D-IV)
+- **Study Program**: Diploma IV in Statistical Computing (Komputasi Statistik)
 - **Period**: October 2020 – July 2024
 - **Core Coursework & Focus**: Software Engineering, Cloud Architecture, Distributed Systems, Data Science, Statistical Computing, Information Systems Design.
 
