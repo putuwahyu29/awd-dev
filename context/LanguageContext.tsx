@@ -78,15 +78,16 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
+  const [lang, setLangState] = useState<Language>('id');
+
+  useEffect(() => {
+    try {
       const savedLang = localStorage.getItem('awd_lang') as Language;
       if (savedLang === 'id' || savedLang === 'en') {
-        return savedLang;
+        setLangState(savedLang);
       }
-    }
-    return 'id';
-  });
+    } catch {}
+  }, []);
 
   const syncGoogleTranslate = (targetLang: Language) => {
     if (typeof window === 'undefined') return;

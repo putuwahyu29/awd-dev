@@ -217,7 +217,7 @@ export default function RootLayout({
     <html
       lang="id"
       suppressHydrationWarning
-      className={`${jakarta.variable} ${mono.variable} scroll-smooth`}
+      className={`${jakarta.variable} ${mono.variable} scroll-smooth dark`}
     >
       <head>
         <script
