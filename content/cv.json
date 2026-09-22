@@ -22,14 +22,14 @@
       ]
     },
     {
-      "role": "Kontributor Teknis AI & Perangkat Lunak (Pekerja Lepas)",
+      "role": "Pengembang Perangkat Lunak – Pelatihan Kode AI (Pekerja Lepas)",
       "company": "Shipd (by Datacurve)",
       "location": "San Francisco, AS (Remote)",
       "period": "September 2026 – Sekarang",
       "descriptions": [
-        "Menyelesaikan tantangan rekayasa perangkat lunak (quests) tingkat lanjut, perbaikan bug arsitektur web, dan optimasi performa kode guna menghasilkan data penalaran berkualitas tinggi untuk frontier LLMs.",
-        "Mengembangkan solusi kode algoritmik dan test cases deterministik yang lolos uji validasi ketat, termasuk memory profiling, score validation, dan peer review.",
-        "Berpartisipasi dalam perancangan benchmark evaluasi model AI, meliputi rubric penalaran kode (code generation rubrics) dan evaluasi kepatuhan instruksi (instruction-following evals)."
+        "Menyelesaikan tantangan rekayasa perangkat lunak (software engineering quests), meliputi perbaikan bug repositori nyata, penanganan kebocoran memori (memory leaks), dan optimasi performa algoritma.",
+        "Menulis kode solusi deterministik dan test suites berbasis Python/TypeScript yang lolos validasi otomatis ketat (score validation, memory profiling, dan peer code review).",
+        "Menyediakan data penalaran kode (code reasoning) dan penanganan edge cases berstandar industri guna melatih kemampuan debugging dan generasi kode pada frontier LLMs."
       ]
     }
   ],

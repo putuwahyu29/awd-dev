@@ -22,14 +22,14 @@
       ]
     },
     {
-      "role": "AI & Software Technical Contributor (Freelance)",
+      "role": "Software Engineer – AI Code & Reasoning (Freelance)",
       "company": "Shipd (by Datacurve)",
       "location": "San Francisco, CA, USA (Remote)",
       "period": "September 2026 – Present",
       "descriptions": [
-        "Solve complex STEM and software engineering challenges, tackling real-world repository issues and algorithm optimizations to generate frontier LLM training and reasoning data.",
-        "Author deterministic code solutions and rigorous test suites verified against automated benchmarks, memory efficiency standards, and peer code reviews.",
-        "Contribute to AI model evaluation challenges, including code generation rubrics, instruction-following evaluations, and mathematical reasoning benchmarks."
+        "Solve complex software engineering quests, including real-world repository bug fixing, memory leak resolution, and algorithmic performance optimizations.",
+        "Author clean, deterministic code solutions and comprehensive test suites in Python and TypeScript that pass strict automated verification (score validation, memory profiling, and peer code reviews).",
+        "Produce high-quality code reasoning and edge-case benchmarks to advance frontier LLM capabilities in automated code generation and debugging."
       ]
     }
   ],
