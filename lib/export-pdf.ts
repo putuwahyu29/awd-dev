@@ -38,33 +38,51 @@ export function exportCvToPdf(
   const fileName =
     customFileName || `CV_${fullName.replace(/\s+/g, '_')}${defaultSuffix}.pdf`;
 
-  // ================= 1. HEADER (STANDARD ATS RESUME) =================
+  // ================= 1. HEADER (STANDARD ATS RESUME - 2 CLEAN ROWS) =================
   // Full Name: 22pt Bold Uppercase
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(22);
   doc.setTextColor(15, 23, 42); // slate-900
   doc.text(fullName.toUpperCase(), pageWidth / 2, y, { align: 'center' });
-  y += 7.5;
+  y += 6.5;
 
-  // Contact / Social Links: 10.5pt (Website | Email | LinkedIn)
-  const links: string[] = [];
-  const website = personalInfo.website || personalInfo.websiteDisplay || 'awd.my.id';
+  const location = personalInfo.location || 'Surabaya, Indonesia';
   const email = personalInfo.email || 'aguswahyu@office.awd.my.id';
+  const phone = personalInfo.phone;
+  const website = personalInfo.website || personalInfo.websiteDisplay || 'awd.my.id';
+  const github = personalInfo.github || personalInfo.githubDisplay || 'github.com/putuwahyu29';
   const linkedin = personalInfo.linkedin || personalInfo.linkedinDisplay || 'linkedin.com/in/aguswahyu';
 
-  if (website) links.push(website.replace(/^https?:\/\//, ''));
-  if (email) links.push(email);
-  if (linkedin) links.push(linkedin.replace(/^https?:\/\//, ''));
+  // Row 1: Location | Phone | Email
+  const row1Items: string[] = [];
+  if (location) row1Items.push(location);
+  if (phone) row1Items.push(phone);
+  if (email) row1Items.push(email);
 
-  if (links.length > 0) {
+  if (row1Items.length > 0) {
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10.5);
+    doc.setFontSize(10);
     doc.setTextColor(71, 85, 105); // slate-600
-    const linksText = links.join('   |   ');
-    doc.text(linksText, pageWidth / 2, y, { align: 'center' });
-    y += 8.5;
+    const row1Text = row1Items.join('   |   ');
+    doc.text(row1Text, pageWidth / 2, y, { align: 'center' });
+    y += 4.8;
+  }
+
+  // Row 2: Digital Portfolios (Website | GitHub | LinkedIn)
+  const row2Items: string[] = [];
+  if (website) row2Items.push(website.replace(/^https?:\/\//, ''));
+  if (github) row2Items.push(github.replace(/^https?:\/\//, ''));
+  if (linkedin) row2Items.push(linkedin.replace(/^https?:\/\//, ''));
+
+  if (row2Items.length > 0) {
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.setTextColor(71, 85, 105); // slate-600
+    const row2Text = row2Items.join('   |   ');
+    doc.text(row2Text, pageWidth / 2, y, { align: 'center' });
+    y += 7.5;
   } else {
-    y += 4;
+    y += 3.5;
   }
 
   // Section Header Helper (Standard 12.5pt Bold with Divider)

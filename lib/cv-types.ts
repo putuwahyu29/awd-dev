@@ -3,6 +3,7 @@ export interface CvPersonalInfo {
   website?: string;
   email: string;
   linkedin?: string;
+  github?: string;
   title?: string;
   phone?: string;
   location?: string;
@@ -68,8 +69,10 @@ export interface CvAllData {
 export const fallbackCvData: CvData = {
   personalInfo: {
     fullName: 'I PUTU AGUS WAHYU DUPAYANA',
-    website: 'awd.my.id',
+    location: 'Surabaya, Indonesia',
     email: 'aguswahyu@office.awd.my.id',
+    website: 'awd.my.id',
+    github: 'github.com/putuwahyu29',
     linkedin: 'linkedin.com/in/aguswahyu',
   },
   summary:
@@ -191,8 +194,10 @@ export const fallbackCvData: CvData = {
 export const fallbackCvDataEn: CvData = {
   personalInfo: {
     fullName: 'I PUTU AGUS WAHYU DUPAYANA',
-    website: 'awd.my.id',
+    location: 'Surabaya, Indonesia',
     email: 'aguswahyu@office.awd.my.id',
+    website: 'awd.my.id',
+    github: 'github.com/putuwahyu29',
     linkedin: 'linkedin.com/in/aguswahyu',
   },
   summary:

@@ -1,30 +1,35 @@
 {
   "personalInfo": {
     "fullName": "I PUTU AGUS WAHYU DUPAYANA",
-    "website": "awd.my.id",
+    "location": "Surabaya, Indonesia",
     "email": "aguswahyu@office.awd.my.id",
+    "website": "awd.my.id",
+    "github": "github.com/putuwahyu29",
     "linkedin": "linkedin.com/in/aguswahyu"
   },
-  "summary": "Pengembang perangkat lunak berdedikasi dengan fokus pada rekayasa sistem web berkinerja tinggi (Next.js, Laravel), integrasi Agentic AI & Multimodal LLMs, serta otomatisasi cloud dan virtualisasi server (Proxmox VE, Docker, GCP).",
+  "summary": "Praktisi rekayasa perangkat lunak dan sistem data dengan latar belakang komputasi statistik, berfokus pada pengembangan platform web berskala enterprise (Next.js, Laravel), integrasi sistem kecerdasan artifisial (RAG & LLM), serta otomatisasi infrastruktur server dan komputasi awan (Docker, Proxmox VE, GCP).",
   "experiences": [
     {
-      "role": "Pranata Komputer Ahli Pertama",
+      "role": "Pranata Komputer Ahli Pertama (Pengembang Perangkat Lunak & Sistem Data)",
       "company": "BPS Provinsi Jawa Timur",
-      "location": "Surabaya",
+      "location": "Surabaya, Jawa Timur",
       "period": "Desember 2024 – Sekarang",
       "descriptions": [
-        "Mengembangkan dan memelihara sistem informasi dan platform digital internal untuk mendukung percepatan pengolahan data statistik.",
-        "Merancang arsitektur aplikasi web modern serta mengintegrasikan solusi otomatisasi data pipeline dan infrastruktur server."
+        "Mengembangkan dan memelihara aplikasi web internal berbasis Next.js, Laravel, PostgreSQL, dan MySQL untuk mempercepat alur kerja pengolahan serta validasi data statistik resmi.",
+        "Mengarsitekturkan automated ETL data pipeline dan integrasi API antarsistem guna memotong waktu rekapitulasi data lintas satuan kerja.",
+        "Mengimplementasikan kontainerisasi Docker dan reverse proxy Nginx pada server virtual Proxmox VE untuk menjamin reliabilitas, keamanan, dan efisiensi utilisasi resource server.",
+        "Mengintegrasikan kapabilitas AI dan sistem RAG (Retrieval-Augmented Generation) pada platform internal guna memfasilitasi temu balik dokumen dan otomatisasi pelaporan risiko."
       ]
     },
     {
-      "role": "AI Training Engineer",
-      "company": "Shipd",
-      "location": "Remote",
+      "role": "Kontributor Teknis AI & Perangkat Lunak (Pekerja Lepas)",
+      "company": "Shipd (by Datacurve)",
+      "location": "San Francisco, AS (Remote)",
       "period": "September 2026 – Sekarang",
       "descriptions": [
-        "Merancang, mengkurasi, dan mengevaluasi dataset berkualitas tinggi untuk pelatihan, fine-tuning, dan alignment Large Language Models (LLMs).",
-        "Mengembangkan pipeline evaluasi performa model, benchmark reasoning dan akurasi kode, serta pengoptimalan prompt engineering guna meningkatkan reliabilitas output model AI."
+        "Menyelesaikan tantangan rekayasa perangkat lunak (quests) tingkat lanjut, perbaikan bug arsitektur web, dan optimasi performa kode guna menghasilkan data penalaran berkualitas tinggi untuk frontier LLMs.",
+        "Mengembangkan solusi kode algoritmik dan test cases deterministik yang lolos uji validasi ketat, termasuk memory profiling, score validation, dan peer review.",
+        "Berpartisipasi dalam perancangan benchmark evaluasi model AI, meliputi rubric penalaran kode (code generation rubrics) dan evaluasi kepatuhan instruksi (instruction-following evals)."
       ]
     }
   ],

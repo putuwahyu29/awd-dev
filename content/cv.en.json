@@ -1,30 +1,35 @@
 {
   "personalInfo": {
     "fullName": "I PUTU AGUS WAHYU DUPAYANA",
-    "website": "awd.my.id",
+    "location": "Surabaya, Indonesia",
     "email": "aguswahyu@office.awd.my.id",
+    "website": "awd.my.id",
+    "github": "github.com/putuwahyu29",
     "linkedin": "linkedin.com/in/aguswahyu"
   },
-  "summary": "Dedicated Software & AI Systems Engineer specializing in high-performance web systems engineering (Next.js, Laravel), Agentic AI & Multimodal LLM integrations, and cloud automation with server virtualization (Proxmox VE, Docker, GCP).",
+  "summary": "Software and data systems engineer with a background in statistical computing, specializing in enterprise-grade web applications (Next.js, Laravel), AI systems integration (RAG & LLMs), and cloud-virtualized infrastructure automation (Docker, Proxmox VE, GCP).",
   "experiences": [
     {
-      "role": "Junior Computer Specialist",
+      "role": "Junior Computer Specialist (Software & Data Systems Engineer)",
       "company": "Statistics of Jawa Timur Province",
       "location": "Surabaya, Indonesia",
       "period": "December 2024 – Present",
       "descriptions": [
-        "Develop and maintain enterprise-grade internal information systems and digital platforms to accelerate official statistical data processing.",
-        "Architect modern web applications and integrate automated ETL data pipelines with virtualized server infrastructure."
+        "Develop and maintain full-stack internal enterprise platforms using Next.js, Laravel, PostgreSQL, and MySQL, significantly accelerating official statistical data validation workflows.",
+        "Architect automated ETL data processing pipelines and API integrations, reducing manual data compilation time across regencies and cities.",
+        "Deploy and manage containerized services using Docker and Nginx on Proxmox VE virtualized servers, ensuring high application uptime and optimal resource utilization.",
+        "Implement AI-powered Retrieval-Augmented Generation (RAG) platforms to automate risk management documentation and statistical reporting."
       ]
     },
     {
-      "role": "AI Training Engineer",
-      "company": "Shipd",
-      "location": "Remote",
+      "role": "AI & Software Technical Contributor (Freelance)",
+      "company": "Shipd (by Datacurve)",
+      "location": "San Francisco, CA, USA (Remote)",
       "period": "September 2026 – Present",
       "descriptions": [
-        "Designed, curated, and evaluated high-quality domain datasets for fine-tuning, instruction tuning, and alignment of Large Language Models (LLMs).",
-        "Developed comprehensive model evaluation pipelines, reasoning and code generation benchmarks, and prompt engineering protocols to optimize model accuracy, safety, and output reliability."
+        "Solve complex STEM and software engineering challenges, tackling real-world repository issues and algorithm optimizations to generate frontier LLM training and reasoning data.",
+        "Author deterministic code solutions and rigorous test suites verified against automated benchmarks, memory efficiency standards, and peer code reviews.",
+        "Contribute to AI model evaluation challenges, including code generation rubrics, instruction-following evaluations, and mathematical reasoning benchmarks."
       ]
     }
   ],

@@ -12,8 +12,11 @@ interface CvTemplateProps {
 export default function CvTemplate({ data, lang = 'id', className = '' }: CvTemplateProps) {
   const isEn = lang === 'en';
   const { personalInfo, experiences, education, certifications, publications, skills, summary } = data;
-  const website = personalInfo.website || personalInfo.websiteDisplay || 'awd.my.id';
+  const location = personalInfo.location || 'Surabaya, Indonesia';
   const email = personalInfo.email || 'aguswahyu@office.awd.my.id';
+  const phone = personalInfo.phone;
+  const website = personalInfo.website || personalInfo.websiteDisplay || 'awd.my.id';
+  const github = personalInfo.github || personalInfo.githubDisplay || 'github.com/putuwahyu29';
   const linkedin = personalInfo.linkedin || personalInfo.linkedinDisplay || 'linkedin.com/in/aguswahyu';
 
   return (
@@ -24,14 +27,45 @@ export default function CvTemplate({ data, lang = 'id', className = '' }: CvTemp
         className="cv-paper notranslate relative w-full max-w-[210mm] bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 p-6 sm:p-10 md:p-14 rounded-xl sm:rounded-2xl shadow-2xl shadow-slate-900/10 dark:shadow-2xl dark:shadow-black/70 ring-1 ring-slate-900/5 dark:ring-white/10 font-sans select-text leading-normal transition-all duration-200"
         translate="no"
       >
-        {/* 1. HEADER (CENTERED & MINIMALIST ATS STYLE) */}
+        {/* 1. HEADER (CENTERED & MINIMALIST ATS STYLE - 2 CLEAN ROWS) */}
         <header className="cv-section text-center mb-7">
           <h1 className="text-2xl sm:text-3xl md:text-[28px] font-bold text-slate-950 dark:text-white tracking-tight uppercase">
             {personalInfo.fullName}
           </h1>
 
-          {/* Links Row: Website | Email | LinkedIn */}
-          <div className="flex flex-wrap items-center justify-center gap-x-3 text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1.5 font-normal">
+          {/* Row 1: Location • Phone • Email */}
+          <div className="flex flex-wrap items-center justify-center gap-x-2.5 text-xs sm:text-[13px] text-slate-600 dark:text-slate-400 mt-2 font-normal">
+            {location && <span>{location}</span>}
+
+            {location && (phone || email) && (
+              <span className="text-slate-400 dark:text-slate-600 select-none">•</span>
+            )}
+
+            {phone && (
+              <a
+                href={`tel:${phone.replace(/\s+/g, '')}`}
+                className="hover:underline hover:text-slate-950 dark:hover:text-white transition-colors"
+              >
+                {phone}
+              </a>
+            )}
+
+            {phone && email && (
+              <span className="text-slate-400 dark:text-slate-600 select-none">•</span>
+            )}
+
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                className="hover:underline hover:text-slate-950 dark:hover:text-white transition-colors"
+              >
+                {email}
+              </a>
+            )}
+          </div>
+
+          {/* Row 2: Digital Profiles: Website • GitHub • LinkedIn */}
+          <div className="flex flex-wrap items-center justify-center gap-x-2.5 text-xs sm:text-[13px] text-slate-600 dark:text-slate-400 mt-1 font-normal">
             {website && (
               <a
                 href={website.startsWith('http') ? website : `https://${website}`}
@@ -43,21 +77,27 @@ export default function CvTemplate({ data, lang = 'id', className = '' }: CvTemp
               </a>
             )}
 
-            {website && email && (
-              <span className="text-slate-400 dark:text-slate-600 select-none">|</span>
+            {website && (github || linkedin) && (
+              <span className="text-slate-400 dark:text-slate-600 select-none">•</span>
             )}
 
-            {email && (
+            {github && (
               <a
-                href={`mailto:${email}`}
+                href={
+                  github.startsWith('http')
+                    ? github
+                    : `https://${github.startsWith('github.com') ? github : `github.com/${github.replace(/^@/, '')}`}`
+                }
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:underline hover:text-slate-950 dark:hover:text-white transition-colors"
               >
-                {email}
+                {github.replace(/^https?:\/\//, '')}
               </a>
             )}
 
-            {email && linkedin && (
-              <span className="text-slate-400 dark:text-slate-600 select-none">|</span>
+            {github && linkedin && (
+              <span className="text-slate-400 dark:text-slate-600 select-none">•</span>
             )}
 
             {linkedin && (
