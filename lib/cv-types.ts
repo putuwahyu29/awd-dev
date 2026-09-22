@@ -89,7 +89,7 @@ export const fallbackCvData: CvData = {
       ],
     },
     {
-      role: 'Pengembang Perangkat Lunak – Pelatihan Kode AI (Pekerja Lepas)',
+      role: 'Pengembang Perangkat Lunak (Pekerja Lepas)',
       company: 'Shipd (by Datacurve)',
       location: 'San Francisco, AS (Remote)',
       period: 'September 2026 – Sekarang',
@@ -215,7 +215,7 @@ export const fallbackCvDataEn: CvData = {
       ],
     },
     {
-      role: 'Software Engineer – AI Code & Reasoning (Freelance)',
+      role: 'Software Engineer (Freelance)',
       company: 'Shipd (by Datacurve)',
       location: 'San Francisco, CA, USA (Remote)',
       period: 'September 2026 – Present',
