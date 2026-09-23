@@ -37,9 +37,17 @@ export async function GET() {
       {
         id: 'mode-cv',
         title: '📄 Curriculum Vitae',
-        subtitle: 'Naskah resmi Curriculum Vitae I Putu Agus Wahyu Dupayana (/cv)',
+        subtitle: 'Naskah resmi Curriculum Vitae ATS I Putu Agus Wahyu Dupayana (/cv)',
         category: 'Tautan' as const,
         url: '/cv',
+        isExternal: false,
+      },
+      {
+        id: 'mode-portfolio-pdf',
+        title: '📁 Portofolio',
+        subtitle: 'Dokumen portofolio proyek, repositori, dan publikasi (/portfolio-pdf)',
+        category: 'Tautan' as const,
+        url: '/portfolio-pdf',
         isExternal: false,
       },
       {

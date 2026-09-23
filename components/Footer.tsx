@@ -26,45 +26,27 @@ export default function Footer() {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3.5 text-xs text-sub">
+          <div className="flex items-center gap-3 text-xs text-sub">
             <Link
               href="/cv"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              {t('Curriculum Vitae', 'Curriculum Vitae')}
+              CV
+            </Link>
+            <span className="text-muted">•</span>
+            <Link
+              href="/portfolio-pdf"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
+              {t('Portofolio', 'Portfolio')}
             </Link>
             <span className="text-muted">•</span>
             <Link
               href="/links"
-              className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+              className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              {t('Pusat Tautan & Bio', 'Bio Links')}
+              {t('Tautan', 'Links')}
             </Link>
-            <span className="text-muted">•</span>
-            <Link
-              href="/presentation"
-              className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-            >
-              {t('Slide Deck', 'Interactive Deck')}
-            </Link>
-            <span className="text-muted">•</span>
-            <a
-              href="https://course.awd.my.id"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
-            >
-              {t('Awd Course', 'Awd Course')}
-            </a>
-            <span className="text-muted">•</span>
-            <a
-              href="https://blog.awd.my.id"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
-            >
-              {t('Awd Blog', 'Awd Blog')}
-            </a>
           </div>
         </div>
 

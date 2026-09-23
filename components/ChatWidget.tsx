@@ -598,7 +598,7 @@ export default function ChatWidget() {
       {/* Floating Trigger Button */}
       <aside
         aria-label={t('Tombol Asisten AI', 'AI Assistant Button')}
-        className={`fixed z-40 transition-all duration-300 ease-in-out ${
+        className={`no-print fixed z-40 transition-all duration-300 ease-in-out ${
           isOpen ? 'bottom-4 right-4 opacity-0 pointer-events-none scale-75' : 'bottom-5 right-4 sm:bottom-6 sm:right-6 opacity-100 scale-100'
         }`}
       >
@@ -622,7 +622,7 @@ export default function ChatWidget() {
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-45 bg-black/40 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
+          className="no-print fixed inset-0 z-45 bg-black/40 backdrop-blur-xs transition-opacity duration-300 animate-in fade-in"
           aria-hidden="true"
         />
       )}
@@ -633,7 +633,7 @@ export default function ChatWidget() {
           role="dialog"
           aria-modal="true"
           aria-labelledby="chat-widget-title"
-          className={`fixed z-50 transition-all duration-300 ease-out flex flex-col bg-card border border-main shadow-2xl overflow-hidden ${
+          className={`no-print fixed z-50 transition-all duration-300 ease-out flex flex-col bg-card border border-main shadow-2xl overflow-hidden ${
             isExpanded
               ? 'inset-2 sm:inset-6 md:inset-10 rounded-2xl'
               : 'bottom-0 left-0 right-0 sm:bottom-6 sm:right-6 sm:left-auto w-full sm:w-[440px] h-[85vh] sm:h-[580px] max-h-[100dvh] rounded-t-3xl sm:rounded-2xl'
