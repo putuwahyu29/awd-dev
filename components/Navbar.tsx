@@ -154,7 +154,7 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => openCvModal()}
-                  title={t('Pratinjau CV (PDF)', 'Preview CV (PDF)')}
+                  title={t('Lihat CV', 'View CV')}
                   className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all shadow-xs ml-0.5 cursor-pointer"
                 >
                   <FileText className="w-3.5 h-3.5" />
@@ -229,7 +229,7 @@ export default function Navbar() {
                 className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-md text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-98 transition-all shadow-sm cursor-pointer"
               >
                 <FileText className="w-4 h-4" />
-                <span>{t('Lihat CV (PDF)', 'View CV (PDF)')}</span>
+                <span>{t('Lihat CV', 'View CV')}</span>
               </button>
             </div>
           </div>

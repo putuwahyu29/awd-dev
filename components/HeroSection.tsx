@@ -80,7 +80,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-98 transition-all shadow-md shadow-blue-500/20 cursor-pointer"
               >
                 <FileText className="w-4 h-4" />
-                <span>{t('Lihat CV (ATS)', 'View CV (ATS)')}</span>
+                <span>{t('Lihat CV', 'View CV')}</span>
               </button>
 
               <Link

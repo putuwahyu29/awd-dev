@@ -6,12 +6,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://awd.my.id';
 const pageUrl = `${siteUrl}/cv`;
 
 export const metadata: Metadata = {
-  title: 'Curriculum Vitae Resmi | I Putu Agus Wahyu Dupayana (awd.dev)',
+  title: 'Curriculum Vitae | I Putu Agus Wahyu Dupayana',
   description:
-    'Naskah resmi Curriculum Vitae (CV) ATS-Friendly I Putu Agus Wahyu Dupayana — Software Engineer & Systems Architect di BPS Provinsi Jawa Timur. Riwayat karir, pendidikan STIS, sertifikasi resmi, publikasi internasional, dan keahlian teknis.',
+    'Curriculum Vitae I Putu Agus Wahyu Dupayana — Software Engineer & Systems Architect di BPS Provinsi Jawa Timur. Riwayat karir, pendidikan STIS, sertifikasi, publikasi internasional, dan keahlian teknis.',
   keywords: [
     'Curriculum Vitae I Putu Agus Wahyu Dupayana',
-    'CV ATS Software Engineer',
     'CV Agus Wahyu',
     'Resume I Putu Agus Wahyu Dupayana',
     'Pranata Komputer BPS CV',
@@ -23,9 +22,9 @@ export const metadata: Metadata = {
     canonical: pageUrl,
   },
   openGraph: {
-    title: 'Curriculum Vitae Resmi | I Putu Agus Wahyu Dupayana',
+    title: 'Curriculum Vitae | I Putu Agus Wahyu Dupayana',
     description:
-      'Naskah resmi Curriculum Vitae ATS-Friendly I Putu Agus Wahyu Dupayana — Software Engineer & Systems Architect.',
+      'Curriculum Vitae I Putu Agus Wahyu Dupayana — Software Engineer & Systems Architect.',
     url: pageUrl,
     siteName: 'awd.dev',
     type: 'profile',
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Curriculum Vitae | I Putu Agus Wahyu Dupayana',
     description:
-      'Software Engineer & Systems Architect — Unduh & Lihat Naskah Resmi CV ATS.',
+      'Software Engineer & Systems Architect — Curriculum Vitae.',
     images: [`${siteUrl}/og-image.jpg`],
     creator: '@putuwahyu29',
   },

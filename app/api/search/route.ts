@@ -37,7 +37,7 @@ export async function GET() {
       {
         id: 'mode-cv',
         title: '📄 Curriculum Vitae',
-        subtitle: 'Naskah resmi Curriculum Vitae ATS I Putu Agus Wahyu Dupayana (/cv)',
+        subtitle: 'Curriculum Vitae I Putu Agus Wahyu Dupayana (/cv)',
         category: 'Tautan' as const,
         url: '/cv',
         isExternal: false,
