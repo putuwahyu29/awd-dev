@@ -599,7 +599,7 @@ export default function ChatWidget() {
       <aside
         aria-label={t('Tombol Asisten AI', 'AI Assistant Button')}
         className={`fixed z-40 transition-all duration-300 ease-in-out ${
-          isOpen ? 'bottom-4 right-4 opacity-0 pointer-events-none scale-75' : 'bottom-6 right-6 opacity-100 scale-100'
+          isOpen ? 'bottom-4 right-4 opacity-0 pointer-events-none scale-75' : 'bottom-5 right-4 sm:bottom-6 sm:right-6 opacity-100 scale-100'
         }`}
       >
         <button

@@ -210,27 +210,28 @@ export default function CvPreviewModal({
               <span className="hidden sm:inline">{t('Halaman Penuh', 'Full Page')}</span>
             </Link>
 
-            {/* Direct Save PDF Button: Desktop/Tablet View */}
+            {/* Direct Save PDF Button: Responsive on all devices */}
             <button
               onClick={handleDownloadPdf}
               disabled={isExporting}
               title={t('Simpan dokumen PDF langsung ke perangkat', 'Save PDF file directly to device')}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-98 disabled:opacity-75 transition-all shadow-md shadow-blue-500/20 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-98 disabled:opacity-75 transition-all shadow-md shadow-blue-500/20 cursor-pointer shrink-0"
             >
               {isExporting ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span className="font-semibold">{t('Menyimpan...', 'Saving...')}</span>
+                  <Loader2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />
+                  <span className="hidden xs:inline font-semibold">{t('Menyimpan...', 'Saving...')}</span>
                 </>
               ) : isSuccess ? (
                 <>
-                  <Check className="w-4 h-4 text-emerald-300" />
-                  <span className="font-semibold">{t('Tersimpan!', 'Saved!')}</span>
+                  <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-300" />
+                  <span className="hidden xs:inline font-semibold">{t('Tersimpan!', 'Saved!')}</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-4 h-4" />
-                  <span className="font-semibold">{t('Simpan PDF', 'Save PDF')}</span>
+                  <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span className="hidden xs:inline font-semibold">{t('Simpan ', 'Save ')}</span>
+                  <span className="font-semibold">PDF</span>
                 </>
               )}
             </button>
@@ -248,7 +249,7 @@ export default function CvPreviewModal({
         </div>
 
         {/* Modal Scrollable Body */}
-        <div className="flex-1 overflow-y-auto overflow-x-auto p-3 sm:p-6 pb-8 bg-slate-100/70 dark:bg-slate-950/80 flex flex-col items-center select-text">
+        <div className="flex-1 overflow-y-auto overflow-x-auto p-2.5 sm:p-6 pb-6 bg-slate-100/70 dark:bg-slate-950/80 flex flex-col items-center select-text">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center my-auto py-16 text-center space-y-4">
               <div className="relative">
@@ -276,66 +277,6 @@ export default function CvPreviewModal({
               <CvTemplate data={activeCvData} lang={lang} />
             </div>
           )}
-        </div>
-
-        {/* Mobile Sticky Bottom Bar (no-print): Complete Mobile Toolset */}
-        <div className="no-print sm:hidden shrink-0 flex items-center justify-between px-3.5 py-2.5 bg-card/95 backdrop-blur-md border-t border-main shadow-lg gap-2">
-          {/* Mobile Zoom Controls */}
-          <div className="flex items-center rounded-lg border border-main bg-main p-0.5 text-xs font-medium text-main shadow-2xs">
-            <button
-              type="button"
-              onClick={handleZoomOut}
-              disabled={zoomLevel <= 0.65}
-              className="p-1.5 rounded-md hover:bg-card-hover text-sub hover:text-main disabled:opacity-30 flex items-center justify-center cursor-pointer"
-              title={t('Perkecil', 'Zoom Out')}
-              aria-label={t('Perkecil', 'Zoom Out')}
-            >
-              <ZoomOut className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              onClick={handleResetZoom}
-              className="px-2 py-1 font-mono text-[11px] font-semibold text-main cursor-pointer"
-              title={t('Reset Ukuran (100%)', 'Reset Zoom (100%)')}
-              aria-label="Reset zoom"
-            >
-              {Math.round(zoomLevel * 100)}%
-            </button>
-            <button
-              type="button"
-              onClick={handleZoomIn}
-              disabled={zoomLevel >= 1.6}
-              className="p-1.5 rounded-md hover:bg-card-hover text-sub hover:text-main disabled:opacity-30 flex items-center justify-center cursor-pointer"
-              title={t('Perbesar', 'Zoom In')}
-              aria-label={t('Perbesar', 'Zoom In')}
-            >
-              <ZoomIn className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Direct Save PDF Button on Mobile */}
-          <button
-            onClick={handleDownloadPdf}
-            disabled={isExporting}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all shadow-md shadow-blue-500/20 cursor-pointer"
-          >
-            {isExporting ? (
-              <>
-                <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                <span>{t('Menyimpan...', 'Saving...')}</span>
-              </>
-            ) : isSuccess ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-300" />
-                <span>{t('Tersimpan!', 'Saved!')}</span>
-              </>
-            ) : (
-              <>
-                <Download className="w-3.5 h-3.5" />
-                <span>{t('Simpan PDF', 'Save PDF')}</span>
-              </>
-            )}
-          </button>
         </div>
       </div>
     </div>

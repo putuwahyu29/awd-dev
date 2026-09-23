@@ -12,7 +12,6 @@ import {
   ZoomIn,
   ZoomOut,
   Share2,
-  ChevronUp,
 } from 'lucide-react';
 import { CvData, CvAllData, fallbackCvData } from '@/lib/cv-types';
 import CvTemplate from '@/components/CvTemplate';
@@ -40,7 +39,6 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const [zoomLevel, setZoomLevel] = useState<number>(1.0);
-  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
   useEffect(() => {
     if (!allCvData && !clientAllCvData) {
@@ -64,19 +62,6 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
 
   const personName = activeCvData.personalInfo.fullName || 'I Putu Agus Wahyu Dupayana';
   const fileName = `CV_${personName.replace(/\s+/g, '_')}_${lang.toUpperCase()}.pdf`;
-
-  // Track scroll position for Floating Scroll-to-Top Button
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 320) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Keyboard Shortcuts for Zooming and Exporting
   useEffect(() => {
@@ -108,10 +93,6 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
 
   const handleResetZoom = () => {
     setZoomLevel(1.0);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleShareLink = () => {
@@ -214,7 +195,7 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
             <button
               onClick={handleShareLink}
               title={t('Salin tautan CV ke clipboard', 'Copy CV link to clipboard')}
-              className="p-1.5 sm:p-2 rounded-lg bg-card text-main border border-main hover:bg-card-hover active:scale-95 transition-all cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-lg bg-card text-main border border-main hover:bg-card-hover active:scale-95 transition-all cursor-pointer shrink-0"
               aria-label="Share CV link"
             >
               {isCopied ? (
@@ -229,7 +210,7 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
               <button
                 onClick={toggleTheme}
                 aria-label="Toggle theme"
-                className="p-1.5 sm:p-2 rounded-lg bg-card text-main border border-main hover:bg-card-hover active:scale-95 transition-all cursor-pointer"
+                className="p-1.5 sm:p-2 rounded-lg bg-card text-main border border-main hover:bg-card-hover active:scale-95 transition-all cursor-pointer shrink-0"
               >
                 {theme === 'dark' ? (
                   <Sun className="w-4 h-4 text-amber-400" />
@@ -242,33 +223,34 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
             {/* Language Toggle */}
             <button
               onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
-              className="notranslate px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-card text-main border border-main text-xs font-mono font-bold hover:bg-card-hover active:scale-95 transition-all cursor-pointer"
+              className="notranslate px-2 py-1 sm:px-2.5 sm:py-1.5 rounded-lg bg-card text-main border border-main text-xs font-mono font-bold hover:bg-card-hover active:scale-95 transition-all cursor-pointer shrink-0"
               translate="no"
             >
               {lang.toUpperCase()}
             </button>
 
-            {/* Direct Save PDF Button: Desktop & Tablet */}
+            {/* Direct Save PDF Button: Responsive on Mobile & Desktop */}
             <button
               onClick={handleDownloadPdf}
               disabled={isExporting}
               title={t('Simpan dokumen PDF langsung ke perangkat (Ctrl+P)', 'Save PDF file directly to device (Ctrl+P)')}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-98 disabled:opacity-75 transition-all shadow-md shadow-blue-500/25 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg font-bold text-xs sm:text-sm text-white bg-blue-600 hover:bg-blue-700 active:scale-98 disabled:opacity-75 transition-all shadow-md shadow-blue-500/25 cursor-pointer shrink-0"
             >
               {isExporting ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>{t('Menyimpan...', 'Saving...')}</span>
+                  <Loader2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />
+                  <span className="hidden xs:inline">{t('Menyimpan...', 'Saving...')}</span>
                 </>
               ) : isSuccess ? (
                 <>
-                  <Check className="w-4 h-4 text-emerald-300" />
-                  <span>{t('Tersimpan!', 'Saved!')}</span>
+                  <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-300" />
+                  <span className="hidden xs:inline">{t('Tersimpan!', 'Saved!')}</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-4 h-4" />
-                  <span>{t('Simpan PDF', 'Save PDF')}</span>
+                  <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span className="hidden xs:inline">{t('Simpan ', 'Save ')}</span>
+                  <span>PDF</span>
                 </>
               )}
             </button>
@@ -277,7 +259,7 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-10 flex-1 max-w-5xl w-full mx-auto p-4 sm:p-8 md:p-10 pb-20 sm:pb-10 flex flex-col items-center overflow-x-auto">
+      <main className="relative z-10 flex-1 max-w-5xl w-full mx-auto px-2 py-4 xs:px-4 sm:p-8 md:p-10 pb-16 sm:pb-12 flex flex-col items-center">
         {/* Scalable Container */}
         <div
           className="w-full flex justify-center transition-transform duration-150 ease-out origin-top"
@@ -289,78 +271,6 @@ export default function CvPageView({ cvData, allCvData, initialCvData }: CvPageV
           <CvTemplate data={activeCvData} lang={lang} />
         </div>
       </main>
-
-      {/* Floating Scroll to Top Button */}
-      {showScrollTop && (
-        <button
-          onClick={scrollToTop}
-          title={t('Kembali ke Atas', 'Scroll to Top')}
-          aria-label="Scroll to top"
-          className="no-print fixed bottom-16 sm:bottom-6 right-4 sm:right-6 z-40 p-2.5 rounded-full bg-card/90 dark:bg-slate-800/90 text-main border border-main shadow-lg backdrop-blur-md hover:bg-card-hover active:scale-90 transition-all cursor-pointer animate-fade-in"
-        >
-          <ChevronUp className="w-4 h-4" />
-        </button>
-      )}
-
-      {/* Mobile Sticky Bottom Bar (Hidden when printing) */}
-      <div className="no-print sm:hidden sticky bottom-0 z-30 flex items-center justify-between px-3.5 py-2.5 bg-card/95 backdrop-blur-md border-t border-main shadow-lg gap-2">
-        {/* Mobile Zoom Controls */}
-        <div className="flex items-center rounded-lg border border-main bg-main p-0.5 text-xs font-medium text-main shadow-2xs">
-          <button
-            type="button"
-            onClick={handleZoomOut}
-            disabled={zoomLevel <= 0.65}
-            className="p-1.5 rounded-md hover:bg-card-hover text-sub hover:text-main disabled:opacity-30 flex items-center justify-center cursor-pointer"
-            title={t('Perkecil', 'Zoom Out')}
-            aria-label={t('Perkecil', 'Zoom Out')}
-          >
-            <ZoomOut className="w-4 h-4" />
-          </button>
-          <button
-            type="button"
-            onClick={handleResetZoom}
-            className="px-2 py-1 font-mono text-[11px] font-semibold text-main cursor-pointer"
-            title={t('Reset Ukuran (100%)', 'Reset Zoom (100%)')}
-            aria-label="Reset zoom"
-          >
-            {Math.round(zoomLevel * 100)}%
-          </button>
-          <button
-            type="button"
-            onClick={handleZoomIn}
-            disabled={zoomLevel >= 1.6}
-            className="p-1.5 rounded-md hover:bg-card-hover text-sub hover:text-main disabled:opacity-30 flex items-center justify-center cursor-pointer"
-            title={t('Perbesar', 'Zoom In')}
-            aria-label={t('Perbesar', 'Zoom In')}
-          >
-            <ZoomIn className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Action Button */}
-        <button
-          onClick={handleDownloadPdf}
-          disabled={isExporting}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md shadow-blue-500/25 active:scale-95 transition-all cursor-pointer"
-        >
-          {isExporting ? (
-            <>
-              <Loader2 className="w-3.5 h-3.5 animate-spin" />
-              <span>{t('Menyimpan...', 'Saving...')}</span>
-            </>
-          ) : isSuccess ? (
-            <>
-              <Check className="w-3.5 h-3.5 text-emerald-300" />
-              <span>{t('Tersimpan!', 'Saved!')}</span>
-            </>
-          ) : (
-            <>
-              <Download className="w-3.5 h-3.5" />
-              <span>{t('Simpan PDF', 'Save PDF')}</span>
-            </>
-          )}
-        </button>
-      </div>
     </div>
   );
 }

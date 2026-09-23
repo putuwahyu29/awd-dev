@@ -35,7 +35,7 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       aria-label={t('Kembali ke atas', 'Scroll to top')}
       title={t('Kembali ke atas', 'Scroll to top')}
-      className="fixed bottom-22 right-6 z-40 p-2.5 rounded-full bg-card hover:bg-card-hover text-main border border-main shadow-lg hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 active:scale-95 animate-in fade-in slide-in-from-bottom-4 cursor-pointer"
+      className="fixed bottom-20 right-4 sm:bottom-22 sm:right-6 z-40 p-2.5 rounded-full bg-card hover:bg-card-hover text-main border border-main shadow-lg hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110 active:scale-95 animate-in fade-in slide-in-from-bottom-4 cursor-pointer"
     >
       <ArrowUp className="w-4 h-4" />
     </button>
